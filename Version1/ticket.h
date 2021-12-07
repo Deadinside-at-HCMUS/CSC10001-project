@@ -25,3 +25,5 @@ void returnTicket(
         string rentid[MAX],
         int &countrent,
         string returnday[MAX]);
+
+void rentedbooks(int &countrent);

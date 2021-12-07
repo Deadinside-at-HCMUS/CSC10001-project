@@ -119,7 +119,8 @@ int main() {
                         sexusers(sex, countusers);
                         break;
                     case 'e':
-                        cout << "Chức năng e\n";
+                        rentedbooks(countrent);
+                        break;
                     case 'f':
                         cout << "Chức năng f\n";
                         break;

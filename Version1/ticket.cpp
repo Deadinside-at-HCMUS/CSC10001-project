@@ -21,9 +21,8 @@ void rentTicket(
         bool checkbookid = false;
         cout << endl;
         cout << "Lập phiếu mượn sách cho độc giả" << endl;
-        cout << endl;
         cin.ignore();
-        cout << "Mời nhập mã độc giả cần mượn sách: "; getline(cin, rentusercheck);
+        cout << "_ Mã độc giả          : "; getline(cin, rentusercheck);
         for (int i = 0; i < countusers; i++) {
             if (rentusercheck == id[i]) {
                 rentuserid[countrent] = rentusercheck;
@@ -33,7 +32,7 @@ void rentTicket(
         if (!checkuserid)
             cout << "Mã độc giả không tồn tại!" << endl;
         else {
-            cout << "Mời nhập mã sách cần mượn: "; getline(cin, rentbookcheck);
+            cout << "_ Mã sách           : "; getline(cin, rentbookcheck);
             for (int i = 0; i < countbooks; i++) {
                 if (rentbookcheck == isbn[i]) {
                     rentbookid[countrent] = rentbookcheck;
@@ -43,9 +42,9 @@ void rentTicket(
             if (!checkbookid)
                 cout << "Mã sách không tồn tại!" << endl;
             else {
-                cout << "Mời nhập ngày mượn: "; getline(cin, rentday[countrent]);
-                cout << "Mời nhập ngày trả dự kiến: "; getline(cin, payday[countrent]);
-                cout << "Mời nhập mã phiếu mượn: "; getline(cin, rentid[countrent]);
+                cout << "_ Ngày mượn         : "; getline(cin, rentday[countrent]);
+                cout << "_ Ngày trả dự kiến  : "; getline(cin, payday[countrent]);
+                cout << "_ Mã phiếu mượn     : "; getline(cin, rentid[countrent]);
                 countrent++;
                 cout << endl;
                 cout << "Độc giả mượn sách thành công!" << endl;
@@ -66,18 +65,18 @@ void returnTicket(
         bool checkrentid = false;
         cout << endl;
         cout << "Lập phiếu trả sách cho độc giả" << endl;
-        cout << endl;
         cin.ignore();
-        cout << "Mời nhập mã phiếu mượn: "; getline(cin, rentidcheck);
+        cout << "_ Mã phiếu mượn      : "; getline(cin, rentidcheck);
         for (int i = 0; i < countrent; i++) {
             if (rentidcheck == rentid[i]) {
-                cout << "Mời nhập ngày trả thực: "; cin >> returnday[i];
+                cout << "_ Ngày trả thực      : "; cin >> returnday[i];
                 rentuserid[i] = rentuserid[i+1];
                 rentbookid[i] = rentbookid[i+1];
                 rentday[i] = rentday[i+1];
                 payday[i] = payday[i+1];
                 rentid[i] = rentid[i+1];
                 returnday[i] = returnday[i+1];
+                countrent--;
                 checkrentid = true;
             }
         }
@@ -85,4 +84,8 @@ void returnTicket(
             cout << "Mã phiếu mượn không tồn tại!" << endl;
         else
             cout << "Độc giả trả sách thành công!" << endl;
+}
+
+void rentedbooks(int &countrent) {
+    cout << "Số lượng sách đang được mượn là: " << countrent << endl;
 }
