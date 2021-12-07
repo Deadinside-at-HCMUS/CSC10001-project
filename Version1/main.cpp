@@ -6,6 +6,7 @@
 #include "menu.h"
 #include "user.h"
 #include "book.h"
+#include "ticket.h"
 #define MAX 100
 
 using namespace std;
@@ -22,6 +23,8 @@ int main() {
     string id[MAX], cmnd[MAX], nameuser[MAX], birthday[MAX], sex[MAX], email[MAX], address[MAX], createday[MAX], dueday[MAX];
     string isbn[MAX], namebook[MAX], nameauthor[MAX], publishcompany[MAX], category[MAX];
     int publishyear[MAX], price[MAX], quantity[MAX], countbooks;
+    string rentuserid[MAX], rentbookid[MAX], rentday[MAX], payday[MAX];
+    int countrent;
 
     while (1) {
         switch (option)
@@ -90,7 +93,7 @@ int main() {
                 keepChoosing = 1;
                 break;
             case 3:
-                cout << "Chức năng '(3) Lập phiếu mượn sách'\n";
+                rentTicket(id, countusers, isbn, countbooks, rentuserid, rentbookid, rentday, payday, countrent);
                 keepChoosing = 1;
                 break;
             case 4:
