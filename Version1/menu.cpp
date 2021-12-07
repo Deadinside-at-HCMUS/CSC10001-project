@@ -24,7 +24,7 @@ void importMainMenu() {
     cout << "====================================================================" << endl;
     cout << "|| (1) Quản lí độc giả            ||             (2) Quản lí sách ||" << endl;
     cout << "|| (3) Lập phiếu mượn sách        ||       (4) Lập phiếu trả sách ||" << endl;
-    cout << "|| (5) Các thống kế cơ bản        ||       (0) Thoát chương trình ||" << endl;
+    cout << "|| (5) Các thống kê cơ bản        ||       (0) Thoát chương trình ||" << endl;
     cout << "====================================================================" << endl;
     cout << endl;
     cout << "Mời bạn chọn chức năng tương ứng: ";

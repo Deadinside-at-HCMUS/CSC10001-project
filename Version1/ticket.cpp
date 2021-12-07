@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 #include "ticket.h"
 #define MAX 100
 
@@ -22,7 +23,7 @@ void rentTicket(
         cout << endl;
         cout << "Lập phiếu mượn sách cho độc giả" << endl;
         cin.ignore();
-        cout << "_ Mã độc giả          : "; getline(cin, rentusercheck);
+        cout << "_ Mã độc giả        : "; getline(cin, rentusercheck);
         for (int i = 0; i < countusers; i++) {
             if (rentusercheck == id[i]) {
                 rentuserid[countrent] = rentusercheck;
@@ -59,8 +60,7 @@ void returnTicket(
         string rentday[MAX],
         string payday[MAX],
         string rentid[MAX],
-        int &countrent,
-        string returnday[MAX]) {
+        int &countrent) {
         string rentidcheck;
         bool checkrentid = false;
         cout << endl;
@@ -69,13 +69,11 @@ void returnTicket(
         cout << "_ Mã phiếu mượn      : "; getline(cin, rentidcheck);
         for (int i = 0; i < countrent; i++) {
             if (rentidcheck == rentid[i]) {
-                cout << "_ Ngày trả thực      : "; cin >> returnday[i];
                 rentuserid[i] = rentuserid[i+1];
                 rentbookid[i] = rentbookid[i+1];
                 rentday[i] = rentday[i+1];
                 payday[i] = payday[i+1];
                 rentid[i] = rentid[i+1];
-                returnday[i] = returnday[i+1];
                 countrent--;
                 checkrentid = true;
             }
@@ -88,4 +86,23 @@ void returnTicket(
 
 void rentedbooks(int &countrent) {
     cout << "Số lượng sách đang được mượn là: " << countrent << endl;
+}
+
+void checkdueday(string id[MAX], string nameuser[MAX], string rentuserid[MAX], int &countusers, string payday[MAX], int &countrent, string today) {
+    int count = 0;
+    cin.ignore();
+    cout << "Mời nhập ngày tháng năm hôm nay: "; getline(cin, today);
+    cout << "Danh sách các độc giả bị trễ hạn: " << endl;
+    for (int i = 0; i < countrent; i++) {
+        if (payday[i] < today) {
+            for (int j = 0; j < countusers; j++) {
+                if (rentuserid[i] == id[j]){
+                    cout << "_ " << nameuser[j] << endl;
+                    count++;
+                }
+            }
+        }
+    }
+    if (count == 0)
+        cout << "Không có!" << endl;
 }
