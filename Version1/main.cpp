@@ -23,7 +23,7 @@ int main() {
     string id[MAX], cmnd[MAX], nameuser[MAX], birthday[MAX], sex[MAX], email[MAX], address[MAX], createday[MAX], dueday[MAX];
     string isbn[MAX], namebook[MAX], nameauthor[MAX], publishcompany[MAX], category[MAX];
     int publishyear[MAX], price[MAX], quantity[MAX], countbooks;
-    string rentuserid[MAX], rentbookid[MAX], rentday[MAX], payday[MAX];
+    string rentuserid[MAX], rentbookid[MAX], rentday[MAX], payday[MAX], rentid[MAX], returnday[MAX];
     int countrent;
 
     while (1) {
@@ -93,11 +93,11 @@ int main() {
                 keepChoosing = 1;
                 break;
             case 3:
-                rentTicket(id, countusers, isbn, countbooks, rentuserid, rentbookid, rentday, payday, countrent);
+                rentTicket(id, countusers, isbn, countbooks, rentuserid, rentbookid, rentday, payday, rentid, countrent);
                 keepChoosing = 1;
                 break;
             case 4:
-                cout << "Chức năng '(4) Lập phiếu trả sách'\n";
+                returnTicket(rentuserid, rentbookid, rentday, payday, rentid, countrent, returnday);
                 keepChoosing = 1;
                 break;
             case 5:

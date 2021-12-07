@@ -14,4 +14,14 @@ void rentTicket(
         string rentbookid[MAX],
         string rentday[MAX],
         string payday[MAX],
+        string rentid[MAX],
         int &countrent);
+
+void returnTicket(
+        string rentuserid[MAX],
+        string rentbookid[MAX],
+        string rentday[MAX],
+        string payday[MAX],
+        string rentid[MAX],
+        int &countrent,
+        string returnday[MAX]);
