@@ -197,20 +197,20 @@ void quantityusers(int &countusers) {
 }
 
 void sexusers(string sex[MAX], int &countusers) {
-    int countMale = 0;
-    int countFemale = 0;
-    int countOther = 0;
+    int countmale = 0;
+    int countfemale = 0;
+    int countother = 0;
     cin.ignore();
     cout << endl;
     for (int i = 0; i < countusers; i++) {
         if (sex[i] == "Nam" || sex[i] == "nam") {
-            countMale++;
+            countmale++;
         } else if (sex[i] == "Nu" || sex[i] == "nu") {
-            countFemale++;
+            countfemale++;
         } else
-            countOther++;
+            countother++;
     }
-    cout << "Số độc giả giới tính nam  : " << countMale << endl;
-    cout << "Số độc giả giới tính nữ   : " << countFemale << endl;
-    cout << "Số độc giả giới tính khác : " << countOther << endl;
+    cout << "Số độc giả giới tính nam  : " << countmale << endl;
+    cout << "Số độc giả giới tính nữ   : " << countfemale << endl;
+    cout << "Số độc giả giới tính khác : " << countother << endl;
 }
