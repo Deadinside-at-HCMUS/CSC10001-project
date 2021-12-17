@@ -5,6 +5,10 @@
 
 using namespace std;
 
+int leapYear(int year);
+
+int dayInMonth(int month, int year);
+
 void rentTicket(
         string id[MAX],
         int &countusers,
