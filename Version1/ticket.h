@@ -9,16 +9,20 @@ int leapYear(int year);
 
 int dayInMonth(int month, int year);
 
+int dayToNum(int d, int m, int y);
+
 void rentTicket(
         string id[MAX],
         int &countusers,
         string isbn[MAX],
+        int price[MAX],
         int &countbooks,
         string rentuserid[MAX],
         string rentbookid[MAX],
         string rentday[MAX],
         string payday[MAX],
         string rentid[MAX],
+        int pricebook[MAX],
         int &countrent);
 
 void returnTicket(
@@ -27,7 +31,9 @@ void returnTicket(
         string rentday[MAX],
         string payday[MAX],
         string rentid[MAX],
-        int &countrent);
+        int pricerent[MAX],
+        int &countrent,
+        string today);
 
 void rentedbooks(int &countrent);
 

@@ -24,7 +24,7 @@ int main() {
     string isbn[MAX], namebook[MAX], nameauthor[MAX], publishcompany[MAX], category[MAX];
     int publishyear[MAX], price[MAX], quantity[MAX], countbooks;
     string rentuserid[MAX], rentbookid[MAX], rentday[MAX], payday[MAX], rentid[MAX], today;
-    int countrent;
+    int countrent, pricerent[MAX];
 
     while (1) {
         switch (option)
@@ -93,11 +93,11 @@ int main() {
                 keepChoosing = 1;
                 break;
             case 3:
-                rentTicket(id, countusers, isbn, countbooks, rentuserid, rentbookid, rentday, payday, rentid, countrent);
+                rentTicket(id, countusers, isbn, price, countbooks, rentuserid, rentbookid, rentday, payday, rentid, pricerent, countrent);
                 keepChoosing = 1;
                 break;
             case 4:
-                returnTicket(rentuserid, rentbookid, rentday, payday, rentid, countrent);
+                returnTicket(rentuserid, rentbookid, rentday, payday, rentid, pricerent, countrent, today);
                 keepChoosing = 1;
                 break;
             case 5:
