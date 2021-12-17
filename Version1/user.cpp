@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "user.h"
 #define MAX 100
 
@@ -56,7 +57,11 @@ void addUser(
         cout << "_ Email               : "; getline(cin, email[i]);
         cout << "_ Địa chỉ             : "; getline(cin, address[i]);
         cout << "_ Ngày lập thẻ        : "; getline(cin, createday[i]);
-        cout << "_ Ngày hết hạn thẻ    : "; getline(cin, dueday[i]);
+        string yearcreate = createday[i].substr(0,4);
+        string monthdaycreate = createday[i].substr(4,6);
+        int numdueyear = stoi(yearcreate) + 4;
+        string dueyear = to_string(numdueyear);
+        dueday[i] = dueyear + monthdaycreate;
         countusers++;
 }
 

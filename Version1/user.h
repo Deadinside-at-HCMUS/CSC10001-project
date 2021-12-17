@@ -30,6 +30,8 @@ void addUser(
         string dueday[MAX],
         int &countusers);
 
+void calDueDay(string day, string &dueday);
+
 void modifyUser(
         string id[MAX],
         string nameuser[MAX],
