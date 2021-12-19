@@ -137,30 +137,31 @@ void quantitybooks(Book &book) {
 }
 
 void categorybooks(Book &book) {
-    int countsgk = 0;
-    int countnovel = 0;
-    int countliterature = 0;
-    int countbiography = 0;
-    int countcomic = 0;
-    int countother = 0;
-    for (int i = 0; i < book.countbooks; i++) {
-        if (book.category[i] == "Sach giao khoa" || book.category[i] == "sach giao khoa" || book.category[i] == "sgk") {
-            countsgk += book.quantity[i];
-        } else if (book.category[i] == "Tieu thuyet" || book.category[i] == "tieu thuyet") {
-            countnovel += book.quantity[i];
-        } else if (book.category[i] == "Van hoc" || book.category[i] == "van hoc") {
-            countliterature += book.quantity[i];
-        } else if (book.category[i] == "Tu truyen" || book.category[i] == "tu truyen") {
-            countbiography += book.quantity[i];
-        } else if (book.category[i] == "Truyen tranh" || book.category[i] == "truyen tranh") {
-            countcomic += book.quantity[i];
-        } else
-            countother += book.quantity[i];
+    string listcategory[MAX];
+    int quantitycategory[MAX];
+    int countcategory = 0;
+    int flag;
+    if (book.countbooks == 0)
+        cout << "Thư viện trống!" << endl;
+    else {
+        cout << "Số lượng sách thể loại: " << endl;
+        for (int i = 0; i < book.countbooks; i++) {
+            int count = 0;
+            for (int j = i + 1; j < book.countbooks; j++) {
+                if (book.category[i] != book.category[j])
+                    count++;
+                else
+                    flag = j;
+            }
+            if (count == book.countbooks - i - 1) {
+                listcategory[countcategory] = book.category[i];
+                quantitycategory[countcategory] += book.quantity[i];
+                countcategory++;
+            } else
+                book.quantity[flag] += book.quantity[i];
+        }
+
+        for (int i = 0; i < countcategory; i++)
+            cout << "_ " << listcategory[i] << ": " << quantitycategory[i] << endl;
     }
-    cout << "Số lượng sách thuộc thể loại sách giáo khoa : " << countsgk <<  endl;
-    cout << "Số lượng sách thuộc thể loại tiểu thuyết    : " << countnovel <<  endl;
-    cout << "Số lượng sách thuộc thể loại văn học        : " << countliterature <<  endl;
-    cout << "Số lượng sách thuộc thể loại tự truyện      : " << countbiography <<  endl;
-    cout << "Số lượng sách thuộc thể loại truyện tranh   : " << countcomic <<  endl;
-    cout << "Số lượng sách thuộc thể loại khác           : " << countother <<  endl;
 }
