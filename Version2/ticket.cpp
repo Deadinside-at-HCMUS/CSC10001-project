@@ -51,7 +51,7 @@ int dayToNum(int d, int m, int y) {
     return 365 * y + y / 4 - y / 100 + y / 400 + (153 * m - 457)/5 + d - 306;
 }
 
-void rentTicket(User user, Book book, Ticket ticket) {
+void rentTicket(User &user, Book &book, Ticket &ticket) {
         string rentusercheck;
         string rentbookcheck;
         bool checkuserid = false;
@@ -109,7 +109,7 @@ void rentTicket(User user, Book book, Ticket ticket) {
         }
 }
 
-void returnTicket(Ticket ticket, string today) {
+void returnTicket(User &user, Book &book, Ticket &ticket, string today) {
         string lostcheck;
         string rentidcheck;
         int flag;
@@ -165,18 +165,18 @@ void returnTicket(Ticket ticket, string today) {
         }
 }
 
-void rentedbooks(Ticket ticket) {
+void rentedbooks(Ticket &ticket) {
     cout << "Số lượng sách đang được mượn là: " << ticket.countrent << endl;
 }
 
-void checkdueday(User user, Ticket ticket, string today) {
+void checkdueday(User &user, Ticket &ticket, string today) {
     int count = 0;
     cin.ignore();
     cout << "Mời nhập ngày hôm nay (yyyy/mm/dd):"; getline(cin, today);
     cout << "Danh sách các độc giả bị trễ hạn" << endl;
     for (int i = 0; i < ticket.countrent; i++) {
         if (ticket.payday[i] < today) {
-            for (int j = 0; j < user.countusers; j++) {
+            for (int j = 0; j < ticket.countrent; j++) {
                 if (ticket.rentuserid[i] == user.id[j]){
                     cout << "_ Họ và tên: " << user.nameuser[j] << " - ID: " << user.id[j] << endl;
                     count++;

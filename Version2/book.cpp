@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void showBooks(Book book) {
+void showBooks(Book &book) {
     if (book.countbooks == 0) {
         cout << "Thư viện sách trống!" << endl;
     } else {
@@ -16,14 +16,14 @@ void showBooks(Book book) {
             cout << "_ Nhà xuất bản       : " << book.publishcompany[i] << endl;
             cout << "_ Năm xuất bản       : " << book.publishyear[i] << endl;
             cout << "_ Thể loại           : " << book.category[i] << endl;
-            cout << "_ Giá sách           : " << book.price[i] << " VNĐ" << endl;
+            cout << "_ Giá sách           : " << book.price[i] << endl;
             cout << "_ Số quyển sách      : " << book.quantity[i] << endl;
             cout << endl;
         }
     }
 }
 
-void addBook(Book book) {
+void addBook(Book &book) {
         int i = book.countbooks;
         cout << "Thêm quyển sách thứ " << i + 1 << endl;
         cin.ignore();
@@ -39,9 +39,9 @@ void addBook(Book book) {
         book.countbooks++;
 }
 
-void modifyBook(Book book) {
+void modifyBook(Book &book) {
         int i;
-        if (book.countbooks == 0) {
+        if (book.countbooks== 0) {
             cout << "Thư viện sách trống!" << endl;
         } else {
             cout << "Mời nhập stt sách cần chỉnh sửa: "; cin >> i;
@@ -64,7 +64,7 @@ void modifyBook(Book book) {
         }
 }
 
-void deleteBook(Book book) {
+void deleteBook(Book &book) {
         int i;
         cout << "Mời nhập stt sách cần xóa: "; cin >> i;
         cout << endl;
@@ -80,7 +80,7 @@ void deleteBook(Book book) {
         cout << "Quyển sách thứ " << i << " đã được xóa!" << endl;
 }
 
-void findBooksByISBN(Book book) {
+void findBooksByISBN(Book &book) {
         string isbncheck;
         bool isavailable = false;
         cin.ignore();
@@ -104,7 +104,7 @@ void findBooksByISBN(Book book) {
             cout << "Quyển sách có ISBN " << isbncheck << " không tồn tại!" << endl;
 }
 
-void findBooksByName(Book book) {
+void findBooksByName(Book &book) {
         string namebookcheck;
         bool isavailable = false;
         cin.ignore();
@@ -128,7 +128,7 @@ void findBooksByName(Book book) {
             cout << "Quyển sách có tên " << namebookcheck << " không tồn tại!" << endl;
 }
 
-void quantitybooks(Book book) {
+void quantitybooks(Book &book) {
     int count = 0;
     for (int i = 0; i < book.countbooks; i++) {
         count += book.quantity[i];
@@ -136,7 +136,7 @@ void quantitybooks(Book book) {
     cout << "Số lượng sách có trong thư viện là: " << count << endl;
 }
 
-void categorybooks(Book book) {
+void categorybooks(Book &book) {
     int countsgk = 0;
     int countnovel = 0;
     int countliterature = 0;

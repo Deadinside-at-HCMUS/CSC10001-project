@@ -95,7 +95,7 @@ int main() {
                 keepChoosing = 1;
                 break;
             case 4:
-                returnTicket(ticket, today);
+                returnTicket(user, book, ticket, today);
                 keepChoosing = 1;
                 break;
             case 5:

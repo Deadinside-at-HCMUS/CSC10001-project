@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void showUsers(User user) {
+void showUsers(User &user) {
     if (user.countusers == 0) {
         cout << "Danh sách độc giả trống!" << endl;
     } else {
@@ -24,7 +24,7 @@ void showUsers(User user) {
     }
 }
 
-void addUser(User user) {
+void addUser(User &user) {
         int i = user.countusers;
         cout << "Thêm thông tin độc giả thứ " << i + 1 << endl;
         cin.ignore();
@@ -43,14 +43,14 @@ void addUser(User user) {
         user.countusers++;
 }
 
-void modifyUser(User user){
+void modifyUser(User &user){
         int i;
         if (user.countusers == 0) {
             cout << "Danh sách độc giả trống!" << endl;
         } else {
             cout << "Mời nhập stt độc giả cần chỉnh sửa: "; cin >> i;
             cout << endl;
-            if (user.countusers < i) {
+            if (user.countusers< i) {
                 cout << "Stt độc giả lớn hơn danh sách độc giả hiện có!" << endl;
             } else {
                 cout << "Chỉnh sửa thông tin độc giả thứ " << i << endl;
@@ -68,7 +68,7 @@ void modifyUser(User user){
         }
 }
 
-void deleteUser(User user) {
+void deleteUser(User &user) {
         int i;
         cout << "Mời nhập stt độc giả cần xóa: "; cin >> i;
         cout << endl;
@@ -85,7 +85,7 @@ void deleteUser(User user) {
         cout << "Độc giả thứ " << i << " đã được xóa!" << endl;
 }
 
-void findUserByCMND(User user) {
+void findUserByCMND(User &user) {
         string cmndcheck;
         bool isavailable = false;
         cin.ignore();
@@ -110,7 +110,7 @@ void findUserByCMND(User user) {
             cout << "Độc giả có CMND " << cmndcheck << " không tồn tại!" << endl;
 }
 
-void findUsersByName(User user) {
+void findUsersByName(User &user) {
         string nameusercheck;
         bool isavailable = false;
         cin.ignore();
@@ -135,11 +135,11 @@ void findUsersByName(User user) {
             cout << "Độc giả có tên " << nameusercheck << " không tồn tại!" << endl;
 }
 
-void quantityusers(User user) {
+void quantityusers(User &user) {
     cout << "Số lượng độc giả hiện có là: " << user.countusers << endl;
 }
 
-void sexusers(User user) {
+void sexusers(User &user) {
     int countmale = 0;
     int countfemale = 0;
     int countother = 0;

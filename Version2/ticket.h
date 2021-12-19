@@ -20,13 +20,13 @@ struct Ticket {
     string payday[MAX];
     string rentid[MAX];
     int pricerent[MAX];
-    int &countrent;
+    int countrent;
 };
 
-void rentTicket(User user, Book book, Ticket ticket);
+void rentTicket(User &user, Book &book, Ticket &ticket);
 
-void returnTicket(Ticket ticket, string today);
+void returnTicket(User &user, Book &book, Ticket &ticket, string today);
 
-void rentedbooks(Ticket ticket);
+void rentedbooks(Ticket &ticket);
 
-void checkdueday(User user, Ticket ticket, string today);
+void checkdueday(User &user, Ticket &ticket, string today);

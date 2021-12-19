@@ -14,21 +14,21 @@ struct Book {
     string category[MAX];
     int price[MAX];
     int quantity[MAX];
-    int &countbooks;
+    int countbooks;
 };
 
-void showBooks(Book book);
+void showBooks(Book &book);
 
-void addBook(Book book);
+void addBook(Book &book);
 
-void modifyBook(Book book);
+void modifyBook(Book &book);
 
-void deleteBook(Book book);
+void deleteBook(Book &book);
 
-void findBooksByISBN(Book book);
+void findBooksByISBN(Book &book);
 
-void findBooksByName(Book book);
+void findBooksByName(Book &book);
 
-void quantitybooks(Book book);
+void quantitybooks(Book &book);
 
-void categorybooks(Book book);
+void categorybooks(Book &book);
