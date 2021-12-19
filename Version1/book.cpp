@@ -197,29 +197,27 @@ void categorybooks(string category[MAX], int quantity[MAX], int &countbooks) {
     int quantitycategory[MAX];
     int countcategory = 0;
     int flag;
-    if (countbooks == 0) {
+    if (countbooks == 0)
         cout << "Thư viện trống!" << endl;
-    } else {
+    else {
         cout << "Số lượng sách thể loại: " << endl;
         for (int i = 0; i < countbooks; i++) {
             int count = 0;
             for (int j = i + 1; j < countbooks; j++) {
-                if (category[i] != category[j]) {
+                if (category[i] != category[j])
                     count++;
-                } else
+                else
                     flag = j;
             }
             if (count == countbooks - i - 1) {
                 listcategory[countcategory] = category[i];
                 quantitycategory[countcategory] += quantity[i];
                 countcategory++;
-            } else {
+            } else
                 quantity[flag] += quantity[i];
-            }
         }
 
-        for (int i = 0; i < countcategory; i++) {
+        for (int i = 0; i < countcategory; i++)
             cout << "_ " << listcategory[i] << ": " << quantitycategory[i] << endl;
-        }
     }
 }
