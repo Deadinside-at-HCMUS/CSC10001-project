@@ -193,30 +193,7 @@ void quantitybooks(int quantity[MAX], int &countbooks) {
 }
 
 void categorybooks(string category[MAX], int quantity[MAX], int &countbooks) {
-    int countsgk = 0;
-    int countnovel = 0;
-    int countliterature = 0;
-    int countbiography = 0;
-    int countcomic = 0;
-    int countother = 0;
     for (int i = 0; i < countbooks; i++) {
-        if (category[i] == "Sach giao khoa" || category[i] == "sach giao khoa" || category[i] == "sgk") {
-            countsgk += quantity[i];
-        } else if (category[i] == "Tieu thuyet" || category[i] == "tieu thuyet") {
-            countnovel += quantity[i];
-        } else if (category[i] == "Van hoc" || category[i] == "van hoc") {
-            countliterature += quantity[i];
-        } else if (category[i] == "Tu truyen" || category[i] == "tu truyen") {
-            countbiography += quantity[i];
-        } else if (category[i] == "Truyen tranh" || category[i] == "truyen tranh") {
-            countcomic += quantity[i];
-        } else
-            countother += quantity[i];
+        cout << "Số lượng sách thuộc thể loại " << category[i] << " : " << quantity[i] << endl;
     }
-    cout << "Số lượng sách thuộc thể loại sách giáo khoa : " << countsgk <<  endl;
-    cout << "Số lượng sách thuộc thể loại tiểu thuyết    : " << countnovel <<  endl;
-    cout << "Số lượng sách thuộc thể loại văn học        : " << countliterature <<  endl;
-    cout << "Số lượng sách thuộc thể loại tự truyện      : " << countbiography <<  endl;
-    cout << "Số lượng sách thuộc thể loại truyện tranh   : " << countcomic <<  endl;
-    cout << "Số lượng sách thuộc thể loại khác           : " << countother <<  endl;
 }
