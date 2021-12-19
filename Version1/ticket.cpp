@@ -40,6 +40,8 @@ int dayInMonth(int month, int year) {
             else
                 return 28;
             break;
+        default:
+            return 0;
     }
 }
 
@@ -93,17 +95,19 @@ void rentTicket(
                 cout << "Mã sách không tồn tại!" << endl;
             else {
                 cout << "_ Mã phiếu mượn         : "; getline(cin, rentid[countrent]);
-                cout << "_ Ngày mượn (yyyy/mm/dd): "; getline(cin, rentday[countrent]);
+                do {
+                    cout << "_ Ngày mượn (yyyy/mm/dd): "; getline(cin, rentday[countrent]);
+                } while (rentday[countrent].length() != 10);
                 int yearrent = stoi(rentday[countrent].substr(0,4));
                 int monthrent = stoi(rentday[countrent].substr(5,2));
                 int dayrent = stoi(rentday[countrent].substr(8,2));
                 int yearpay, monthpay, daypay;
-                if (yearrent != 12 && dayrent + 6 == dayInMonth(monthrent, yearrent)) {
-                    daypay = 1;
+                if (monthrent != 12 && dayrent + 6 >= dayInMonth(monthrent, yearrent)) {
+                    daypay = 7 - (dayInMonth(monthrent, yearrent) - dayrent);
                     monthpay = monthrent + 1;
                     yearpay = yearrent;
-                } else if (monthrent == 12 && dayrent + 6 == dayInMonth(monthrent, yearrent)) {
-                    daypay = 1;
+                } else if (monthrent == 12 && dayrent + 6 >= dayInMonth(monthrent, yearrent)) {
+                    daypay = 7 - (dayInMonth(monthrent, yearrent) - dayrent);
                     monthpay = 1;
                     yearpay = yearrent + 1;
                 } else {
@@ -111,7 +115,14 @@ void rentTicket(
                     monthpay = monthrent;
                     yearpay = yearrent;
                 }
-                payday[countrent] = to_string(yearpay) + ' ' + to_string(monthpay) + ' ' + to_string(daypay);
+                if (monthpay < 10 && daypay < 10)
+                    payday[countrent] = to_string(yearpay) + " 0" + to_string(monthpay) + " 0" + to_string(daypay);
+                else if (monthpay < 10 && daypay > 9)
+                    payday[countrent] = to_string(yearpay) + " 0" + to_string(monthpay) + " " + to_string(daypay);
+                else if (monthpay > 9 && daypay < 10)
+                    payday[countrent] = to_string(yearpay) + " " + to_string(monthpay) + " 0" + to_string(daypay);
+                else
+                    payday[countrent] = to_string(yearpay) + " " + to_string(monthpay) + " " + to_string(daypay);
                 cout << "_ Ngày trả dự kiến      : " << payday[countrent] << endl;
                 countrent++;
                 cout << endl;

@@ -40,6 +40,8 @@ int dayInMonth(int month, int year) {
             else
                 return 28;
             break;
+        default:
+            return 0;
     }
 }
 
@@ -81,17 +83,19 @@ void rentTicket(User &user, Book &book, Ticket &ticket) {
                 cout << "Mã sách không tồn tại!" << endl;
             else {
                 cout << "_ Mã phiếu mượn         : "; getline(cin, ticket.rentid[ticket.countrent]);
-                cout << "_ Ngày mượn (yyyy/mm/dd): "; getline(cin, ticket.rentday[ticket.countrent]);
+                do {
+                    cout << "_ Ngày mượn (yyyy/mm/dd): "; getline(cin, ticket.rentday[ticket.countrent]);
+                } while (ticket.rentday[ticket.countrent].length() != 10);
                 int yearrent = stoi(ticket.rentday[ticket.countrent].substr(0,4));
                 int monthrent = stoi(ticket.rentday[ticket.countrent].substr(5,2));
                 int dayrent = stoi(ticket.rentday[ticket.countrent].substr(8,2));
                 int yearpay, monthpay, daypay;
-                if (yearrent != 12 && dayrent + 6 == dayInMonth(monthrent, yearrent)) {
-                    daypay = 1;
+                if (monthrent != 12 && dayrent + 6 >= dayInMonth(monthrent, yearrent)) {
+                    daypay = 7 - (dayInMonth(monthrent, yearrent) - dayrent);
                     monthpay = monthrent + 1;
                     yearpay = yearrent;
-                } else if (monthrent == 12 && dayrent + 6 == dayInMonth(monthrent, yearrent)) {
-                    daypay = 1;
+                } else if (monthrent == 12 && dayrent + 6 >= dayInMonth(monthrent, yearrent)) {
+                    daypay = 7 - (dayInMonth(monthrent, yearrent) - dayrent);
                     monthpay = 1;
                     yearpay = yearrent + 1;
                 } else {
@@ -99,7 +103,14 @@ void rentTicket(User &user, Book &book, Ticket &ticket) {
                     monthpay = monthrent;
                     yearpay = yearrent;
                 }
-                ticket.payday[ticket.countrent] = to_string(yearpay) + ' ' + to_string(monthpay) + ' ' + to_string(daypay);
+                if (monthpay < 10 && daypay < 10)
+                    ticket.payday[ticket.countrent] = to_string(yearpay) + " 0" + to_string(monthpay) + " 0" + to_string(daypay);
+                else if (monthpay < 10 && daypay > 9)
+                    ticket.payday[ticket.countrent] = to_string(yearpay) + " 0" + to_string(monthpay) + " " + to_string(daypay);
+                else if (monthpay > 9 && daypay < 10)
+                    ticket.payday[ticket.countrent] = to_string(yearpay) + " " + to_string(monthpay) + " 0" + to_string(daypay);
+                else
+                    ticket.payday[ticket.countrent] = to_string(yearpay) + " " + to_string(monthpay) + " " + to_string(daypay);
                 cout << "_ Ngày trả dự kiến      : " << ticket.payday[ticket.countrent] << endl;
                 ticket.countrent++;
                 cout << endl;
