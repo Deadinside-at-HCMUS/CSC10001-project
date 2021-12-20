@@ -1,8 +1,8 @@
 #pragma once
 
-#include <iostream>
 #include "user.h"
 #include "book.h"
+#include "day.h"
 #define MAX 100
 
 using namespace std;
@@ -25,8 +25,8 @@ struct Ticket {
 
 void rentTicket(User &user, Book &book, Ticket &ticket);
 
-void returnTicket(User &user, Book &book, Ticket &ticket, string today);
+void returnTicket(User &user, Book &book, Ticket &ticket, Today today);
 
 void rentedbooks(Ticket &ticket);
 
-void checkdueday(User &user, Ticket &ticket, string today);
+void checkduedayticket(User &user, Ticket &ticket, Today today);

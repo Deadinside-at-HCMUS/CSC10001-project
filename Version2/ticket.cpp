@@ -120,7 +120,7 @@ void rentTicket(User &user, Book &book, Ticket &ticket) {
         }
 }
 
-void returnTicket(User &user, Book &book, Ticket &ticket, string today) {
+void returnTicket(User &user, Book &book, Ticket &ticket, Today today) {
         string lostcheck;
         string rentidcheck;
         int flag;
@@ -145,17 +145,13 @@ void returnTicket(User &user, Book &book, Ticket &ticket, string today) {
         else {
             cout << "Độc giả có làm mất sách hay không? (y/n): "; getline(cin, lostcheck);
             if (lostcheck == "n") {
-                cout << "Mời nhập ngày hôm nay (yyyy/mm/dd): "; getline(cin, today);
+                int yearpay = stoi(ticket.payday[flag].substr(0,4));
+                int monthpay = stoi(ticket.payday[flag].substr(5,2));
+                int daypay = stoi(ticket.payday[flag].substr(8,2));
                 cout << endl;
-                if (today > ticket.payday[flag]) {
+                if (yearpay < today.todayyear || monthpay < today.todaymonth || daypay < today.todayday) {
                     cout << "Độc giả trả sách không đúng hạn!" << endl;
-                    int todayyear = stoi(today.substr(0,4));
-                    int todaymonth = stoi(today.substr(5,2));
-                    int todayday = stoi(today.substr(8,2));
-                    int yearpay = stoi(ticket.payday[flag].substr(0,4));
-                    int monthpay = stoi(ticket.payday[flag].substr(5,2));
-                    int daypay = stoi(ticket.payday[flag].substr(8,2));
-                    int todayToDay = dayToNum(todayday, todaymonth, todayyear);
+                    int todayToDay = dayToNum(today.todayday, today.todaymonth, today.todayyear);
                     int paydayToDay = dayToNum(daypay, monthpay, yearpay);
                     ticket.pricerent[flag] = (todayToDay - paydayToDay) * 5000;
                     cout << "Độc giả cần trả số tiền phạt là: " << ticket.pricerent[flag] << endl;
@@ -180,14 +176,15 @@ void rentedbooks(Ticket &ticket) {
     cout << "Số lượng sách đang được mượn là: " << ticket.countrent << endl;
 }
 
-void checkdueday(User &user, Ticket &ticket, string today) {
+void checkduedayticket(User &user, Ticket &ticket, Today today) {
     int count = 0;
-    cin.ignore();
-    cout << "Mời nhập ngày hôm nay (yyyy/mm/dd):"; getline(cin, today);
     cout << "Danh sách các độc giả bị trễ hạn" << endl;
     for (int i = 0; i < ticket.countrent; i++) {
-        if (ticket.payday[i] < today) {
-            for (int j = 0; j < ticket.countrent; j++) {
+        int yearpay = stoi(ticket.payday[i].substr(0,4));
+        int monthpay = stoi(ticket.payday[i].substr(5,2));
+        int daypay = stoi(ticket.payday[i].substr(8,2));
+        if (yearpay < today.todayyear || monthpay < today.todaymonth || daypay < today.todayday) {
+            for (int j = 0; j < user.countusers; j++) {
                 if (ticket.rentuserid[i] == user.id[j]){
                     cout << "_ Họ và tên: " << user.nameuser[j] << " - ID: " << user.id[j] << endl;
                     count++;
@@ -196,5 +193,5 @@ void checkdueday(User &user, Ticket &ticket, string today) {
         }
     }
     if (count == 0)
-        cout << "Không có!" << endl;
+        cout << "Không có!" << endl;;
 }

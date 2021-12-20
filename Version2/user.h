@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+#include "day.h"
 #define MAX 100
 
 using namespace std;
@@ -33,3 +33,5 @@ void findUsersByName(User &user);
 void quantityusers(User &user);
 
 void sexusers(User &user);
+
+void checkduedayuser(User &user, Today today);

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "user.h"
+#include "ticket.h"
 #define MAX 100
 
 using namespace std;
@@ -156,4 +157,20 @@ void sexusers(User &user) {
     cout << "Số độc giả giới tính nam  : " << countmale << endl;
     cout << "Số độc giả giới tính nữ   : " << countfemale << endl;
     cout << "Số độc giả giới tính khác : " << countother << endl;
+}
+
+void checkduedayuser(User &user, Today today) {
+    int count = 0;
+    cout << "Danh sách các độc giả hết hạn thẻ" << endl;
+    for (int i = 0; i < user.countusers; i++) {
+        int yearpay = stoi(user.dueday[i].substr(0,4));
+        int monthpay = stoi(user.dueday[i].substr(5,2));
+        int daypay = stoi(user.dueday[i].substr(8,2));
+        if (yearpay < today.todayyear || monthpay < today.todaymonth || daypay < today.todayday) {
+            cout << "_ Họ và tên: " << user.nameuser[i] << " - ID: " << user.id[i] << endl;
+            count++;
+        }
+    }
+    if (count == 0)
+        cout << "Không có!" << endl;
 }

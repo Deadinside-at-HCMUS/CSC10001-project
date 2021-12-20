@@ -22,7 +22,7 @@ int main() {
     User user;
     Book book;
     Ticket ticket;
-    string today;
+    Today today;
 
     while (1) {
         switch (option)
@@ -84,6 +84,9 @@ int main() {
                     case 'f':
                         findBooksByName(book);
                         break;
+                    case 'g':
+                        checkduedayuser(user, today);
+                        break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";
                         break;
@@ -120,7 +123,10 @@ int main() {
                         rentedbooks(ticket);
                         break;
                     case 'f':
-                        checkdueday(user, ticket, today);
+                        checkduedayticket(user, ticket, today);
+                        break;
+                    case 'g':
+                        checkduedayuser(user, today);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";
