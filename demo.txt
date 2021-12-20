@@ -23,4 +23,16 @@ CÁC CHỨC NĂNG CỦA CHƯƠNG TRÌNH
   d. Thống kê số lượng độc giả theo giới tính
   e. Thống kê số sách đang được mượn
   f. Thống kê danh sách độc giả bị trễ hạn
+  g. Thống kê danh sách độc giả hết hạn thẻ
+  (Chức năng thêm)
 
+-----------------------------
+Note:
+_ Vì máy của em sử dụng hệ điều hành Linux nên 
+khi run project, IDE không thể pop up ra một cửa
+sổ chương trình mà chỉ có thể chạy trên terminal
+_ Bên cạnh đó, #include <Windows.h>, các hàm 
+định dạng màn hình console và một số câu lệnh
+như system("cls") để xóa màn hình không thể chạy
+được trên Linux OS
+_ Mong thầy thông cảm, em xin cảm ơn
