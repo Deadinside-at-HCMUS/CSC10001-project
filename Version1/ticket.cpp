@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ticket.h"
+#include <ctime>
 #define MAX 100
 
 using namespace std;
@@ -139,8 +140,7 @@ void returnTicket(
         string payday[MAX],
         string rentid[MAX],
         int pricerent[MAX],
-        int &countrent,
-        string today) {
+        int &countrent) {
         string lostcheck;
         string rentidcheck;
         int flag;
@@ -165,16 +165,17 @@ void returnTicket(
         else {
             cout << "Độc giả có làm mất sách hay không? (y/n): "; getline(cin, lostcheck);
             if (lostcheck == "n") {
-                cout << "Mời nhập ngày hôm nay (yyyy/mm/dd): "; getline(cin, today);
+                time_t now = time(0);
+                tm *ltm = localtime(&now);
+                int todayyear = 1900 + ltm->tm_year;
+                int todaymonth = 1 + ltm->tm_mon;
+                int todayday = ltm->tm_mday;
+                int yearpay = stoi(payday[flag].substr(0,4));
+                int monthpay = stoi(payday[flag].substr(5,2));
+                int daypay = stoi(payday[flag].substr(8,2));
                 cout << endl;
-                if (today > payday[flag]) {
+                if (yearpay < todayyear || monthpay < todaymonth || daypay < todayday) {
                     cout << "Độc giả trả sách không đúng hạn!" << endl;
-                    int todayyear = stoi(today.substr(0,4));
-                    int todaymonth = stoi(today.substr(5,2));
-                    int todayday = stoi(today.substr(8,2));
-                    int yearpay = stoi(payday[flag].substr(0,4));
-                    int monthpay = stoi(payday[flag].substr(5,2));
-                    int daypay = stoi(payday[flag].substr(8,2));
                     int todayToDay = dayToNum(todayday, todaymonth, todayyear);
                     int paydayToDay = dayToNum(daypay, monthpay, yearpay);
                     pricerent[flag] = (todayToDay - paydayToDay) * 5000;
@@ -200,21 +201,34 @@ void rentedbooks(int &countrent) {
     cout << "Số lượng sách đang được mượn là: " << countrent << endl;
 }
 
-void checkdueday(string id[MAX], string nameuser[MAX], string rentuserid[MAX], int &countusers, string payday[MAX], int &countrent, string today) {
-    int count = 0;
-    cin.ignore();
-    cout << "Mời nhập ngày hôm nay (yyyy/mm/dd):"; getline(cin, today);
-    cout << "Danh sách các độc giả bị trễ hạn" << endl;
-    for (int i = 0; i < countrent; i++) {
-        if (payday[i] < today) {
-            for (int j = 0; j < countusers; j++) {
-                if (rentuserid[i] == id[j]){
-                    cout << "_ Họ và tên: " << nameuser[j] << " - ID: " << id[j] << endl;
-                    count++;
+void checkdueday(
+        string id[MAX],
+        string nameuser[MAX],
+        string rentuserid[MAX],
+        int &countusers,
+        string payday[MAX],
+        int &countrent) {
+        int count = 0;
+        cin.ignore();
+        time_t now = time(0);
+        tm *ltm = localtime(&now);
+        int todayyear = 1900 + ltm->tm_year;
+        int todaymonth = 1 + ltm->tm_mon;
+        int todayday = ltm->tm_mday;
+        cout << "Danh sách các độc giả bị trễ hạn" << endl;
+        for (int i = 0; i < countrent; i++) {
+            int yearpay = stoi(payday[i].substr(0,4));
+            int monthpay = stoi(payday[i].substr(5,2));
+            int daypay = stoi(payday[i].substr(8,2));
+            if (yearpay < todayyear || monthpay < todaymonth || daypay < todayday) {
+                for (int j = 0; j < countusers; j++) {
+                    if (rentuserid[i] == id[j]){
+                        cout << "_ Họ và tên: " << nameuser[j] << " - ID: " << id[j] << endl;
+                        count++;
+                    }
                 }
             }
         }
+        if (count == 0)
+            cout << "Không có!" << endl;
     }
-    if (count == 0)
-        cout << "Không có!" << endl;
-}

@@ -22,7 +22,7 @@ void rentTicket(
         string rentday[MAX],
         string payday[MAX],
         string rentid[MAX],
-        int pricebook[MAX],
+        int pricerent[MAX],
         int &countrent);
 
 void returnTicket(
@@ -32,9 +32,8 @@ void returnTicket(
         string payday[MAX],
         string rentid[MAX],
         int pricerent[MAX],
-        int &countrent,
-        string today);
+        int &countrent);
 
 void rentedbooks(int &countrent);
 
-void checkdueday(string id[MAX], string nameuser[MAX], string rentuserid[MAX], int &countuser, string payday[MAX], int &countrent, string today);
+void checkdueday(string id[MAX], string nameuser[MAX], string rentuserid[MAX], int &countuser, string payday[MAX], int &countrent);
