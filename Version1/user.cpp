@@ -15,23 +15,23 @@ void showUsers(
         string createday[MAX],
         string dueday[MAX],
         int &countusers ) {
-    if (countusers == 0) {
-        cout << "Danh sách độc giả trống!" << endl;
-    } else {
-        for (int i = 0; i < countusers; i++) {
-            cout << "Thông tin của độc gỉả thứ " << i + 1 << endl;
-            cout << "_ Mã độc giả          : " << id[i] << endl;
-            cout << "_ Họ tên              : " << nameuser[i] << endl;
-            cout << "_ CMND                : " << cmnd[i] << endl;
-            cout << "_ Ngày tháng năm sinh : " << birthday[i] << endl;
-            cout << "_ Giới tính           : " << sex[i] << endl;
-            cout << "_ Email               : " << email[i] << endl;
-            cout << "_ Địa chỉ             : " << address[i] << endl;
-            cout << "_ Ngày lập thẻ        : " << createday[i] << endl;
-            cout << "_ Ngày hết hạn thẻ    : " << dueday[i] << endl;
-            cout << endl;
+        if (countusers == 0) {
+            cout << "Danh sách độc giả trống!" << endl;
+        } else {
+            for (int i = 0; i < countusers; i++) {
+                cout << "Thông tin của độc gỉả thứ " << i + 1 << endl;
+                cout << "_ Mã độc giả          : " << id[i] << endl;
+                cout << "_ Họ tên              : " << nameuser[i] << endl;
+                cout << "_ CMND                : " << cmnd[i] << endl;
+                cout << "_ Ngày tháng năm sinh : " << birthday[i] << endl;
+                cout << "_ Giới tính           : " << sex[i] << endl;
+                cout << "_ Email               : " << email[i] << endl;
+                cout << "_ Địa chỉ             : " << address[i] << endl;
+                cout << "_ Ngày lập thẻ        : " << createday[i] << endl;
+                cout << "_ Ngày hết hạn thẻ    : " << dueday[i] << endl;
+                cout << endl;
+            }
         }
-    }
 }
 
 void addUser(
@@ -218,4 +218,26 @@ void sexusers(string sex[MAX], int &countusers) {
     cout << "Số độc giả giới tính nam  : " << countmale << endl;
     cout << "Số độc giả giới tính nữ   : " << countfemale << endl;
     cout << "Số độc giả giới tính khác : " << countother << endl;
+}
+
+void checkduedayuser(string id[MAX], string nameuser[MAX], string dueday[MAX], int &countusers) {
+    int count = 0;
+    cin.ignore();
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    int todayyear = 1900 + ltm->tm_year;
+    int todaymonth = 1 + ltm->tm_mon;
+    int todayday = ltm->tm_mday;
+    cout << "Danh sách các độc giả hết hạn thẻ" << endl;
+    for (int i = 0; i < countusers; i++) {
+        int yearpay = stoi(dueday[i].substr(0,4));
+        int monthpay = stoi(dueday[i].substr(5,2));
+        int daypay = stoi(dueday[i].substr(8,2));
+        if (yearpay < todayyear || monthpay < todaymonth || daypay < todayday) {
+            cout << "_ Họ và tên: " << nameuser[i] << " - ID: " << id[i] << endl;
+            count++;
+        }
+    }
+    if (count == 0)
+        cout << "Không có!" << endl;
 }

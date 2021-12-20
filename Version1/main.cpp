@@ -122,7 +122,10 @@ int main() {
                         rentedbooks(countrent);
                         break;
                     case 'f':
-                        checkdueday(id, nameuser, rentuserid, countusers, payday, countrent);
+                        checkduedayticket(id, nameuser, rentuserid, countusers, payday, countrent);
+                        break;
+                    case 'g':
+                        checkduedayuser(id, nameuser, dueday, countusers);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";

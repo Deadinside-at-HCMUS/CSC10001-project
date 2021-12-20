@@ -201,7 +201,7 @@ void rentedbooks(int &countrent) {
     cout << "Số lượng sách đang được mượn là: " << countrent << endl;
 }
 
-void checkdueday(
+void checkduedayticket(
         string id[MAX],
         string nameuser[MAX],
         string rentuserid[MAX],
