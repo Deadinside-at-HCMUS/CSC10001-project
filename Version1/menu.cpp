@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include "menu.h"
 
 using namespace std;
@@ -19,6 +20,9 @@ void importLogo() {
 
 void importMainMenu() {
     cout << endl;
+    time_t now = time(0);
+    char* dt = ctime(&now);
+    cout << "                                            " << dt;
     cout << "====================================================================" << endl;
     cout << "||                    Các chức năng của chương trình              ||" << endl;
     cout << "====================================================================" << endl;
