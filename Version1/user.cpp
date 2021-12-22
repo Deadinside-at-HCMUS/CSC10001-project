@@ -95,7 +95,6 @@ void modifyUser(
                 cout << "_ Email               : "; getline(cin, email[i-1]);
                 cout << "_ Địa chỉ             : "; getline(cin, address[i-1]);
                 cout << "_ Ngày lập thẻ        : "; getline(cin, createday[i-1]);
-                cout << "_ Ngày hết hạn thẻ    : "; getline(cin, dueday[i-1]);
             }
         }
 }
