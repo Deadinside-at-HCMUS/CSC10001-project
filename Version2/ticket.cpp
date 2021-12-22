@@ -195,6 +195,3 @@ void checkduedayticket(User &user, Ticket &ticket, Today today) {
     if (count == 0)
         cout << "Không có!" << endl;;
 }
-
-void numrentofbooks(Book &book, Ticket &ticket) {
-}

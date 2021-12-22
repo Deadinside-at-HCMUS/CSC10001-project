@@ -232,17 +232,3 @@ void checkduedayticket(
         if (count == 0)
             cout << "Không có!" << endl;
 }
-
-void numrentofbooks(string namebook[MAX], string rentbookid[MAX], int &countrent) {
-    int count = 0;
-    cout << "Số lượt mượn của các quyển sách" << endl;
-    for (int i = 0; i < countrent; i++) {
-        for (int j = i; j < countrent; j++) {
-            if (rentbookid[i] == rentbookid[j]) {
-                count++;
-            }
-        }
-        cout << "_ " << namebook[i] << ": " << count << endl;
-        count = 0;
-    }
-}

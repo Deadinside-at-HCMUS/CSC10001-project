@@ -30,5 +30,3 @@ void returnTicket(User &user, Book &book, Ticket &ticket, Today today);
 void rentedbooks(Ticket &ticket);
 
 void checkduedayticket(User &user, Ticket &ticket, Today today);
-
-void numrentofbooks(Book &book, Ticket &ticket);

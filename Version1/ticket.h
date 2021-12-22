@@ -42,5 +42,3 @@ void checkduedayticket(
         int &countuser,
         string payday[MAX],
         int &countrent);
-
-void numrentofbooks(string namebook[MAX], string rentbookid[MAX], int &countrent);
