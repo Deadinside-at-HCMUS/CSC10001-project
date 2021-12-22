@@ -25,7 +25,7 @@ void showBooks(
             cout << "_ Nhà xuất bản       : " << publishcompany[i] << endl;
             cout << "_ Năm xuất bản       : " << publishyear[i] << endl;
             cout << "_ Thể loại           : " << category[i] << endl;
-            cout << "_ Giá sách           : " << price[i] << endl;
+            cout << "_ Giá sách           : " << price[i] << " VNĐ" << endl;
             cout << "_ Số quyển sách      : " << quantity[i] << endl;
             cout << endl;
         }

@@ -179,7 +179,7 @@ void returnTicket(
                     int todayToDay = dayToNum(todayday, todaymonth, todayyear);
                     int paydayToDay = dayToNum(daypay, monthpay, yearpay);
                     pricerent[flag] = (todayToDay - paydayToDay) * 5000;
-                    cout << "Độc giả cần trả số tiền phạt là: " << pricerent[flag] << endl;
+                    cout << "Độc giả cần trả số tiền phạt là: " << pricerent[flag] << " VNĐ" << endl;
                     payday[flag] = payday[flag+1];
                     pricerent[flag] = pricerent[flag+1];
                 } else {
@@ -190,7 +190,7 @@ void returnTicket(
             } else {
                 cout << endl;
                 cout << "Độc giả làm mất sách!" << endl;
-                cout << "Độc giả cần trả số tiền phạt là: " << pricerent[flag] * 2 << endl;
+                cout << "Độc giả cần trả số tiền phạt là: " << pricerent[flag] * 2 << " VNĐ" << endl;
                 payday[flag] = payday[flag+1];
                 pricerent[flag] = pricerent[flag+1];
             }
