@@ -218,25 +218,3 @@ void sexusers(string sex[MAX], int &countusers) {
     cout << "Số độc giả giới tính nữ   : " << countfemale << endl;
     cout << "Số độc giả giới tính khác : " << countother << endl;
 }
-
-void checkduedayuser(string id[MAX], string nameuser[MAX], string dueday[MAX], int &countusers) {
-    int count = 0;
-    cin.ignore();
-    time_t now = time(0);
-    tm *ltm = localtime(&now);
-    int todayyear = 1900 + ltm->tm_year;
-    int todaymonth = 1 + ltm->tm_mon;
-    int todayday = ltm->tm_mday;
-    cout << "Danh sách các độc giả hết hạn thẻ" << endl;
-    for (int i = 0; i < countusers; i++) {
-        int yearpay = stoi(dueday[i].substr(0,4));
-        int monthpay = stoi(dueday[i].substr(5,2));
-        int daypay = stoi(dueday[i].substr(8,2));
-        if (yearpay < todayyear || monthpay < todaymonth || daypay < todayday) {
-            cout << "_ Họ và tên: " << nameuser[i] << " - ID: " << id[i] << endl;
-            count++;
-        }
-    }
-    if (count == 0)
-        cout << "Trống!" << endl;
-}

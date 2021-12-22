@@ -13,7 +13,7 @@ CÁC CHỨC NĂNG CỦA CHƯƠNG TRÌNH
   c. Chỉnh sửa thông tin một quyển sách
   d. Xóa thông tin sách
   e. Tìm kiếm sách theo ISBN
-  f. Tìm kiếm sách theo tên sách 
+  f. Tìm kiếm sách theo tên sách
 3. Lập phiếu mượn sách
 4. Lập phiếu trả sách
 5. Các thống kê cơ bản
@@ -23,8 +23,6 @@ CÁC CHỨC NĂNG CỦA CHƯƠNG TRÌNH
   d. Thống kê số lượng độc giả theo giới tính
   e. Thống kê số sách đang được mượn
   f. Thống kê danh sách độc giả bị trễ hạn
-  g. Thống kê danh sách độc giả hết hạn thẻ
-  (Chức năng thêm)
 
 -----------------------------
 Note:
