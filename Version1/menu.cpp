@@ -73,3 +73,17 @@ void importStatisticMenu() {
     cout << endl;
     cout << "Mời bạn chọn chức năng tương ứng: ";
 }
+
+void importExit() {
+    cout << endl;
+    cout << "Chúc bạn một ngày tốt lành!" << endl;
+    cout << "          .-. .-.\n"
+            "         (   |   )\n"
+            "       .-.:  |  ;,-.\n"
+            "      (_ __`.|.'_ __)\n"
+            "      (    ./Y\.    )\n"
+            "       `-.-' | `-.-'\n"
+            "             |\n"
+            "             |";
+    cout << endl;
+}

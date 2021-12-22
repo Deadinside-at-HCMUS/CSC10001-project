@@ -138,7 +138,10 @@ int main() {
                 break;
         }
 
-        if (keepChoosing == 0) break;
+        if (keepChoosing == 0) {
+            importExit();
+            break;
+        }
         else {
             importMainMenu();
             cin >> option;

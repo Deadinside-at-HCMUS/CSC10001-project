@@ -239,5 +239,5 @@ void checkduedayuser(string id[MAX], string nameuser[MAX], string dueday[MAX], i
         }
     }
     if (count == 0)
-        cout << "Không có!" << endl;
+        cout << "Trống!" << endl;
 }

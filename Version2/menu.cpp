@@ -18,11 +18,9 @@ void importLogo() {
             "                                                      \\______/\n";
 }
 
-void importMainMenu() {
+void importMainMenu(Today today) {
     cout << endl;
-    time_t now = time(0);
-    char* dt = ctime(&now);
-    cout << "                                            " << dt;
+    cout << "                                            " << today.dt;
     cout << "====================================================================" << endl;
     cout << "||                    Các chức năng của chương trình              ||" << endl;
     cout << "====================================================================" << endl;
@@ -72,4 +70,18 @@ void importStatisticMenu() {
     cout << "====================================================================================================" << endl;
     cout << endl;
     cout << "Mời bạn chọn chức năng tương ứng: ";
+}
+
+void importExit() {
+    cout << endl;
+    cout << "Chúc bạn một ngày tốt lành!" << endl;
+    cout << "          .-. .-.\n"
+            "         (   |   )\n"
+            "       .-.:  |  ;,-.\n"
+            "      (_ __`.|.'_ __)\n"
+            "      (    ./Y\.    )\n"
+            "       `-.-' | `-.-'\n"
+            "             |\n"
+            "             |";
+    cout << endl;
 }

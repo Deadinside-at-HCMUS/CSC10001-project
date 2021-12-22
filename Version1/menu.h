@@ -9,3 +9,5 @@ void importBooksMenu();
 void importUsersMenu();
 
 void importStatisticMenu();
+
+void importExit();

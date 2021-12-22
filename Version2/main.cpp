@@ -7,6 +7,7 @@
 #include "user.h"
 #include "book.h"
 #include "ticket.h"
+#include "day.h"
 #define MAX 100
 
 using namespace std;
@@ -14,15 +15,16 @@ using namespace std;
 int main() {
     int option;
     char keepChoosing;
-    importLogo();
-    importMainMenu();
-    cin >> option;
 
     char choice;
     User user;
     Book book;
     Ticket ticket;
     Today today;
+
+    importLogo();
+    importMainMenu(today);
+    cin >> option;
 
     while (1) {
         switch (option)
@@ -139,9 +141,12 @@ int main() {
                 break;
         }
 
-        if (keepChoosing == 0) break;
+        if (keepChoosing == 0){
+            importExit();
+            break;
+        }
         else {
-            importMainMenu();
+            importMainMenu(today);
             cin >> option;
         }
     }

@@ -174,5 +174,5 @@ void checkduedayuser(User &user, Today today) {
         }
     }
     if (count == 0)
-        cout << "Không có!" << endl;
+        cout << "Trống!" << endl;
 }

@@ -25,8 +25,6 @@ CÁC CHỨC NĂNG CỦA CHƯƠNG TRÌNH
   f. Thống kê danh sách độc giả bị trễ hạn
   g. Thống kê danh sách độc giả hết hạn thẻ
   (Chức năng thêm)
-  h. Thống kê số lượt mượn của các quyển sách
-  (Chức năng thêm)
 
 -----------------------------
 Note:
