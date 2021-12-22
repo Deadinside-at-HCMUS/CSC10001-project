@@ -6,14 +6,14 @@ CÁC CHỨC NĂNG CỦA CHƯƠNG TRÌNH
   c. Chỉnh sửa thông tin một độc giả
   d. Xóa thông tin một độc giả
   e. Tìm kiếm độc giả theo CMND
-  f. Tìm kiếm sách theo họ tên
+  f. Tìm kiếm độc giả theo họ tên
 2. Quản lí sách
   a. Xem danh sách các sách trong thư viện
   b. Thêm sách
   c. Chỉnh sửa thông tin một quyển sách
   d. Xóa thông tin sách
   e. Tìm kiếm sách theo ISBN
-  f. Tìm kiếm sách theo tên sách
+  f. Tìm kiếm sách theo tên sách 
 3. Lập phiếu mượn sách
 4. Lập phiếu trả sách
 5. Các thống kê cơ bản
@@ -28,11 +28,10 @@ CÁC CHỨC NĂNG CỦA CHƯƠNG TRÌNH
 
 -----------------------------
 Note:
-_ Vì máy của em sử dụng hệ điều hành Linux nên 
-khi run project, IDE không thể pop up ra một cửa
-sổ chương trình mà chỉ có thể chạy trên terminal
-_ Bên cạnh đó, #include <Windows.h>, các hàm 
-định dạng màn hình console và một số câu lệnh
-như system("cls") để xóa màn hình không thể chạy
-được trên Linux OS
+_ Vì máy của em sử dụng hệ điều hành Linux nên khi runproject, IDE không thể pop up ra một cửa sổ chương 
+trình mà chỉ có thể chạy trên terminal
+_ Bên cạnh đó, #include <Windows.h>, các hàm  định 
+dạng màn hình console và một số câu lệnh như 
+system("cls") để xóa màn hình không thể chạy được 
+trên Linux OS
 _ Mong thầy thông cảm, em xin cảm ơn
