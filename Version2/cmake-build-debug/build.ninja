@@ -107,6 +107,13 @@ build CMakeFiles/Project.dir/ticket.cpp.o: CXX_COMPILER__Project_Debug /home/jas
   OBJECT_DIR = CMakeFiles/Project.dir
   OBJECT_FILE_DIR = CMakeFiles/Project.dir
 
+build CMakeFiles/Project.dir/logo.cpp.o: CXX_COMPILER__Project_Debug /home/jasminele/Workspace/University/Final$ Project/NMLT-Library/Version2/logo.cpp || cmake_object_order_depends_target_Project
+  DEP_FILE = CMakeFiles/Project.dir/logo.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  INCLUDES = -I"/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/."
+  OBJECT_DIR = CMakeFiles/Project.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Project
@@ -115,7 +122,7 @@ build CMakeFiles/Project.dir/ticket.cpp.o: CXX_COMPILER__Project_Debug /home/jas
 #############################################
 # Link the executable Project
 
-build Project: CXX_EXECUTABLE_LINKER__Project_Debug CMakeFiles/Project.dir/main.cpp.o CMakeFiles/Project.dir/menu.cpp.o CMakeFiles/Project.dir/book.cpp.o CMakeFiles/Project.dir/user.cpp.o CMakeFiles/Project.dir/ticket.cpp.o
+build Project: CXX_EXECUTABLE_LINKER__Project_Debug CMakeFiles/Project.dir/main.cpp.o CMakeFiles/Project.dir/menu.cpp.o CMakeFiles/Project.dir/book.cpp.o CMakeFiles/Project.dir/user.cpp.o CMakeFiles/Project.dir/ticket.cpp.o CMakeFiles/Project.dir/logo.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Project.dir
   POST_BUILD = :
