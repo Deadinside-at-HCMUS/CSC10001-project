@@ -35,4 +35,12 @@ void returnTicket(
 
 void rentedbooks(int &countrent);
 
-void checkduedayticket(string id[MAX], string nameuser[MAX], string rentuserid[MAX], int &countuser, string payday[MAX], int &countrent);
+void checkduedayticket(
+        string id[MAX],
+        string nameuser[MAX],
+        string rentuserid[MAX],
+        int &countuser,
+        string payday[MAX],
+        int &countrent);
+
+void numrentofbooks(string namebook[MAX], string rentbookid[MAX], int &countrent);
