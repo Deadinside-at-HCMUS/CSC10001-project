@@ -167,7 +167,7 @@ void findBooksByName(
         cout << "Mời nhập tên quyển sách cần tìm: "; getline(cin, namebookcheck);
         cout << endl;
         for (int i = 0; i < countbooks; i++) {
-            if (namebookcheck == isbn[i]) {
+            if (namebookcheck == namebook[i]) {
                 cout << "Thông tin của quyển sách thứ " << i + 1 << endl;
                 cout << "_ Mã sách (ISBN)     : " << isbn[i] << endl;
                 cout << "_ Tên sách           : " << namebook[i] << endl;

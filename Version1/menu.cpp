@@ -27,7 +27,7 @@ void importUsersMenu() {
     cout << "==================================================================================" << endl;
     cout << "|| (a) Xem danh sách độc giả trong thư viện ||                 (b) Thêm độc giả ||" << endl;
     cout << "|| (c) Chỉnh sửa thông tin một độc giả      ||    (d) Xóa thông tin một độc giả ||" << endl;
-    cout << "|| (e) Tìm kiếm độc giả theo CMND           ||    (f) Tìm kiếm sách theo họ tên ||" << endl;
+    cout << "|| (e) Tìm kiếm độc giả theo CMND           || (f) Tìm kiếm độc giả theo họ tên ||" << endl;
     cout << "==================================================================================" << endl;
     cout << endl;
     cout << "Mời bạn chọn chức năng tương ứng: ";
