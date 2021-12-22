@@ -128,6 +128,9 @@ int main() {
                     case 'g':
                         checkduedayuser(user, today);
                         break;
+                    case 'h':
+                        numrentofbooks(book, ticket);
+                        break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";
                         break;

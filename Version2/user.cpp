@@ -36,7 +36,9 @@ void addUser(User &user) {
         cout << "_ Giới tính                : "; getline(cin, user.sex[i]);
         cout << "_ Email                    : "; getline(cin, user.email[i]);
         cout << "_ Địa chỉ                  : "; getline(cin, user.address[i]);
-        cout << "_ Ngày lập thẻ (yyyy/mm/dd): "; getline(cin, user.createday[i]);
+        do {
+            cout << "_ Ngày lập thẻ (yyyy/mm/dd): "; getline(cin, user.createday[i]);
+        } while (user.createday[user.countusers].length() != 10);
         string yearcreate = user.createday[i].substr(0,4);
         string monthdaycreate = user.createday[i].substr(4,6);
         int numdueyear = stoi(yearcreate) + 4;
