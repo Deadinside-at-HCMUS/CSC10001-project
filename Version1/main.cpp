@@ -3,6 +3,7 @@
 // 21CLC07
 
 #include <iostream>
+#include "logo.h"
 #include "menu.h"
 #include "user.h"
 #include "book.h"
@@ -14,7 +15,7 @@ using namespace std;
 int main() {
     int option;
     char keepChoosing;
-    importLogo();
+    importLibraryLogo();
     importMainMenu();
     cin >> option;
 
@@ -33,6 +34,7 @@ int main() {
                 keepChoosing = 0;
                 break;
             case 1:
+                importBookLogo();
                 importUsersMenu();
                 cin >> choice;
                 cout << endl;
@@ -63,6 +65,7 @@ int main() {
                 keepChoosing = 1;
                 break;
             case 2:
+                importBooksLogo();
                 importBooksMenu();
                 cin >> choice;
                 cout << endl;
@@ -93,14 +96,17 @@ int main() {
                 keepChoosing = 1;
                 break;
             case 3:
+                importRentTicketLogo();
                 rentTicket(id, countusers, isbn, price, countbooks, rentuserid, rentbookid, rentday, payday, rentid, pricerent, countrent);
                 keepChoosing = 1;
                 break;
             case 4:
+                importReturnTicketLogo();
                 returnTicket(rentuserid, rentbookid, rentday, payday, rentid, pricerent, countrent);
                 keepChoosing = 1;
                 break;
             case 5:
+                importStatisticsLogo();
                 importStatisticMenu();
                 cin >> choice;
                 cout << endl;
@@ -139,7 +145,9 @@ int main() {
         }
 
         if (keepChoosing == 0) {
-            importExit();
+            cout << endl;
+            cout << "Chúc bạn một ngày tốt lành!" << endl;
+            importCloverLogo();
             break;
         }
         else {
