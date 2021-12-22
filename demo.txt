@@ -1,32 +1,32 @@
 CÁC CHỨC NĂNG CỦA CHƯƠNG TRÌNH
 ------------------------------
 1. Quản lí độc giả
-  a. Xem danh sách độc giả trong thư viện
-  b. Thêm độc giả
-  c. Chỉnh sửa thông tin một độc giả
-  d. Xóa thông tin một độc giả
-  e. Tìm kiếm độc giả theo CMND
-  f. Tìm kiếm độc giả theo họ tên
+  a. Xem danh sách độc giả trong thư viện --> DONE
+  b. Thêm độc giả --> DONE
+  c. Chỉnh sửa thông tin một độc giả --> DONE
+  d. Xóa thông tin một độc giả --> DONE
+  e. Tìm kiếm độc giả theo CMND --> DONE
+  f. Tìm kiếm độc giả theo họ tên --> DONE
 2. Quản lí sách
-  a. Xem danh sách các sách trong thư viện
-  b. Thêm sách
-  c. Chỉnh sửa thông tin một quyển sách
-  d. Xóa thông tin sách
-  e. Tìm kiếm sách theo ISBN
-  f. Tìm kiếm sách theo tên sách
-3. Lập phiếu mượn sách
-4. Lập phiếu trả sách
+  a. Xem danh sách các sách trong thư viện --> DONE
+  b. Thêm sách --> DONE
+  c. Chỉnh sửa thông tin một quyển sách --> DONE
+  d. Xóa thông tin sách --> DONE
+  e. Tìm kiếm sách theo ISBN --> DONE
+  f. Tìm kiếm sách theo tên sách --> DONE
+3. Lập phiếu mượn sách --> DONE
+4. Lập phiếu trả sách --> DONE
 5. Các thống kê cơ bản
-  a. Thống kê số lượng sách trong thư viện
-  b. Thống kê số lượng sách theo thể loại
-  c. Thống kê số lượng độc giả
-  d. Thống kê số lượng độc giả theo giới tính
-  e. Thống kê số sách đang được mượn
-  f. Thống kê danh sách độc giả bị trễ hạn
+  a. Thống kê số lượng sách trong thư viện --> DONE
+  b. Thống kê số lượng sách theo thể loại --> DONE
+  c. Thống kê số lượng độc giả --> DONE
+  d. Thống kê số lượng độc giả theo giới tính --> DONE
+  e. Thống kê số sách đang được mượn --> DONE
+  f. Thống kê danh sách độc giả bị trễ hạn --> DONE
 
 -----------------------------
 Note:
-_ Vì máy của em sử dụng hệ điều hành Linux nên khi runproject, IDE không thể pop up ra một cửa sổ chương 
+_ Vì máy của em sử dụng hệ điều hành Linux nên khi run project, IDE không thể pop up ra một cửa sổ chương 
 trình mà chỉ có thể chạy trên terminal
 _ Bên cạnh đó, #include <Windows.h>, các hàm  định 
 dạng màn hình console và một số câu lệnh như 

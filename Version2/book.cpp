@@ -16,7 +16,7 @@ void showBooks(Book &book) {
             cout << "_ Nhà xuất bản       : " << book.publishcompany[i] << endl;
             cout << "_ Năm xuất bản       : " << book.publishyear[i] << endl;
             cout << "_ Thể loại           : " << book.category[i] << endl;
-            cout << "_ Giá sách           : " << book.price[i] << endl;
+            cout << "_ Giá sách           : " << book.price[i] << " VNĐ" << endl;
             cout << "_ Số quyển sách      : " << book.quantity[i] << endl;
             cout << endl;
         }
@@ -111,7 +111,7 @@ void findBooksByName(Book &book) {
         cout << "Mời nhập tên quyển sách cần tìm: "; getline(cin, namebookcheck);
         cout << endl;
         for (int i = 0; i < book.countbooks; i++) {
-            if (namebookcheck == book.isbn[i]) {
+            if (namebookcheck == book.namebook[i]) {
                 cout << "Thông tin của quyển sách thứ " << i + 1 << endl;
                 cout << "_ Mã sách (ISBN)     : " << book.isbn[i] << endl;
                 cout << "_ Tên sách           : " << book.namebook[i] << endl;

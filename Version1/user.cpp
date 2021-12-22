@@ -205,7 +205,6 @@ void sexusers(string sex[MAX], int &countusers) {
     int countfemale = 0;
     int countother = 0;
     cin.ignore();
-    cout << endl;
     for (int i = 0; i < countusers; i++) {
         if (sex[i] == "Nam" || sex[i] == "nam") {
             countmale++;

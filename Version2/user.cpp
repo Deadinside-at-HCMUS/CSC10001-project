@@ -66,7 +66,6 @@ void modifyUser(User &user){
                 cout << "_ Email               : "; getline(cin, user.email[i-1]);
                 cout << "_ Địa chỉ             : "; getline(cin, user.address[i-1]);
                 cout << "_ Ngày lập thẻ        : "; getline(cin, user.createday[i-1]);
-                cout << "_ Ngày hết hạn thẻ    : "; getline(cin, user.dueday[i-1]);
             }
         }
 }
@@ -147,7 +146,6 @@ void sexusers(User &user) {
     int countfemale = 0;
     int countother = 0;
     cin.ignore();
-    cout << endl;
     for (int i = 0; i < user.countusers; i++) {
         if (user.sex[i] == "Nam" || user.sex[i] == "nam") {
             countmale++;
