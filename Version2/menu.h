@@ -2,8 +2,6 @@
 
 #include "day.h"
 
-void importLogo();
-
 void importMainMenu(Today today);
 
 void importBooksMenu();

@@ -166,7 +166,13 @@ void checkduedayuser(User &user, Today today) {
         int yearpay = stoi(user.dueday[i].substr(0,4));
         int monthpay = stoi(user.dueday[i].substr(5,2));
         int daypay = stoi(user.dueday[i].substr(8,2));
-        if (yearpay < today.todayyear || monthpay < today.todaymonth || daypay < today.todayday) {
+        if (yearpay < today.todayyear) {
+            cout << "_ Họ và tên: " << user.nameuser[i] << " - ID: " << user.id[i] << endl;
+            count++;
+        } else if (yearpay == today.todayyear && monthpay < today.todaymonth) {
+            cout << "_ Họ và tên: " << user.nameuser[i] << " - ID: " << user.id[i] << endl;
+            count++;
+        } else if (yearpay == today.todayyear && monthpay == today.todaymonth && daypay < today.todayday) {
             cout << "_ Họ và tên: " << user.nameuser[i] << " - ID: " << user.id[i] << endl;
             count++;
         }

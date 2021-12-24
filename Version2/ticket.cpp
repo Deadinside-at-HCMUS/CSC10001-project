@@ -183,7 +183,21 @@ void checkduedayticket(User &user, Ticket &ticket, Today today) {
         int yearpay = stoi(ticket.payday[i].substr(0,4));
         int monthpay = stoi(ticket.payday[i].substr(5,2));
         int daypay = stoi(ticket.payday[i].substr(8,2));
-        if (yearpay < today.todayyear || monthpay < today.todaymonth || daypay < today.todayday) {
+        if (yearpay < today.todayyear) {
+            for (int j = 0; j < user.countusers; j++) {
+                if (ticket.rentuserid[i] == user.id[j]){
+                    cout << "_ Họ và tên: " << user.nameuser[j] << " - ID: " << user.id[j] << endl;
+                    count++;
+                }
+            }
+        } else if (yearpay == today.todayyear && monthpay < today.todaymonth) {
+            for (int j = 0; j < user.countusers; j++) {
+                if (ticket.rentuserid[i] == user.id[j]){
+                    cout << "_ Họ và tên: " << user.nameuser[j] << " - ID: " << user.id[j] << endl;
+                    count++;
+                }
+            }
+        } else if (yearpay == today.todayyear && monthpay == today.todaymonth && daypay < today.todayday) {
             for (int j = 0; j < user.countusers; j++) {
                 if (ticket.rentuserid[i] == user.id[j]){
                     cout << "_ Họ và tên: " << user.nameuser[j] << " - ID: " << user.id[j] << endl;
