@@ -136,7 +136,7 @@ void rentTicket(
                     cout << "Độc giả mượn sách thành công!" << endl;
                     cout << "Phiếu mượn của độc giả có mã là: " << rentid[countrent-1] << endl;
                 } else
-                    cout << "Sách " << namebook[flag] <<  "đã được mượn hết!" << endl;
+                    cout << "Sách " << namebook[flag] <<  " đã được mượn hết!" << endl;
             }
         }
 }
