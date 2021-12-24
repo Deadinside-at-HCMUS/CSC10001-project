@@ -80,3 +80,5 @@ void findUsersByName(
 void quantityusers(int &countusers);
 
 void sexusers(string sex[MAX], int &countusers);
+
+void checkduedayuser(string id[MAX], string nameuser[MAX], string dueday[MAX], int &countusers);

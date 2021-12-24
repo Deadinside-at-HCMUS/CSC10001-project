@@ -130,6 +130,9 @@ int main() {
                     case 'f':
                         checkduedayticket(id, nameuser, rentuserid, countusers, payday, countrent);
                         break;
+                    case 'g':
+                        checkduedayuser(id, nameuser, dueday, countusers);
+                        break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";
                         break;
