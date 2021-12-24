@@ -97,12 +97,12 @@ int main() {
                 break;
             case 3:
                 importRentTicketLogo();
-                rentTicket(id, countusers, isbn, price, countbooks, rentuserid, rentbookid, rentday, payday, rentid, pricerent, countrent);
+                rentTicket(id, countusers, isbn, namebook, price, quantity, countbooks, rentuserid, rentbookid, rentday, payday, rentid, pricerent, countrent);
                 keepChoosing = 1;
                 break;
             case 4:
                 importReturnTicketLogo();
-                returnTicket(rentuserid, rentbookid, rentday, payday, rentid, pricerent, countrent);
+                returnTicket(isbn, quantity, countbooks, rentuserid, rentbookid, rentday, payday, rentid, pricerent, countrent);
                 keepChoosing = 1;
                 break;
             case 5:

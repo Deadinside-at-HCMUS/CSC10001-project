@@ -14,7 +14,9 @@ void rentTicket(
         string id[MAX],
         int &countusers,
         string isbn[MAX],
+        string namebook[MAX],
         int price[MAX],
+        int quantity[MAX],
         int &countbooks,
         string rentuserid[MAX],
         string rentbookid[MAX],
@@ -25,6 +27,9 @@ void rentTicket(
         int &countrent);
 
 void returnTicket(
+        string isbn[MAX],
+        int quantity[MAX],
+        int &countbooks,
         string rentuserid[MAX],
         string rentbookid[MAX],
         string rentday[MAX],
