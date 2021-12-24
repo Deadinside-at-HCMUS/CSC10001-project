@@ -73,6 +73,7 @@ void rentTicket(
         string rentbookcheck;
         bool checkuserid = false;
         bool checkbookid = false;
+        bool checkrentid = false;
         int flag;
         cout << endl;
         cout << "Lập phiếu mượn sách cho độc giả" << endl;
@@ -84,8 +85,10 @@ void rentTicket(
                 checkuserid = true;
             }
         }
-        if (!checkuserid)
+        if (!checkuserid) {
+            cout << endl;
             cout << "Mã độc giả không tồn tại!" << endl;
+        }
         else {
             cout << "_ Mã sách               : "; getline(cin, rentbookcheck);
             for (int i = 0; i < countbooks; i++) {
@@ -96,47 +99,62 @@ void rentTicket(
                     flag = i;
                 }
             }
-            if (!checkbookid)
+            if (!checkbookid) {
+                cout << endl;
                 cout << "Mã sách không tồn tại!" << endl;
+            }
             else {
                 if (quantity[flag] > 0) {
                     cout << "_ Mã phiếu mượn         : "; getline(cin, rentid[countrent]);
-                    do {
-                        cout << "_ Ngày mượn (yyyy/mm/dd): "; getline(cin, rentday[countrent]);
-                    } while (rentday[countrent].length() != 10);
-                    int yearrent = stoi(rentday[countrent].substr(0,4));
-                    int monthrent = stoi(rentday[countrent].substr(5,2));
-                    int dayrent = stoi(rentday[countrent].substr(8,2));
-                    int yearpay, monthpay, daypay;
-                    if (monthrent != 12 && dayrent + 6 >= dayInMonth(monthrent, yearrent)) {
-                        daypay = 7 - (dayInMonth(monthrent, yearrent) - dayrent);
-                        monthpay = monthrent + 1;
-                        yearpay = yearrent;
-                    } else if (monthrent == 12 && dayrent + 6 >= dayInMonth(monthrent, yearrent)) {
-                        daypay = 7 - (dayInMonth(monthrent, yearrent) - dayrent);
-                        monthpay = 1;
-                        yearpay = yearrent + 1;
-                    } else {
-                        daypay = dayrent + 7;
-                        monthpay = monthrent;
-                        yearpay = yearrent;
+                    for (int i = 0; i < countrent; i++) {
+                        if (rentid[countrent] == rentid[i]) {
+                            checkrentid = true;
+                        }
                     }
-                    if (monthpay < 10 && daypay < 10)
-                        payday[countrent] = to_string(yearpay) + " 0" + to_string(monthpay) + " 0" + to_string(daypay);
-                    else if (monthpay < 10 && daypay > 9)
-                        payday[countrent] = to_string(yearpay) + " 0" + to_string(monthpay) + " " + to_string(daypay);
-                    else if (monthpay > 9 && daypay < 10)
-                        payday[countrent] = to_string(yearpay) + " " + to_string(monthpay) + " 0" + to_string(daypay);
-                    else
-                        payday[countrent] = to_string(yearpay) + " " + to_string(monthpay) + " " + to_string(daypay);
-                    cout << "_ Ngày trả dự kiến      : " << payday[countrent] << endl;
-                    countrent++;
-                    quantity[flag]--;
+                    if (checkrentid) {
+                        cout << endl;
+                        cout << "Mã phiếu mượn bị trùng!" << endl;
+                    }
+                    else {
+                        do {
+                            cout << "_ Ngày mượn (yyyy/mm/dd): "; getline(cin, rentday[countrent]);
+                        } while (rentday[countrent].length() != 10);
+                        int yearrent = stoi(rentday[countrent].substr(0,4));
+                        int monthrent = stoi(rentday[countrent].substr(5,2));
+                        int dayrent = stoi(rentday[countrent].substr(8,2));
+                        int yearpay, monthpay, daypay;
+                        if (monthrent != 12 && dayrent + 6 >= dayInMonth(monthrent, yearrent)) {
+                            daypay = 7 - (dayInMonth(monthrent, yearrent) - dayrent);
+                            monthpay = monthrent + 1;
+                            yearpay = yearrent;
+                        } else if (monthrent == 12 && dayrent + 6 >= dayInMonth(monthrent, yearrent)) {
+                            daypay = 7 - (dayInMonth(monthrent, yearrent) - dayrent);
+                            monthpay = 1;
+                            yearpay = yearrent + 1;
+                        } else {
+                            daypay = dayrent + 7;
+                            monthpay = monthrent;
+                            yearpay = yearrent;
+                        }
+                        if (monthpay < 10 && daypay < 10)
+                            payday[countrent] = to_string(yearpay) + " 0" + to_string(monthpay) + " 0" + to_string(daypay);
+                        else if (monthpay < 10 && daypay > 9)
+                            payday[countrent] = to_string(yearpay) + " 0" + to_string(monthpay) + " " + to_string(daypay);
+                        else if (monthpay > 9 && daypay < 10)
+                            payday[countrent] = to_string(yearpay) + " " + to_string(monthpay) + " 0" + to_string(daypay);
+                        else
+                            payday[countrent] = to_string(yearpay) + " " + to_string(monthpay) + " " + to_string(daypay);
+                        cout << "_ Ngày trả dự kiến      : " << payday[countrent] << endl;
+                        countrent++;
+                        quantity[flag]--;
+                        cout << endl;
+                        cout << "Độc giả mượn sách thành công!" << endl;
+                        cout << "Phiếu mượn của độc giả có mã là: " << rentid[countrent-1] << endl;
+                    }
+                } else {
                     cout << endl;
-                    cout << "Độc giả mượn sách thành công!" << endl;
-                    cout << "Phiếu mượn của độc giả có mã là: " << rentid[countrent-1] << endl;
-                } else
                     cout << "Sách " << namebook[flag] <<  " đã được mượn hết!" << endl;
+                }
             }
         }
 }
@@ -227,7 +245,7 @@ void checkduedayticket(
         int todayyear = 1900 + ltm->tm_year;
         int todaymonth = 1 + ltm->tm_mon;
         int todayday = ltm->tm_mday;
-        cout << "Danh sách các độc giả bị trễ hạn" << endl;
+        cout << "Danh sách các độc giả bị trễ hạn: " << endl;
         for (int i = 0; i < countrent; i++) {
             int yearpay = stoi(payday[i].substr(0,4));
             int monthpay = stoi(payday[i].substr(5,2));
@@ -241,6 +259,8 @@ void checkduedayticket(
                 }
             }
         }
-        if (count == 0)
+        if (count == 0) {
+            cout << endl;
             cout << "Trống!" << endl;
+        }
 }

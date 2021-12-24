@@ -32,7 +32,9 @@ void addUser(User &user) {
         cout << "_ Mã độc giả               : "; getline(cin, user.id[i]);
         cout << "_ Họ tên                   : "; getline(cin, user.nameuser[i]);
         cout << "_ CMND                     : "; getline(cin, user.cmnd[i]);
-        cout << "_ Ngày tháng năm sinh      : "; getline(cin, user.birthday[i]);
+        do {
+            cout << "_ Ngày tháng năm sinh      : "; getline(cin, user.birthday[i]);
+        } while (user.birthday[i].length() != 10);
         cout << "_ Giới tính                : "; getline(cin, user.sex[i]);
         cout << "_ Email                    : "; getline(cin, user.email[i]);
         cout << "_ Địa chỉ                  : "; getline(cin, user.address[i]);
