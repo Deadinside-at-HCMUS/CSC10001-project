@@ -89,15 +89,18 @@ void modifyUser(
             } else {
                 cout << "Chỉnh sửa thông tin độc giả thứ " << i << endl;
                 cin.ignore();
-                cout << "_ Mã độc giả          : "; getline(cin, id[i-1]);
-                cout << "_ Họ tên              : "; getline(cin,nameuser[i-1]);
-                cout << "_ CMND                : "; getline(cin,cmnd[i-1]);
-                cout << "_ Ngày tháng năm sinh : "; getline(cin, birthday[i-1]);
-                cout << "_ Giới tính           : "; getline(cin, sex[i-1]);
-                cout << "_ Email               : "; getline(cin, email[i-1]);
-                cout << "_ Địa chỉ             : "; getline(cin, address[i-1]);
-                cout << "_ Ngày lập thẻ        : "; getline(cin, createday[i-1]);
-            }
+                cout << "_ Mã độc giả               : "; getline(cin, id[i]);
+                cout << "_ Họ tên                   : "; getline(cin,nameuser[i-1]);
+                cout << "_ CMND                     : "; getline(cin,cmnd[i-1]);
+                do {
+                    cout << "_ Ngày tháng năm sinh      : "; getline(cin, birthday[i]);
+                } while (birthday[i].length() != 10);
+                cout << "_ Giới tính                : "; getline(cin, sex[i-1]);
+                cout << "_ Email                    : "; getline(cin, email[i]);
+                cout << "_ Địa chỉ                  : "; getline(cin, address[i-1]);
+                do {
+                    cout << "_ Ngày lập thẻ (yyyy/mm/dd): "; getline(cin, createday[i]);
+                } while (createday[i].length() != 10);            }
         }
 }
 
