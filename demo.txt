@@ -1,35 +1,65 @@
-CÁC CHỨC NĂNG CỦA CHƯƠNG TRÌNH
-------------------------------
-1. Quản lí độc giả
-  a. Xem danh sách độc giả trong thư viện --> DONE
-  b. Thêm độc giả --> DONE
-  c. Chỉnh sửa thông tin một độc giả --> DONE
-  d. Xóa thông tin một độc giả --> DONE
-  e. Tìm kiếm độc giả theo CMND --> DONE
-  f. Tìm kiếm độc giả theo họ tên --> DONE
-2. Quản lí sách
-  a. Xem danh sách các sách trong thư viện --> DONE
-  b. Thêm sách --> DONE
-  c. Chỉnh sửa thông tin một quyển sách --> DONE
-  d. Xóa thông tin sách --> DONE
-  e. Tìm kiếm sách theo ISBN --> DONE
-  f. Tìm kiếm sách theo tên sách --> DONE
-3. Lập phiếu mượn sách --> DONE
-4. Lập phiếu trả sách --> DONE
-5. Các thống kê cơ bản
-  a. Thống kê số lượng sách trong thư viện --> DONE
-  b. Thống kê số lượng sách theo thể loại --> DONE
-  c. Thống kê số lượng độc giả --> DONE
-  d. Thống kê số lượng độc giả theo giới tính --> DONE
-  e. Thống kê số sách đang được mượn --> DONE
-  f. Thống kê danh sách độc giả bị trễ hạn --> DONE
-
------------------------------
-Note:
-_ Vì máy của em sử dụng hệ điều hành Linux nên khi run project, IDE không thể pop up ra một cửa sổ chương 
-trình mà chỉ có thể chạy trên terminal
-_ Bên cạnh đó, #include <Windows.h>, các hàm  định 
-dạng màn hình console và một số câu lệnh như 
-system("cls") để xóa màn hình không thể chạy được 
-trên Linux OS
+NOTE:
+_ Vì máy của em sử dụng hệ điều hành Linux nên khi run project, IDE không thể pop up ra một 
+cửa sổ chương trình mà chỉ có thể chạy trên 
+terminal
+_ Bên cạnh đó, #include <Windows.h>, các hàm  
+định dạng màn hình console và một số câu lệnh 
+như system("cls") để xóa màn hình không thể 
+chạy được trên Linux OS
 _ Mong thầy thông cảm, em xin cảm ơn
+
+------------------------------
+CÁC CHỨC NĂNG CỦA CHƯƠNG TRÌNH
+
+1. Quản lí độc giả
+    a. Xem danh sách độc giả trong thư viện
+    b. Thêm độc giả: thêm các độc giả mới vào 
+    thư viện trống
+    c. Chỉnh sửa thông tin một độc giả: ta có 
+    thông tin về địa chỉ của độc giả 2 bị sai
+    -> tiến hành sửa thông tin đó thành đúng
+    d. Xóa thông tin một độc giả: xóa thông tin độc giả thứ 3 -> thư viện chỉ còn 2 độc
+    giả
+    e. Tìm kiếm độc giả theo CMND: tìm kiếm 
+    theo cmnd đúng và sai
+    f. Tìm kiếm độc giả theo họ tên: tìm kiếm 
+    theo họ tên đúng và sai 
+
+1. Quản lí sách
+    a. Xem danh sách các sách trong thư viện
+    b. Thêm sách: thêm các sách mới vào thư 
+    viện trống
+    c. Chỉnh sửa thông tin một quyển sách: ta
+    có thông tin về nxb và năm xuất bản của
+    quyển thứ 2 bị sai -> sửa lại thành đúng
+    d. Xóa thông tin sách: xóa thông tin quyển sách thứ 2 -> thư viện chỉ còn 2 quyển
+    sách
+    e. Tìm kiếm sách theo ISBN: tìm kiếm theo
+    ISBN đúng và sai
+    f. Tìm kiếm sách theo tên sách: tìm kiếm
+    theo tên sách đúng và sai
+
+1. Lập phiếu mượn sách: cần phải nhập đúng mã
+độc giả, mã sách và mã phiếu mượn duy nhất
+
+1. Lập phiếu trả sách: khi trả sách độc giả sẽ
+bị đóng tiền phạt nếu trả sách không đúng hạn 
+hoặc làm mất sách (nếu có)
+
+1. Các thống kê cơ bản
+    a. Thống kê số lượng sách trong thư viện: 
+    thống kế tất cả sách (trừ những quyển đã 
+    được mượn)
+    b. Thống kê số lượng sách theo thể loại
+    c. Thống kê số lượng độc giả
+    d. Thống kê số lượng độc giả theo giới tính: bao gồm giới tính nam, nữ và khác
+    e. Thống kê số sách đang được mượn
+    f. Thống kê danh sách độc giả bị trễ hạn: 
+    so ngày trả dự kiến với thời gian thực
+    g. Thống kê danh sách đã được mượn hết 
+    (chức năng thêm)
+    h. Thống kê danh sách độc giả hết hạn thẻ 
+    (chức năng thêm)
+-------------------------
+Hoàn thành đồ án thư viện version 1!
+Cảm ơn thầy đã chú ý đón xem <3
