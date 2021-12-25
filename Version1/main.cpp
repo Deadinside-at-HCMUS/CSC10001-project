@@ -131,7 +131,7 @@ int main() {
                         checkduedayticket(id, nameuser, rentuserid, countusers, payday, countrent);
                         break;
                     case 'g':
-                        checkoutofstock(namebook, quantity, countbooks);
+                        checkoutofstock(isbn, namebook, quantity, countbooks);
                         break;
                     case 'h':
                         checkduedayuser(id, nameuser, dueday, countusers);

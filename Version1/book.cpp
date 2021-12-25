@@ -43,18 +43,29 @@ void addBook(
         int quantity[MAX],
         int &countbooks ) {
         int i = countbooks;
+        bool checkisbn = false;
         cout << "Thêm quyển sách thứ " << i + 1 << endl;
         cin.ignore();
         cout << "_ Mã sách (ISBN)     : "; getline(cin, isbn[i]);
-        cout << "_ Tên sách           : "; getline(cin, namebook[i]);
-        cout << "_ Tác giả            : "; getline(cin, nameauthor[i]);
-        cout << "_ Nhà xuất bản       : "; getline(cin, publishcompany[i]);
-        cout << "_ Năm xuất bản       : "; cin >> publishyear[i];
-        cin.ignore();
-        cout << "_ Thể loại           : "; getline(cin, category[i]);
-        cout << "_ Giá sách           : "; cin >> price[i];
-        cout << "_ Số quyển sách      : "; cin >> quantity[i];
-        countbooks++;
+        for (int j = 0; j < i; j++) {
+            if (isbn[j] == isbn[i]) {
+                checkisbn = true;
+            }
+        }
+        if (checkisbn) {
+            cout << endl;
+            cout << "Mã sách (ISBN) đã tồn tại!" << endl;
+        } else {
+            cout << "_ Tên sách           : "; getline(cin, namebook[i]);
+            cout << "_ Tác giả            : "; getline(cin, nameauthor[i]);
+            cout << "_ Nhà xuất bản       : "; getline(cin, publishcompany[i]);
+            cout << "_ Năm xuất bản       : "; cin >> publishyear[i];
+            cin.ignore();
+            cout << "_ Thể loại           : "; getline(cin, category[i]);
+            cout << "_ Giá sách           : "; cin >> price[i];
+            cout << "_ Số quyển sách      : "; cin >> quantity[i];
+            countbooks++;
+        }
 }
 
 
@@ -69,6 +80,7 @@ void modifyBook(
         int quantity[MAX],
         int &countbooks ) {
         int i;
+        bool checkisbn = false;
         if (countbooks == 0) {
             cout << "Thư viện sách trống!" << endl;
         } else {
@@ -80,14 +92,24 @@ void modifyBook(
                 cout << "Chỉnh sửa quyển sách thứ " << i << endl;
                 cin.ignore();
                 cout << "_ Mã sách (ISBN)     : "; getline(cin, isbn[i-1]);
-                cout << "_ Tên sách           : "; getline(cin, namebook[i-1]);
-                cout << "_ Tác giả            : "; getline(cin, nameauthor[i-1]);
-                cout << "_ Nhà xuất bản       : "; getline(cin, publishcompany[i-1]);
-                cout << "_ Năm xuất bản       : "; cin >> publishyear[i-1];
-                cin.ignore();
-                cout << "_ Thể loại           : "; getline(cin, category[i-1]);
-                cout << "_ Giá sách           : "; cin >> price[i-1];
-                cout << "_ Số quyển sách      : "; cin >> quantity[i-1];
+                for (int j = 0; j < i - 1; j++) {
+                    if (isbn[j] == isbn[i-1]) {
+                        checkisbn = true;
+                    }
+                }
+                if (checkisbn) {
+                    cout << endl;
+                    cout << "Mã sách (ISBN) đã tồn tại!" << endl;
+                } else {
+                    cout << "_ Tên sách           : "; getline(cin, namebook[i-1]);
+                    cout << "_ Tác giả            : "; getline(cin, nameauthor[i-1]);
+                    cout << "_ Nhà xuất bản       : "; getline(cin, publishcompany[i-1]);
+                    cout << "_ Năm xuất bản       : "; cin >> publishyear[i-1];
+                    cin.ignore();
+                    cout << "_ Thể loại           : "; getline(cin, category[i-1]);
+                    cout << "_ Giá sách           : "; cin >> price[i-1];
+                    cout << "_ Số quyển sách      : "; cin >> quantity[i-1];
+                }
             }
         }
 }
@@ -222,7 +244,7 @@ void categorybooks(string category[MAX], int quantity[MAX], int &countbooks) {
     }
 }
 
-void checkoutofstock(string namebook[MAX], int quantity[MAX], int &countbooks) {
+void checkoutofstock(string isbn[MAX], string namebook[MAX], int quantity[MAX], int &countbooks) {
     int count = 0;
     if (countbooks == 0) {
         cout << "Thư viện trống!" << endl;

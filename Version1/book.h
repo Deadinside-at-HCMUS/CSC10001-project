@@ -74,4 +74,4 @@ void quantitybooks(int quantity[MAX], int &countbooks);
 
 void categorybooks(string category[MAX], int quantity[MAX], int &countbooks);
 
-void checkoutofstock(string namebook[MAX], int quantity[MAX], int &countbooks);
+void checkoutofstock(string isbn[MAX], string namebook[MAX], int quantity[MAX], int &countbooks);

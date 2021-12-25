@@ -1,6 +1,5 @@
 #include <iostream>
 #include "user.h"
-#include "ticket.h"
 #define MAX 100
 
 using namespace std;
@@ -27,29 +26,41 @@ void showUsers(User &user) {
 
 void addUser(User &user) {
         int i = user.countusers;
+        bool checkid = false;
         cout << "Thêm thông tin độc giả thứ " << i + 1 << endl;
         cin.ignore();
         cout << "_ Mã độc giả                : "; getline(cin, user.id[i]);
-        cout << "_ Họ tên                    : "; getline(cin, user.nameuser[i]);
-        cout << "_ CMND                      : "; getline(cin, user.cmnd[i]);
-        do {
-            cout << "_ Ngày tháng năm sinh       : "; getline(cin, user.birthday[i]);
-        } while (user.birthday[i].length() != 10);
-        cout << "_ Giới tính                 : "; getline(cin, user.sex[i]);
-        cout << "_ Email                     : "; getline(cin, user.email[i]);
-        cout << "_ Địa chỉ                   : "; getline(cin, user.address[i]);
-        do {
-            cout << "_ Ngày lập thẻ (yyyy/mm/dd) : "; getline(cin, user.createday[i]);
-        } while (user.createday[i].length() != 10);
-        string yearcreate = user.createday[i].substr(0,4);
-        string monthdaycreate = user.createday[i].substr(4,6);
-        int numdueyear = stoi(yearcreate) + 4;
-        user.dueday[i] = to_string(numdueyear) + monthdaycreate;
-        user.countusers++;
+        for (int j = 0; j < i; j++) {
+            if (user.id[j] == user.id[i]) {
+                checkid = true;
+            }
+        }
+        if (checkid) {
+            cout << endl;
+            cout << "Mã độc giả đã tồn tại!" << endl;
+        } else {
+            cout << "_ Họ tên                    : "; getline(cin, user.nameuser[i]);
+            cout << "_ CMND                      : "; getline(cin, user.cmnd[i]);
+            do {
+                cout << "_ Ngày tháng năm sinh       : "; getline(cin, user.birthday[i]);
+            } while (user.birthday[i].length() != 10);
+            cout << "_ Giới tính                 : "; getline(cin, user.sex[i]);
+            cout << "_ Email                     : "; getline(cin, user.email[i]);
+            cout << "_ Địa chỉ                   : "; getline(cin, user.address[i]);
+            do {
+                cout << "_ Ngày lập thẻ (yyyy/mm/dd) : "; getline(cin, user.createday[i]);
+            } while (user.createday[i].length() != 10);
+            string yearcreate = user.createday[i].substr(0,4);
+            string monthdaycreate = user.createday[i].substr(4,6);
+            int numdueyear = stoi(yearcreate) + 4;
+            user.dueday[i] = to_string(numdueyear) + monthdaycreate;
+            user.countusers++;
+        }
 }
 
 void modifyUser(User &user){
         int i;
+        bool checkid = false;
         if (user.countusers == 0) {
             cout << "Danh sách độc giả trống!" << endl;
         } else {
@@ -60,18 +71,29 @@ void modifyUser(User &user){
             } else {
                 cout << "Chỉnh sửa thông tin độc giả thứ " << i << endl;
                 cin.ignore();
-                cout << "_ Mã độc giả                : "; getline(cin, user.id[i]);
-                cout << "_ Họ tên                    : "; getline(cin, user.nameuser[i-1]);
-                cout << "_ CMND                      : "; getline(cin, user.cmnd[i-1]);
-                do {
-                    cout << "_ Ngày tháng năm sinh       : "; getline(cin, user.birthday[i]);
-                } while (user.birthday[i].length() != 10);
-                cout << "_ Giới tính                 : "; getline(cin, user.sex[i]);
-                cout << "_ Email                     : "; getline(cin, user.email[i-1]);
-                cout << "_ Địa chỉ                   : "; getline(cin, user.address[i-1]);
-                do {
-                    cout << "_ Ngày lập thẻ (yyyy/mm/dd) : "; getline(cin, user.createday[i]);
-                } while (user.createday[i].length() != 10);            }
+                cout << "_ Mã độc giả                : "; getline(cin, user.id[i-1]);
+                for (int j = 0; j < i - 1; j++) {
+                    if (user.id[j] == user.id[i-1]) {
+                        checkid = true;
+                    }
+                }
+                if (checkid) {
+                    cout << endl;
+                    cout << "Mã độc giả đã tồn tại!" << endl;
+                } else {
+                    cout << "_ Họ tên                    : "; getline(cin, user.nameuser[i-1]);
+                    cout << "_ CMND                      : "; getline(cin, user.cmnd[i-1]);
+                    do {
+                        cout << "_ Ngày tháng năm sinh       : "; getline(cin, user.birthday[i-1]);
+                    } while (user.birthday[i-1].length() != 10);
+                    cout << "_ Giới tính                 : "; getline(cin, user.sex[i-1]);
+                    cout << "_ Email                     : "; getline(cin, user.email[i-1]);
+                    cout << "_ Địa chỉ                   : "; getline(cin, user.address[i-1]);
+                    do {
+                        cout << "_ Ngày lập thẻ (yyyy/mm/dd) : "; getline(cin, user.createday[i-1]);
+                    } while (user.createday[i-1].length() != 10);
+                }
+            }
         }
 }
 

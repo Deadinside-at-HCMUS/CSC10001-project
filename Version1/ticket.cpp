@@ -113,7 +113,7 @@ void rentTicket(
                     }
                     if (checkrentid) {
                         cout << endl;
-                        cout << "Mã phiếu mượn bị trùng!" << endl;
+                        cout << "Mã phiếu mượn đã tồn tại!" << endl;
                     }
                     else {
                         do {

@@ -25,22 +25,34 @@ void showBooks(Book &book) {
 
 void addBook(Book &book) {
         int i = book.countbooks;
+        bool checkisbn = false;
         cout << "Thêm quyển sách thứ " << i + 1 << endl;
         cin.ignore();
         cout << "_ Mã sách (ISBN)     : "; getline(cin, book.isbn[i]);
-        cout << "_ Tên sách           : "; getline(cin, book.namebook[i]);
-        cout << "_ Tác giả            : "; getline(cin, book.nameauthor[i]);
-        cout << "_ Nhà xuất bản       : "; getline(cin, book.publishcompany[i]);
-        cout << "_ Năm xuất bản       : "; cin >> book.publishyear[i];
-        cin.ignore();
-        cout << "_ Thể loại           : "; getline(cin, book.category[i]);
-        cout << "_ Giá sách           : "; cin >> book.price[i];
-        cout << "_ Số quyển sách      : "; cin >> book.quantity[i];
-        book.countbooks++;
+        for (int j = 0; j < i; j++) {
+            if (book.isbn[j] == book.isbn[i]) {
+                checkisbn = true;
+            }
+        }
+        if (checkisbn) {
+            cout << endl;
+            cout << "Mã sách (ISBN) đã tồn tại!" << endl;
+        } else {
+            cout << "_ Tên sách           : "; getline(cin, book.namebook[i]);
+            cout << "_ Tác giả            : "; getline(cin, book.nameauthor[i]);
+            cout << "_ Nhà xuất bản       : "; getline(cin, book.publishcompany[i]);
+            cout << "_ Năm xuất bản       : "; cin >> book.publishyear[i];
+            cin.ignore();
+            cout << "_ Thể loại           : "; getline(cin, book.category[i]);
+            cout << "_ Giá sách           : "; cin >> book.price[i];
+            cout << "_ Số quyển sách      : "; cin >> book.quantity[i];
+            book.countbooks++;
+        }
 }
 
 void modifyBook(Book &book) {
         int i;
+        bool checkisbn = false;
         if (book.countbooks== 0) {
             cout << "Thư viện sách trống!" << endl;
         } else {
@@ -52,14 +64,24 @@ void modifyBook(Book &book) {
                 cout << "Chỉnh sửa quyển sách thứ " << i << endl;
                 cin.ignore();
                 cout << "_ Mã sách (ISBN)     : "; getline(cin, book.isbn[i-1]);
-                cout << "_ Tên sách           : "; getline(cin, book.namebook[i-1]);
-                cout << "_ Tác giả            : "; getline(cin, book.nameauthor[i-1]);
-                cout << "_ Nhà xuất bản       : "; getline(cin, book.publishcompany[i-1]);
-                cout << "_ Năm xuất bản       : "; cin >> book.publishyear[i-1];
-                cin.ignore();
-                cout << "_ Thể loại           : "; getline(cin, book.category[i-1]);
-                cout << "_ Giá sách           : "; cin >> book.price[i-1];
-                cout << "_ Số quyển sách      : "; cin >> book.quantity[i-1];
+                for (int j = 0; j < i - 1; j++) {
+                    if (book.isbn[j] == book.isbn[i-1]) {
+                        checkisbn = true;
+                    }
+                }
+                if (checkisbn) {
+                    cout << endl;
+                    cout << "Mã sách (ISBN) đã tồn tại!" << endl;
+                } else {
+                    cout << "_ Tên sách           : "; getline(cin, book.namebook[i-1]);
+                    cout << "_ Tác giả            : "; getline(cin, book.nameauthor[i-1]);
+                    cout << "_ Nhà xuất bản       : "; getline(cin, book.publishcompany[i-1]);
+                    cout << "_ Năm xuất bản       : "; cin >> book.publishyear[i-1];
+                    cin.ignore();
+                    cout << "_ Thể loại           : "; getline(cin, book.category[i-1]);
+                    cout << "_ Giá sách           : "; cin >> book.price[i-1];
+                    cout << "_ Số quyển sách      : "; cin >> book.quantity[i-1];
+                }
             }
         }
 }
