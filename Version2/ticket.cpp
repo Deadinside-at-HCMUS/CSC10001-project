@@ -63,7 +63,7 @@ void rentTicket(User &user, Book &book, Ticket &ticket) {
         cout << endl;
         cout << "Lập phiếu mượn sách cho độc giả" << endl;
         cin.ignore();
-        cout << "_ Mã độc giả            : "; getline(cin, rentusercheck);
+        cout << "_ Mã độc giả             : "; getline(cin, rentusercheck);
         for (int i = 0; i < user.countusers; i++) {
             if (rentusercheck == user.id[i]) {
                 ticket.rentuserid[ticket.countrent] = rentusercheck;
@@ -75,7 +75,7 @@ void rentTicket(User &user, Book &book, Ticket &ticket) {
             cout << "Mã độc giả không tồn tại!" << endl;
         }
         else {
-            cout << "_ Mã sách               : "; getline(cin, rentbookcheck);
+            cout << "_ Mã sách                : "; getline(cin, rentbookcheck);
             for (int i = 0; i < book.countbooks; i++) {
                 if (rentbookcheck == book.isbn[i]) {
                     ticket.rentbookid[ticket.countrent] = rentbookcheck;
@@ -90,7 +90,7 @@ void rentTicket(User &user, Book &book, Ticket &ticket) {
             }
             else {
                 if (book.quantity[flag] > 0) {
-                    cout << "_ Mã phiếu mượn         : "; getline(cin, ticket.rentid[ticket.countrent]);
+                    cout << "_ Mã phiếu mượn          : "; getline(cin, ticket.rentid[ticket.countrent]);
                     for (int i = 0; i < ticket.countrent; i++) {
                         if (ticket.rentid[ticket.countrent] == ticket.rentid[i]) {
                             checkrentid = true;
@@ -102,7 +102,7 @@ void rentTicket(User &user, Book &book, Ticket &ticket) {
                     }
                     else {
                         do {
-                            cout << "_ Ngày mượn (yyyy/mm/dd): "; getline(cin, ticket.rentday[ticket.countrent]);
+                            cout << "_ Ngày mượn (yyyy/mm/dd) : "; getline(cin, ticket.rentday[ticket.countrent]);
                         } while (ticket.rentday[ticket.countrent].length() != 10);
                         int yearrent = stoi(ticket.rentday[ticket.countrent].substr(0,4));
                         int monthrent = stoi(ticket.rentday[ticket.countrent].substr(5,2));
@@ -129,7 +129,7 @@ void rentTicket(User &user, Book &book, Ticket &ticket) {
                             ticket.payday[ticket.countrent] = to_string(yearpay) + " " + to_string(monthpay) + " 0" + to_string(daypay);
                         else
                             ticket.payday[ticket.countrent] = to_string(yearpay) + " " + to_string(monthpay) + " " + to_string(daypay);
-                        cout << "_ Ngày trả dự kiến      : " << ticket.payday[ticket.countrent] << endl;
+                        cout << "_ Ngày trả dự kiến       : " << ticket.payday[ticket.countrent] << endl;
                         ticket.countrent++;
                         book.quantity[flag]--;
                         cout << endl;

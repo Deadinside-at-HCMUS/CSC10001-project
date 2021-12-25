@@ -78,7 +78,7 @@ void rentTicket(
         cout << endl;
         cout << "Lập phiếu mượn sách cho độc giả" << endl;
         cin.ignore();
-        cout << "_ Mã độc giả            : "; getline(cin, rentusercheck);
+        cout << "_ Mã độc giả             : "; getline(cin, rentusercheck);
         for (int i = 0; i < countusers; i++) {
             if (rentusercheck == id[i]) {
                 rentuserid[countrent] = rentusercheck;
@@ -90,7 +90,7 @@ void rentTicket(
             cout << "Mã độc giả không tồn tại!" << endl;
         }
         else {
-            cout << "_ Mã sách               : "; getline(cin, rentbookcheck);
+            cout << "_ Mã sách                : "; getline(cin, rentbookcheck);
             for (int i = 0; i < countbooks; i++) {
                 if (rentbookcheck == isbn[i]) {
                     rentbookid[countrent] = rentbookcheck;
@@ -105,7 +105,7 @@ void rentTicket(
             }
             else {
                 if (quantity[flag] > 0) {
-                    cout << "_ Mã phiếu mượn         : "; getline(cin, rentid[countrent]);
+                    cout << "_ Mã phiếu mượn          : "; getline(cin, rentid[countrent]);
                     for (int i = 0; i < countrent; i++) {
                         if (rentid[countrent] == rentid[i]) {
                             checkrentid = true;
@@ -117,7 +117,7 @@ void rentTicket(
                     }
                     else {
                         do {
-                            cout << "_ Ngày mượn (yyyy/mm/dd): "; getline(cin, rentday[countrent]);
+                            cout << "_ Ngày mượn (yyyy/mm/dd) : "; getline(cin, rentday[countrent]);
                         } while (rentday[countrent].length() != 10);
                         int yearrent = stoi(rentday[countrent].substr(0,4));
                         int monthrent = stoi(rentday[countrent].substr(5,2));
@@ -144,7 +144,7 @@ void rentTicket(
                             payday[countrent] = to_string(yearpay) + " " + to_string(monthpay) + " 0" + to_string(daypay);
                         else
                             payday[countrent] = to_string(yearpay) + " " + to_string(monthpay) + " " + to_string(daypay);
-                        cout << "_ Ngày trả dự kiến      : " << payday[countrent] << endl;
+                        cout << "_ Ngày trả dự kiến       : " << payday[countrent] << endl;
                         countrent++;
                         quantity[flag]--;
                         cout << endl;

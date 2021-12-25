@@ -31,3 +31,5 @@ void findBooksByName(Book &book);
 void quantitybooks(Book &book);
 
 void categorybooks(Book &book);
+
+void checkoutofstock(Book &book);

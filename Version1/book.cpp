@@ -200,7 +200,7 @@ void categorybooks(string category[MAX], int quantity[MAX], int &countbooks) {
     if (countbooks == 0)
         cout << "Thư viện trống!" << endl;
     else {
-        cout << "Số lượng sách thể loại: " << endl;
+        cout << "Số lượng sách thuộc thể loại: " << endl;
         for (int i = 0; i < countbooks; i++) {
             int count = 0;
             for (int j = i + 1; j < countbooks; j++) {
@@ -219,5 +219,24 @@ void categorybooks(string category[MAX], int quantity[MAX], int &countbooks) {
 
         for (int i = 0; i < countcategory; i++)
             cout << "_ " << listcategory[i] << ": " << quantitycategory[i] << endl;
+    }
+}
+
+void checkoutofstock(string namebook[MAX], int quantity[MAX], int &countbooks) {
+    int count = 0;
+    if (countbooks == 0) {
+        cout << "Thư viện trống!" << endl;
+    } else {
+        cout << "Danh sách sách đã được mượn hết: " << endl;
+        for (int i = 0; i < countbooks; i++) {
+            if (quantity[i] == 0) {
+                cout << "_ Tên sách: " << namebook[i] << " - ISBN: " << isbn[i] << endl;
+                count++;
+            }
+        }
+    }
+    if (count == 0) {
+        cout << endl;
+        cout << "Trống!" << endl;
     }
 }

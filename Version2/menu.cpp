@@ -46,14 +46,14 @@ void importBooksMenu() {
 
 void importStatisticMenu() {
     cout << endl;
-    cout << "==================================================================================================" << endl;
-    cout << "||                          Các chức năng trong '(5) Các thống kê cơ bản'                       ||" << endl;
-    cout << "==================================================================================================" << endl;
-    cout << "|| (a) Thống kê số lượng sách trong thư viện    ||     (b) Thống kê số lượng sách theo thể loại ||" << endl;
-    cout << "|| (c) Thống kế số lượng độc giả                || (d) Thống kê số lượng độc giả theo giới tính ||" << endl;
-    cout << "|| (e) Thống kê số sách đang được mượn          ||    (f) Thống kê danh sách độc giả bị trễ hạn ||" << endl;
-    cout << "|| (g) Thống kê danh sách độc giả hết hạn thẻ   ||                                              ||" << endl;
-    cout << "==================================================================================================" << endl;
+    cout << "====================================================================================================" << endl;
+    cout << "||                          Các chức năng trong '(5) Các thống kê cơ bản'                         ||" << endl;
+    cout << "====================================================================================================" << endl;
+    cout << "|| (a) Thống kê số lượng sách trong thư viện      ||     (b) Thống kê số lượng sách theo thể loại ||" << endl;
+    cout << "|| (c) Thống kế số lượng độc giả                  || (d) Thống kê số lượng độc giả theo giới tính ||" << endl;
+    cout << "|| (e) Thống kê số sách đang được mượn            ||    (f) Thống kê danh sách độc giả bị trễ hạn ||" << endl;
+    cout << "|| (g) Thống kê danh sách sách đã được mượn hết   ||   (h) Thống kê danh sách độc giả hết hạn thẻ ||" << endl;
+    cout << "====================================================================================================" << endl;
     cout << endl;
     cout << "Mời bạn chọn chức năng tương ứng: ";
 }

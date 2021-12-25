@@ -134,6 +134,9 @@ int main() {
                         checkduedayticket(user, ticket, today);
                         break;
                     case 'g':
+                        checkoutofstock(book);
+                        break;
+                    case 'h':
                         checkduedayuser(user, today);
                         break;
                     default:
