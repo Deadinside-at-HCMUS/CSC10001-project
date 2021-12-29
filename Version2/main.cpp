@@ -47,16 +47,16 @@ int main() {
                         addUser(user);
                         break;
                     case 'c':
-                        modifyUser(user);
+//                        modifyUser(user);
                         break;
                     case 'd':
-                        deleteUser(user);
+//                        deleteUser(user);
                         break;
                     case 'e':
-                        findUserByCMND(user);
+//                        findUserByCMND(user);
                         break;
                     case 'f':
-                        findUsersByName(user);
+//                        findUsersByName(user);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";
@@ -72,25 +72,25 @@ int main() {
 
                 switch(choice) {
                     case 'a':
-                        showBooks(book);
+//                        showBooks(book);
                         break;
                     case 'b':
-                        addBook(book);
+//                        addBook(book);
                         break;
                     case 'c':
-                        modifyBook(book);
+//                        modifyBook(book);
                         break;
                     case 'd':
-                        deleteBook(book);
+//                        deleteBook(book);
                         break;
                     case 'e':
-                        findBooksByISBN(book);
+//                        findBooksByISBN(book);
                         break;
                     case 'f':
-                        findBooksByName(book);
+//                        findBooksByName(book);
                         break;
                     case 'g':
-                        checkduedayuser(user, today);
+//                        checkduedayuser(user, today);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";
@@ -100,12 +100,12 @@ int main() {
                 break;
             case 3:
                 importRentTicketLogo();
-                rentTicket(user, book, ticket);
+//                rentTicket(user, book, ticket);
                 keepChoosing = 1;
                 break;
             case 4:
                 importReturnTicketLogo();
-                returnTicket(user, book, ticket, today);
+//                returnTicket(user, book, ticket, today);
                 keepChoosing = 1;
                 break;
             case 5:
@@ -116,28 +116,28 @@ int main() {
 
                 switch(choice) {
                     case 'a':
-                        quantitybooks(book);
+//                        quantitybooks(book);
                         break;
                     case 'b':
-                        categorybooks(book);
+//                        categorybooks(book);
                         break;
                     case 'c':
-                        quantityusers(user);
+//                        quantityusers(user);
                         break;
                     case 'd':
-                        sexusers(user);
+//                        sexusers(user);
                         break;
                     case 'e':
-                        rentedbooks(ticket);
+//                        rentedbooks(ticket);
                         break;
                     case 'f':
-                        checkduedayticket(user, ticket, today);
+//                        checkduedayticket(user, ticket, today);
                         break;
                     case 'g':
-                        checkoutofstock(book);
+//                        checkoutofstock(book);
                         break;
                     case 'h':
-                        checkduedayuser(user, today);
+//                        checkduedayuser(user, today);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";

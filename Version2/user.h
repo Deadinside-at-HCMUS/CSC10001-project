@@ -6,19 +6,19 @@
 using namespace std;
 
 struct User {
-    string id[MAX];
-    string nameuser[MAX];
-    string cmnd[MAX];
-    string birthday[MAX];
-    string sex[MAX];
-    string email[MAX];
-    string address[MAX];
-    string createday[MAX];
-    string dueday[MAX];
+    char id[MAX];
+    char nameuser[MAX];
+    char cmnd[MAX];
+    char birthday[MAX];
+    char sex[MAX];
+    char email[MAX];
+    char address[MAX];
+    char createday[MAX];
+    char dueday[MAX];
     int countusers;
 };
 
-void showUsers(User &user);
+void showUsers(User user);
 
 void addUser(User &user);
 
