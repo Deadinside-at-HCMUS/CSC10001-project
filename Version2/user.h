@@ -15,12 +15,11 @@ struct User {
     char address[MAX];
     char createday[MAX];
     char dueday[MAX];
-    int countusers;
 };
 
-void showUsers(User user);
+void showUsers(User user, int &countuser);
 
-void addUser(User &user);
+void addUser(User &user, int &countuser);
 
 void modifyUser(User &user);
 
