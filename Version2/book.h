@@ -17,11 +17,11 @@ struct Book {
 
 void showBooks(Book &book, int &countbooks);
 
-void addBook(Book &book, int countbooks);
+void addBook(Book &book, int &countbooks);
 
 void modifyBook(Book &book);
 
-void deleteBook(Book &book);
+void deleteBook(Book &book, int &countbooks);
 
 void findBooksByISBN(Book &book);
 

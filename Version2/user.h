@@ -23,7 +23,7 @@ void addUser(User &user, int &countusers);
 
 void modifyUser(User &user, int &countusers);
 
-void deleteUser(User &user);
+void deleteUser(User &user, int &countusers);
 
 void findUserByCMND(User &user);
 

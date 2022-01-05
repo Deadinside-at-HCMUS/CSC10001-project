@@ -36,7 +36,7 @@ void showBooks(Book &book, int &countbooks) {
     fclose(fIn);
 }
 
-void addBook(Book &book, int countbooks) {
+void addBook(Book &book, int &countbooks) {
     char newline[100];
     FILE *fIn;
     fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
@@ -139,6 +139,35 @@ void addBook(Book &book, int countbooks) {
 //            }
 //        }
 //}
+
+void deleteBook(Book &book, int &countbooks) {
+    char ch;
+    int position, temp = 1;
+    FILE *fIn, *fOut;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
+    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "w");
+    ch = getc(fIn);
+    while (ch != EOF) {
+        ch = getc(fIn);
+    }
+    rewind(fIn);
+    printf("Mời nhập stt sách cần xóa: ");
+    scanf("%d", &position);
+    ch = 'A';
+    while (ch != EOF) {
+        ch = getc(fIn);
+        if (temp != position) {
+            putc(ch, fOut);
+        }
+        if (ch == '\n') {
+            temp++;
+        }
+    }
+    countbooks--;
+    fclose(fIn);
+    fclose(fOut);
+}
+
 
 //void deleteBook(Book &book) {
 //        int i;

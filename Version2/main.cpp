@@ -51,7 +51,7 @@ int main() {
                         modifyUser(user, countusers);
                         break;
                     case 'd':
-//                        deleteUser(user);
+                        deleteUser(user, countusers);
                         break;
                     case 'e':
 //                        findUserByCMND(user);
@@ -82,7 +82,7 @@ int main() {
 //                        modifyBook(book);
                         break;
                     case 'd':
-//                        deleteBook(book);
+                        deleteBook(book, countbooks);
                         break;
                     case 'e':
 //                        findBooksByISBN(book);
@@ -123,7 +123,7 @@ int main() {
 //                        categorybooks(book);
                         break;
                     case 'c':
-                        quantityusers(countusers);
+//                        quantityusers(countusers);
                         break;
                     case 'd':
 //                        sexusers(user);

@@ -130,7 +130,9 @@
 			[
 				12,
 				13,
-				14
+				14,
+				15,
+				16
 			]
 		}
 	],
@@ -215,6 +217,16 @@
 		{
 			"backtrace" : 1,
 			"path" : "ticket.txt",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "user-edited.txt",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "book-edited.txt",
 			"sourceGroupIndex" : 2
 		}
 	],

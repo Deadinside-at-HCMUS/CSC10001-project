@@ -119,66 +119,71 @@ void addUser(User &user, int &countusers) {
 void modifyUser(User &user, int &countusers) {
     char newline[100];
     int position;
-    printf("Mời nhập stt độc giả cần chỉnh sửa: "); scanf("%d", &position);
+    int count = 0;
+    int ch;
+    int edited = 0;
+    char t[100];
+    printf("Mời nhập stt độc giả cần chỉnh sửa: ");
+    scanf("%d", &position);
     printf("%d\n", position);
     FILE *fIn, *fOut;
     fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
     fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "a+");
-    if(fIn != NULL && fOut != NULL) {
-        for (int i = 0; i < countusers; i++) {
-            if (i == position) {
-                fgets(newline, 100, stdin);
-                printf("_ Mã độc giả          : "); fgets(user.id, MAX, stdin);
-                strtok(user.id, "\n");
-                printf("_ Họ tên              : "); fgets(user.nameuser, MAX, stdin);
-                strtok(user.nameuser, "\n");
-                printf("_ CMND                : "); fgets(user.cmnd, MAX, stdin);
-                strtok(user.cmnd, "\n");
-                printf("_ Ngày tháng năm sinh : "); fgets(user.birthday, MAX, stdin);
-                strtok(user.birthday, "\n");
-                printf("_ Giới tính           : "); fgets(user.sex, MAX, stdin);
-                strtok(user.sex, "\n");
-                printf("_ Email               : "); fgets(user.email, MAX, stdin);
-                strtok(user.email, "\n");
-                printf("_ Địa chỉ             : "); fgets(user.address, MAX, stdin);
-                strtok(user.address, "\n");
-                printf("_ Ngày lập thẻ        : "); fgets(user.createday, MAX, stdin);
-                strtok(user.createday, "\n");
-                printf("_ Ngày hết hạn thẻ    : "); fgets(user.dueday, MAX, stdin);
-                strtok(user.dueday, "\n");
-                fprintf(fOut, "\n%s", user.id);
-                fprintf(fOut, " - %s", user.nameuser);
-                fprintf(fOut, " - %s", user.cmnd);
-                fprintf(fOut, " - %s", user.birthday);
-                fprintf(fOut, " - %s", user.sex);
-                fprintf(fOut, " - %s", user.email);
-                fprintf(fOut, " - %s", user.address);
-                fprintf(fOut, " - %s", user.createday);
-                fprintf(fOut, " - %s", user.dueday);
-            }
-            fscanf(fIn, "%[^-] - ", user.id);
-            fscanf(fIn, "%[^-] - ", user.nameuser);
-            fscanf(fIn, "%[^-] - ", user.cmnd);
-            fscanf(fIn, "%[^-] - ", user.birthday);
-            fscanf(fIn, "%[^-] - ", user.sex);
-            fscanf(fIn, "%[^-] - ", user.email);
-            fscanf(fIn, "%[^-] - ", user.address);
-            fscanf(fIn, "%[^-] - ", user.createday);
-            fscanf(fIn, "%[^\n]\n", user.dueday);
-            fprintf(fOut, "\n%s", user.id);
-            fprintf(fOut, " - %s", user.nameuser);
-            fprintf(fOut, " - %s", user.cmnd);
-            fprintf(fOut, " - %s", user.birthday);
-            fprintf(fOut, " - %s", user.sex);
-            fprintf(fOut, " - %s", user.email);
-            fprintf(fOut, " - %s", user.address);
-            fprintf(fOut, " - %s", user.createday);
-            fprintf(fOut, " - %s", user.dueday);
-        }
+//    if(fIn != NULL && fOut != NULL) {
+//        for (int i = 0; i < countusers; i++) {
+//            if (i == position) {
+//                fgets(newline, 100, stdin);
+//                printf("_ Mã độc giả          : "); fgets(user.id, MAX, stdin);
+//                strtok(user.id, "\n");
+//                printf("_ Họ tên              : "); fgets(user.nameuser, MAX, stdin);
+//                strtok(user.nameuser, "\n");
+//                printf("_ CMND                : "); fgets(user.cmnd, MAX, stdin);
+//                strtok(user.cmnd, "\n");
+//                printf("_ Ngày tháng năm sinh : "); fgets(user.birthday, MAX, stdin);
+//                strtok(user.birthday, "\n");
+//                printf("_ Giới tính           : "); fgets(user.sex, MAX, stdin);
+//                strtok(user.sex, "\n");
+//                printf("_ Email               : "); fgets(user.email, MAX, stdin);
+//                strtok(user.email, "\n");
+//                printf("_ Địa chỉ             : "); fgets(user.address, MAX, stdin);
+//                strtok(user.address, "\n");
+//                printf("_ Ngày lập thẻ        : "); fgets(user.createday, MAX, stdin);
+//                strtok(user.createday, "\n");
+//                printf("_ Ngày hết hạn thẻ    : "); fgets(user.dueday, MAX, stdin);
+//                strtok(user.dueday, "\n");
+//                fprintf(fOut, "\n%s", user.id);
+//                fprintf(fOut, " - %s", user.nameuser);
+//                fprintf(fOut, " - %s", user.cmnd);
+//                fprintf(fOut, " - %s", user.birthday);
+//                fprintf(fOut, " - %s", user.sex);
+//                fprintf(fOut, " - %s", user.email);
+//                fprintf(fOut, " - %s", user.address);
+//                fprintf(fOut, " - %s", user.createday);
+//                fprintf(fOut, " - %s", user.dueday);
+//            }
+//            fscanf(fIn, "%[^-] - ", user.id);
+//            fscanf(fIn, "%[^-] - ", user.nameuser);
+//            fscanf(fIn, "%[^-] - ", user.cmnd);
+//            fscanf(fIn, "%[^-] - ", user.birthday);
+//            fscanf(fIn, "%[^-] - ", user.sex);
+//            fscanf(fIn, "%[^-] - ", user.email);
+//            fscanf(fIn, "%[^-] - ", user.address);
+//            fscanf(fIn, "%[^-] - ", user.createday);
+//            fscanf(fIn, "%[^\n]\n", user.dueday);
+//            fprintf(fOut, "\n%s", user.id);
+//            fprintf(fOut, " - %s", user.nameuser);
+//            fprintf(fOut, " - %s", user.cmnd);
+//            fprintf(fOut, " - %s", user.birthday);
+//            fprintf(fOut, " - %s", user.sex);
+//            fprintf(fOut, " - %s", user.email);
+//            fprintf(fOut, " - %s", user.address);
+//            fprintf(fOut, " - %s", user.createday);
+//            fprintf(fOut, " - %s", user.dueday);
+//        }
+//    }
+        fclose(fIn);
+        fclose(fOut);
     }
-    fclose(fIn);
-    fclose(fOut);
-}
 
 //void modifyUser(User &user){
 //        int i;
@@ -218,6 +223,34 @@ void modifyUser(User &user, int &countusers) {
 //            }
 //        }
 //}
+
+void deleteUser(User &user, int &countusers) {
+    char ch;
+    int position, temp = 1;
+    FILE *fIn, *fOut;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "w");
+    ch = getc(fIn);
+    while (ch != EOF) {
+        ch = getc(fIn);
+    }
+    rewind(fIn);
+    printf("Mời nhập stt độc giả cần xóa: ");
+    scanf("%d", &position);
+    ch = 'A';
+    while (ch != EOF) {
+        ch = getc(fIn);
+        if (temp != position) {
+            putc(ch, fOut);
+        }
+        if (ch == '\n') {
+            temp++;
+        }
+    }
+    countusers--;
+    fclose(fIn);
+    fclose(fOut);
+}
 
 //void deleteUser(User &user) {
 //        int i;
@@ -286,9 +319,9 @@ void modifyUser(User &user, int &countusers) {
 //            cout << "Độc giả có tên " << nameusercheck << " không tồn tại!" << endl;
 //}
 
-void quantityusers(int countusers) {
-    printf("Số lượng độc giả hiện có là: %d\n", countusers);
-}
+//void quantityusers(int countusers) {
+//    printf("Số lượng độc giả hiện có là: %d\n", countusers);
+//}
 
 //void sexusers(User &user) {
 //    int countmale = 0;
@@ -328,4 +361,4 @@ void quantityusers(int countusers) {
 //    }
 //    if (count == 0)
 //        cout << "Trống!" << endl;
-//}
+//

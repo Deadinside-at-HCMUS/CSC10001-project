@@ -10,4 +10,5 @@ add_executable(Project
         book.cpp book.h user.h user.cpp
         ticket.cpp ticket.h day.h
         logo.cpp logo.h
-        user.txt book.txt ticket.txt)
+        user.txt book.txt ticket.txt
+        user-edited.txt book-edited.txt)
