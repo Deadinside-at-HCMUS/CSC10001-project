@@ -17,11 +17,11 @@ struct User {
     char dueday[MAX];
 };
 
-void showUsers(User user, int &countuser);
+void showUsers(User user, int &countusers);
 
-void addUser(User &user, int &countuser);
+void addUser(User &user, int &countusers);
 
-void modifyUser(User &user);
+void modifyUser(User &user, int &countusers);
 
 void deleteUser(User &user);
 
@@ -29,7 +29,7 @@ void findUserByCMND(User &user);
 
 void findUsersByName(User &user);
 
-void quantityusers(User &user);
+void quantityusers(int countusers);
 
 void sexusers(User &user);
 

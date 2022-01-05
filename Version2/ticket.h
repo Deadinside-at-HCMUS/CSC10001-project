@@ -14,13 +14,13 @@ int dayInMonth(int month, int year);
 int dayToNum(int d, int m, int y);
 
 struct Ticket {
-    string rentuserid[MAX];
-    string rentbookid[MAX];
-    string rentday[MAX];
-    string payday[MAX];
-    string rentid[MAX];
-    int pricerent[MAX];
-    int countrent;
+    char rentuserid[MAX];
+    char rentbookid[MAX];
+    char rentday[MAX];
+    char payday[MAX];
+    char rentid[MAX];
+    char pricerent[MAX];
+    char countrent;
 };
 
 void rentTicket(User &user, Book &book, Ticket &ticket);

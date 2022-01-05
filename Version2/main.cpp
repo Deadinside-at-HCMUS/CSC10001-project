@@ -22,7 +22,7 @@ int main() {
     Book book;
     Ticket ticket;
     Today today;
-    int countuser;
+    int countusers, countbooks;
 
     importLibraryLogo();
     importMainMenu(today);
@@ -42,13 +42,13 @@ int main() {
 
                 switch(choice) {
                     case 'a':
-                        showUsers(user, countuser);
+                        showUsers(user, countusers);
                         break;
                     case 'b':
-                        addUser(user, countuser);
+                        addUser(user, countusers);
                         break;
                     case 'c':
-//                        modifyUser(user);
+                        modifyUser(user, countusers);
                         break;
                     case 'd':
 //                        deleteUser(user);
@@ -73,10 +73,10 @@ int main() {
 
                 switch(choice) {
                     case 'a':
-//                        showBooks(book);
+                        showBooks(book, countbooks);
                         break;
                     case 'b':
-//                        addBook(book);
+                        addBook(book, countbooks);
                         break;
                     case 'c':
 //                        modifyBook(book);
@@ -117,13 +117,13 @@ int main() {
 
                 switch(choice) {
                     case 'a':
-//                        quantitybooks(book);
+                        quantitybooks(book, countbooks);
                         break;
                     case 'b':
 //                        categorybooks(book);
                         break;
                     case 'c':
-//                        quantityusers(user);
+                        quantityusers(countusers);
                         break;
                     case 'd':
 //                        sexusers(user);

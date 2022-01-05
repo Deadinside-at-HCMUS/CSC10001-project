@@ -5,20 +5,19 @@
 using namespace std;
 
 struct Book {
-    string isbn[MAX];
-    string namebook[MAX];
-    string nameauthor[MAX];
-    string publishcompany[MAX];
-    int publishyear[MAX];
-    string category[MAX];
-    int price[MAX];
-    int quantity[MAX];
-    int countbooks;
+    char isbn[MAX];
+    char namebook[MAX];
+    char nameauthor[MAX];
+    char publishcompany[MAX];
+    char publishyear[MAX];
+    char category[MAX];
+    char price[MAX];
+    char quantity[MAX];
 };
 
-void showBooks(Book &book);
+void showBooks(Book &book, int &countbooks);
 
-void addBook(Book &book);
+void addBook(Book &book, int countbooks);
 
 void modifyBook(Book &book);
 
@@ -28,7 +27,7 @@ void findBooksByISBN(Book &book);
 
 void findBooksByName(Book &book);
 
-void quantitybooks(Book &book);
+void quantitybooks(Book &book, int countbooks);
 
 void categorybooks(Book &book);
 
