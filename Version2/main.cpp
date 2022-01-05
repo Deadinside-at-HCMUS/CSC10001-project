@@ -22,7 +22,7 @@ int main() {
     Book book;
     Ticket ticket;
     Today today;
-    int countusers, countbooks;
+    int countusers, countbooks, countquantity;
 
     importLibraryLogo();
     importMainMenu(today);
@@ -73,7 +73,7 @@ int main() {
 
                 switch(choice) {
                     case 'a':
-                        showBooks(book, countbooks);
+                        showBooks(book, countbooks, countquantity);
                         break;
                     case 'b':
                         addBook(book, countbooks);
@@ -117,7 +117,7 @@ int main() {
 
                 switch(choice) {
                     case 'a':
-                        quantitybooks(book, countbooks);
+                        quantitybooks(countquantity);
                         break;
                     case 'b':
 //                        categorybooks(book);

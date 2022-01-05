@@ -15,7 +15,7 @@ struct Book {
     char quantity[MAX];
 };
 
-void showBooks(Book &book, int &countbooks);
+void showBooks(Book &book, int &countbooks, int &countquantity);
 
 void addBook(Book &book, int &countbooks);
 
@@ -27,7 +27,7 @@ void findBooksByISBN(Book &book);
 
 void findBooksByName(Book &book);
 
-void quantitybooks(Book &book, int countbooks);
+void quantitybooks(int countquantity);
 
 void categorybooks(Book &book);
 

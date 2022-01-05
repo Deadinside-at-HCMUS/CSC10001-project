@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h>
+#include <cstring>
 #include "user.h"
 #define MAX 100
 
@@ -122,13 +122,14 @@ void modifyUser(User &user, int &countusers) {
     int count = 0;
     int ch;
     int edited = 0;
+    int temp = 1;
     char t[100];
     printf("Mời nhập stt độc giả cần chỉnh sửa: ");
     scanf("%d", &position);
     printf("%d\n", position);
     FILE *fIn, *fOut;
     fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
-    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "a+");
+    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "w");
 //    if(fIn != NULL && fOut != NULL) {
 //        for (int i = 0; i < countusers; i++) {
 //            if (i == position) {
@@ -181,9 +182,29 @@ void modifyUser(User &user, int &countusers) {
 //            fprintf(fOut, " - %s", user.dueday);
 //        }
 //    }
-        fclose(fIn);
-        fclose(fOut);
+    while((ch=fgetc(fIn))!=EOF) {
+        if(ch=='\n')
+            count++;
+        if(count==position-1 && edited==0) {
+            printf("\nEnter input to store at line %d: ",position);
+            scanf("%s",&t);
+            if(count==0)
+                fprintf(fOut,"%s\n",t);
+            else
+                fprintf(fOut,"\n%s\n",t);
+
+            edited=1;
+
+            while( (ch=fgetc(fOut))!=EOF ) {
+                if(ch=='\n')
+                    break;
+            }
+        } else
+            fprintf(fOut,"%c",ch);
     }
+    fclose(fIn);
+    fclose(fOut);
+}
 
 //void modifyUser(User &user){
 //        int i;

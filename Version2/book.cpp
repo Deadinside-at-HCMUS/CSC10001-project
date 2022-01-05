@@ -1,12 +1,14 @@
 #include <stdio.h>
-#include <string.h>
+#include <cstring>
+#include <string>
 #include "book.h"
 #define MAX 100
 
 using namespace std;
 
-void showBooks(Book &book, int &countbooks) {
+void showBooks(Book &book, int &countbooks, int &countquantity) {
     countbooks = 0;
+    countquantity = 0;
     FILE *fIn;
     fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
     if (fIn != NULL) {
@@ -29,6 +31,7 @@ void showBooks(Book &book, int &countbooks) {
             printf("_ Giá sách            : %sVNĐ\n", book.price);
             printf("_ Số quyển sách       : %s\n", book.quantity);
             printf("\n");
+            countquantity += stoi(book.quantity);
             countbooks++;
         }
     }
@@ -233,12 +236,8 @@ void deleteBook(Book &book, int &countbooks) {
 //            cout << "Quyển sách có tên " << namebookcheck << " không tồn tại!" << endl;
 //}
 
-void quantitybooks(Book &book, int countbooks) {
-    int count = 0;
-    for (int i = 0; i < countbooks; i++) {
-        count += int(book.quantity[i]) - 48;
-    }
-    printf("Số lượng sách có trong thư viện là: %d\n" ,count);
+void quantitybooks(int countquantity) {
+    printf("Số lượng sách có trong thư viện là: %d\n" ,countquantity);
 }
 
 //void categorybooks(Book &book) {
