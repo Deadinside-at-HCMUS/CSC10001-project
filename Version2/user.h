@@ -21,7 +21,7 @@ void showUsers(User user, int &countusers);
 
 void addUser(User &user, int &countusers);
 
-void modifyUser(User &user, int &countusers);
+void modifyUser(User &user);
 
 void deleteUser(User &user, int &countusers);
 

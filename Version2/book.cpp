@@ -107,6 +107,80 @@ void addBook(Book &book, int &countbooks) {
 //        }
 //}
 
+void modifyBook(Book &book) {
+    char newline[100];
+    int position;
+    int count = 0;
+    int ch;
+    int edited = 0;
+    printf("Mời nhập stt sách cần chỉnh sửa: ");
+    scanf("%d", &position);
+    printf("%d\n", position);
+    FILE *fIn, *fOut;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
+    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "w");
+    while((ch = fgetc(fIn)) != EOF) {
+        if(ch == '\n')
+            count++;
+        if(count == position-1 && edited == 0) {
+            fgets(newline, 100, stdin);
+            printf("_ Mã sách (ISBN)      : "); fgets(book.isbn, MAX, stdin);
+            strtok(book.isbn, "\n");
+            printf("_ Tên sách            : "); fgets(book.namebook, MAX, stdin);
+            strtok(book.namebook, "\n");
+            printf("_ Tác giả             : "); fgets(book.nameauthor, MAX, stdin);
+            strtok(book.nameauthor, "\n");
+            printf("_ Nhà xuất bản        : "); fgets(book.publishcompany, MAX, stdin);
+            strtok(book.publishcompany, "\n");
+            printf("_ Năm xuất bản        : "); fgets(book.publishyear, MAX, stdin);
+            strtok(book.publishyear, "\n");
+            printf("_ Thể loại            : "); fgets(book.category, MAX, stdin);
+            strtok(book.category, "\n");
+            printf("_ Giá sách            : "); fgets(book.price, MAX, stdin);
+            strtok(book.price, "\n");
+            printf("_ Số quyển sách       : "); fgets(book.quantity, MAX, stdin);
+            strtok(book.quantity, "\n");
+
+            if(count == 0) {
+                fprintf(fOut, "%s", book.isbn);
+                fprintf(fOut, " - %s", book.namebook);
+                fprintf(fOut, " - %s", book.nameauthor);
+                fprintf(fOut, " - %s", book.publishcompany);
+                fprintf(fOut, " - %s", book.publishyear);
+                fprintf(fOut, " - %s", book.category);
+                fprintf(fOut, " - %s", book.price);
+                fprintf(fOut, " - %s", book.quantity);
+                fprintf(fOut,"\n");
+            }
+            else {
+                fprintf(fOut, "\n%s", book.isbn);
+                fprintf(fOut, " - %s", book.namebook);
+                fprintf(fOut, " - %s", book.nameauthor);
+                fprintf(fOut, " - %s", book.publishcompany);
+                fprintf(fOut, " - %s", book.publishyear);
+                fprintf(fOut, " - %s", book.category);
+                fprintf(fOut, " - %s", book.price);
+                fprintf(fOut, " - %s", book.quantity);
+                fprintf(fOut,"\n");
+            }
+            edited=1;
+
+            while( (ch = fgetc(fIn)) != EOF ) {
+                if(ch == '\n')
+                    break;
+            }
+        } else {
+            fprintf(fOut,"%c",ch);
+        }
+    }
+    fclose(fIn);
+    fclose(fOut);
+    if(edited==1)
+        printf("\nCongrates...Error Edited Successfully.");
+    else
+        printf("\nLine Not Found");
+}
+
 //void modifyBook(Book &book) {
 //        int i;
 //        bool checkisbn = false;
@@ -144,31 +218,40 @@ void addBook(Book &book, int &countbooks) {
 //}
 
 void deleteBook(Book &book, int &countbooks) {
-    char ch;
-    int position, temp = 1;
+    int position;
+    int count = 0;
+    int ch;
+    int edited = 0;
+    printf("Mời nhập stt sách cần xóa: ");
+    scanf("%d", &position);
     FILE *fIn, *fOut;
     fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
     fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "w");
-    ch = getc(fIn);
-    while (ch != EOF) {
-        ch = getc(fIn);
-    }
-    rewind(fIn);
-    printf("Mời nhập stt sách cần xóa: ");
-    scanf("%d", &position);
-    ch = 'A';
-    while (ch != EOF) {
-        ch = getc(fIn);
-        if (temp != position) {
-            putc(ch, fOut);
-        }
-        if (ch == '\n') {
-            temp++;
-        }
+    while((ch = fgetc(fIn)) != EOF) {
+        if(ch == '\n')
+            count++;
+        if(count == position-1 && edited == 0) {
+            if(count == 0)
+                fprintf(fOut,"");
+            else
+                fprintf(fOut,"\n");
+
+            edited=1;
+
+            while((ch = fgetc(fIn)) != EOF) {
+                if(ch == '\n')
+                    break;
+            }
+        } else
+            fprintf(fOut,"%c",ch);
     }
     countbooks--;
     fclose(fIn);
     fclose(fOut);
+    if(edited==1)
+        printf("\nCongrates...Error Edited Successfully.");
+    else
+        printf("\nLine Not Found");
 }
 
 

@@ -116,7 +116,7 @@ void addUser(User &user, int &countusers) {
 //        }
 //}
 
-void modifyUser(User &user, int &countusers) {
+void modifyUser(User &user) {
     char newline[100];
     int position;
     int count = 0;
@@ -128,10 +128,10 @@ void modifyUser(User &user, int &countusers) {
     FILE *fIn, *fOut;
     fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
     fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "w");
-    while((ch=fgetc(fIn))!=EOF) {
-        if(ch=='\n')
+    while((ch = fgetc(fIn)) != EOF) {
+        if(ch == '\n')
             count++;
-        if(count==position-1 && edited==0) {
+        if(count == position-1 && edited == 0) {
             fgets(newline, 100, stdin);
             printf("_ Mã độc giả          : "); fgets(user.id, MAX, stdin);
             strtok(user.id, "\n");
@@ -152,7 +152,7 @@ void modifyUser(User &user, int &countusers) {
             printf("_ Ngày hết hạn thẻ    : "); fgets(user.dueday, MAX, stdin);
             strtok(user.dueday, "\n");
 
-            if(count==0) {
+            if(count == 0) {
                 fprintf(fOut, "%s", user.id);
                 fprintf(fOut, " - %s", user.nameuser);
                 fprintf(fOut, " - %s", user.cmnd);
@@ -243,19 +243,19 @@ void deleteUser(User &user, int &countusers) {
     FILE *fIn, *fOut;
     fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
     fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "w");
-    while((ch=fgetc(fIn))!=EOF) {
-        if(ch=='\n')
+    while((ch = fgetc(fIn)) != EOF) {
+        if(ch == '\n')
             count++;
-        if(count==position-1 && edited==0) {
-            if(count==0)
+        if(count == position-1 && edited == 0) {
+            if(count == 0)
                 fprintf(fOut,"");
             else
                 fprintf(fOut,"\n");
 
             edited=1;
 
-            while( (ch=fgetc(fIn))!=EOF ) {
-                if(ch=='\n')
+            while((ch = fgetc(fIn)) != EOF ) {
+                if(ch == '\n')
                     break;
             }
         } else
@@ -264,7 +264,7 @@ void deleteUser(User &user, int &countusers) {
     countusers--;
     fclose(fIn);
     fclose(fOut);
-    if(edited==1)
+    if(edited == 1)
         printf("\nCongrates...Error Edited Successfully.");
     else
         printf("\nLine Not Found");

@@ -48,7 +48,7 @@ int main() {
                         addUser(user, countusers);
                         break;
                     case 'c':
-                        modifyUser(user, countusers);
+                        modifyUser(user);
                         break;
                     case 'd':
                         deleteUser(user, countusers);
@@ -79,7 +79,7 @@ int main() {
                         addBook(book, countbooks);
                         break;
                     case 'c':
-//                        modifyBook(book);
+                        modifyBook(book);
                         break;
                     case 'd':
                         deleteBook(book, countbooks);
