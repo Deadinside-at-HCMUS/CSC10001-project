@@ -280,6 +280,53 @@ void deleteUser(User &user, int &countusers) {
 //        cout << "Độc giả thứ " << i << " đã được xóa!" << endl;
 //}
 
+void findUserByCMND(User &user) {
+    char cmndcheck[100];
+    char temp[100];
+    char line[100];
+    char newline[100];
+    int position;
+    int ch;
+    int count = 0;
+    fgets(newline, 100, stdin);
+    printf("Mời nhập CMND độc giả cần tìm: "); fgets(cmndcheck, MAX, stdin);
+    strtok(cmndcheck, "\n");
+    FILE *fIn;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    if (fIn != NULL) {
+        while (!feof(fIn)) {
+            ch = fgetc(fIn);
+            if(ch == '\n')
+            {
+                count++;
+            }
+            fscanf(fIn, "%s", temp);
+            if (strcmp(temp, cmndcheck) == 0) {
+                position = count;
+                count = 0;
+                break;
+            }
+        }
+    }
+    fclose(fIn);
+    FILE *fInNew;
+    fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    if (fInNew != NULL) {
+        while (!feof(fInNew)) {
+            ch = fgetc(fInNew);
+            if(ch == '\n')
+            {
+                count++;
+            }
+            fscanf(fInNew, "%[^\n]", line);
+            if (count == position) {
+                printf("%s\n", line);
+            }
+        }
+    }
+    fclose(fInNew);
+}
+
 //void findUserByCMND(User &user) {
 //        string cmndcheck;
 //        bool isavailable = false;
@@ -304,6 +351,49 @@ void deleteUser(User &user, int &countusers) {
 //        if (!isavailable)
 //            cout << "Độc giả có CMND " << cmndcheck << " không tồn tại!" << endl;
 //}
+
+void findUsersByName(User &user) {
+    char namecheck[100];
+    char temp[100];
+    char line[100];
+    char newline[100];
+    int position;
+    int ch;
+    int count = 0;
+    fgets(newline, 100, stdin);
+    printf("Mời nhập tên độc giả cần tìm: "); fgets(namecheck, MAX, stdin);
+    strtok(namecheck, "\n");
+    FILE *fIn;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    if (fIn != NULL) {
+        while (!feof(fIn)) {
+            count++;
+            fscanf(fIn, "%[^-] - ", temp);
+            if (strcmp(temp, namecheck) == 0) {
+                position = count/9;
+                count = 0;
+                break;
+            }
+        }
+    }
+    fclose(fIn);
+    FILE *fInNew;
+    fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    if (fInNew != NULL) {
+        while (!feof(fInNew)) {
+            ch = fgetc(fInNew);
+            if(ch == '\n')
+            {
+                count++;
+            }
+            fscanf(fInNew, "%[^\n]", line);
+            if (count == position) {
+                printf("%s\n", line);
+            }
+        }
+    }
+    fclose(fInNew);
+}
 
 //void findUsersByName(User &user) {
 //        string nameusercheck;

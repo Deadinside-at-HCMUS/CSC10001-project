@@ -54,10 +54,10 @@ int main() {
                         deleteUser(user, countusers);
                         break;
                     case 'e':
-//                        findUserByCMND(user);
+                        findUserByCMND(user);
                         break;
                     case 'f':
-//                        findUsersByName(user);
+                        findUsersByName(user);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";

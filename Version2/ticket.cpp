@@ -54,27 +54,31 @@ int dayToNum(int d, int m, int y) {
     return 365 * y + y / 4 - y / 100 + y / 400 + (153 * m - 457)/5 + d - 306;
 }
 
-<<<<<<< HEAD
 void rentTicket(Ticket &ticket, int &countrent) {
     char newline[100];
     fgets(newline, 100, stdin);
     printf("Lập phiếu mượn sách cho độc giả\n");
-    printf("_ Mã độc giả             : "); fgets(ticket.rentuserid, MAX, stdin);
+    printf("_ Mã độc giả             : ");
+    fgets(ticket.rentuserid, MAX, stdin);
     strtok(ticket.rentuserid, "\n");
-    printf("_ Mã sách                : "); fgets(ticket.rentbookid, MAX, stdin);
+    printf("_ Mã sách                : ");
+    fgets(ticket.rentbookid, MAX, stdin);
     strtok(ticket.rentbookid, "\n");
-    printf("_ Mã phiếu mượn          : "); fgets(ticket.rentid, MAX, stdin);
+    printf("_ Mã phiếu mượn          : ");
+    fgets(ticket.rentid, MAX, stdin);
     strtok(ticket.rentid, "\n");
-    printf("_ Ngày mượn (yyyy/mm/dd) : "); fgets(ticket.rentday, MAX, stdin);
+    printf("_ Ngày mượn (yyyy/mm/dd) : ");
+    fgets(ticket.rentday, MAX, stdin);
     strtok(ticket.rentday, "\n");
-    printf("_ Ngày trả dự kiến       : " ); fgets(ticket.payday, MAX, stdin);
+    printf("_ Ngày trả dự kiến       : ");
+    fgets(ticket.payday, MAX, stdin);
     strtok(ticket.payday, "\n");
     printf("\nĐộc giả mượn sách thành công!\n");
     printf("Phiếu mượn của độc giả có mã là: %s\n", ticket.rentid);
     countrent++;
     FILE *fOut;
     fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket.txt", "a+");
-    if(fOut != NULL) {
+    if (fOut != NULL) {
         fprintf(fOut, "\n%s", ticket.rentuserid);
         fprintf(fOut, " - %s", ticket.rentbookid);
         fprintf(fOut, " - %s", ticket.rentid);
@@ -82,10 +86,6 @@ void rentTicket(Ticket &ticket, int &countrent) {
         fprintf(fOut, " - %s", ticket.payday);
     }
     fclose(fOut);
-=======
-void rentTicket() {
-    printf("Lập phiếu mượn sách cho độc giả")
->>>>>>> bce1dd5f79ce8254900304d44a2e95dc8737b0f2
 }
 
 //void rentTicket(User &user, Book &book, Ticket &ticket) {
