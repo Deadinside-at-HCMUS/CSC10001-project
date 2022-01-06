@@ -57,6 +57,11 @@ int dayToNum(int d, int m, int y) {
 
 void rentTicket(Ticket &ticket, int &countrent) {
     char newline[100];
+    char yearrent[5], monthrent[3], dayrent[3];
+    int valueyearrent, valuemonthrent, valuedayrent;
+    int yearpay, monthpay, daypay;
+    char stringyearpay[5], stringmonthpay[3], stringdaypay[3];
+    char *ptr;
     fgets(newline, 100, stdin);
     printf("Lập phiếu mượn sách cho độc giả\n");
     printf("_ Mã độc giả             : ");
@@ -71,9 +76,42 @@ void rentTicket(Ticket &ticket, int &countrent) {
     printf("_ Ngày mượn (yyyy/mm/dd) : ");
     fgets(ticket.rentday, MAX, stdin);
     strtok(ticket.rentday, "\n");
-    printf("_ Ngày trả dự kiến       : ");
-    fgets(ticket.payday, MAX, stdin);
-    strtok(ticket.payday, "\n");
+
+    memcpy(yearrent, &ticket.rentday[0], 4);
+    yearrent[4] = '\0';
+    valueyearrent = strtol(yearrent, &ptr, 10);
+    memcpy(monthrent, &ticket.rentday[5], 2);
+    monthrent[2] = '\0';
+    valuemonthrent = strtol(monthrent, &ptr, 10);
+    memcpy(dayrent, &ticket.rentday[8], 2);
+    dayrent[2] = '\0';
+    valuedayrent = strtol(dayrent, &ptr, 10);
+
+    if (valuemonthrent != 12 && valuedayrent + 6 >= dayInMonth(valuemonthrent, valueyearrent)) {
+        daypay = 7 - (dayInMonth(valuemonthrent, valueyearrent) - valuedayrent);
+        monthpay = valuemonthrent + 1;
+        yearpay = valueyearrent;
+    } else if (valuemonthrent == 12 && valuedayrent + 6 >= dayInMonth(valuemonthrent, valueyearrent)) {
+        daypay = 7 - (dayInMonth(valuemonthrent, valueyearrent) - valuedayrent);
+        monthpay = 1;
+        yearpay = valueyearrent + 1;
+    } else {
+        daypay = valuedayrent + 7;
+        monthpay = valuemonthrent;
+        yearpay = valueyearrent;
+    }
+    sprintf(stringyearpay, "%i", yearpay);
+    sprintf(stringmonthpay, "%i", monthpay);
+    sprintf(stringdaypay, "%i", daypay);
+    if (monthpay < 10 && daypay < 10)
+        snprintf(ticket.payday, sizeof(ticket.payday), "%s 0%s 0%s", stringyearpay, stringmonthpay, stringdaypay);
+    else if (monthpay < 10 && daypay > 9)
+        snprintf(ticket.payday, sizeof(ticket.payday), "%s 0%s %s", stringyearpay, stringmonthpay, stringdaypay);
+    else if (monthpay > 9 && daypay < 10)
+        snprintf(ticket.payday, sizeof(ticket.payday), "%s %s 0%s", stringyearpay, stringmonthpay, stringdaypay);
+    else
+        snprintf(ticket.payday, sizeof(ticket.payday), "%s %s %s", stringyearpay, stringmonthpay, stringdaypay);
+
     printf("\nĐộc giả mượn sách thành công!\n");
     printf("Phiếu mượn của độc giả có mã là: %s\n", ticket.rentid);
     countrent++;

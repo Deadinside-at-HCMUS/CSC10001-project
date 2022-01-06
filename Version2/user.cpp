@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cstring>
+#include <cstdlib>
 #include <cmath>
 #include "user.h"
 #define MAX 100
@@ -41,6 +42,10 @@ void showUsers(User user, int &countusers) {
 
 void addUser(User &user, int &countusers) {
     char newline[100];
+    char yearcreate[5], monthdaycreate[7];
+    int valueyearcreate, yeardue;
+    char stringyeardue[5];
+    char *ptr;
     fgets(newline, 100, stdin);
     printf("Thêm thông tin độc giả thứ %d\n", countusers + 1);
     printf("_ Mã độc giả          : "); fgets(user.id, MAX, stdin);
@@ -59,8 +64,16 @@ void addUser(User &user, int &countusers) {
     strtok(user.address, "\n");
     printf("_ Ngày lập thẻ        : "); fgets(user.createday, MAX, stdin);
     strtok(user.createday, "\n");
-    printf("_ Ngày hết hạn thẻ    : "); fgets(user.dueday, MAX, stdin);
-    strtok(user.dueday, "\n");
+
+    memcpy(yearcreate, &user.createday[0], 4);
+    yearcreate[4] = '\0';
+    valueyearcreate = strtol(yearcreate, &ptr, 10);
+    memcpy(monthdaycreate, &user.createday[4], 6);
+    monthdaycreate[6] = '\0';
+    yeardue = valueyearcreate + 4;
+    sprintf(stringyeardue, "%i", yeardue);
+    snprintf(user.dueday, sizeof(user.dueday), "%s%s", stringyeardue, monthdaycreate);
+
     countusers++;
     FILE *fOut;
     fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "a+");
@@ -118,6 +131,10 @@ void modifyUser(User &user) {
     int count = 0;
     int ch;
     int edited = 0;
+    char yearcreate[5], monthdaycreate[7];
+    int valueyearcreate, yeardue;
+    char stringyeardue[5];
+    char *ptr;
     printf("Mời nhập stt độc giả cần chỉnh sửa: ");
     scanf("%d", &position);
     printf("%d\n", position);
@@ -145,8 +162,15 @@ void modifyUser(User &user) {
             strtok(user.address, "\n");
             printf("_ Ngày lập thẻ        : "); fgets(user.createday, MAX, stdin);
             strtok(user.createday, "\n");
-            printf("_ Ngày hết hạn thẻ    : "); fgets(user.dueday, MAX, stdin);
-            strtok(user.dueday, "\n");
+
+            memcpy(yearcreate, &user.createday[0], 4);
+            yearcreate[4] = '\0';
+            valueyearcreate = strtol(yearcreate, &ptr, 10);
+            memcpy(monthdaycreate, &user.createday[4], 6);
+            monthdaycreate[6] = '\0';
+            yeardue = valueyearcreate + 4;
+            sprintf(stringyeardue, "%i", yeardue);
+            snprintf(user.dueday, sizeof(user.dueday), "%s%s", stringyeardue, monthdaycreate);
 
             if(count == 0) {
                 fprintf(fOut, "%s", user.id);
