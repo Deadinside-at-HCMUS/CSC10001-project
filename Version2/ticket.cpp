@@ -54,6 +54,7 @@ int dayToNum(int d, int m, int y) {
     return 365 * y + y / 4 - y / 100 + y / 400 + (153 * m - 457)/5 + d - 306;
 }
 
+<<<<<<< HEAD
 void rentTicket(Ticket &ticket, int &countrent) {
     char newline[100];
     fgets(newline, 100, stdin);
@@ -81,6 +82,10 @@ void rentTicket(Ticket &ticket, int &countrent) {
         fprintf(fOut, " - %s", ticket.payday);
     }
     fclose(fOut);
+=======
+void rentTicket() {
+    printf("Lập phiếu mượn sách cho độc giả")
+>>>>>>> bce1dd5f79ce8254900304d44a2e95dc8737b0f2
 }
 
 //void rentTicket(User &user, Book &book, Ticket &ticket) {
