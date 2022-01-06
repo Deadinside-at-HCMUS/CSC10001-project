@@ -231,9 +231,7 @@ void deleteBook(Book &book, int &countbooks) {
         if(ch == '\n')
             count++;
         if(count == position-1 && edited == 0) {
-            if(count == 0)
-                fprintf(fOut,"");
-            else
+            if(count != 0)
                 fprintf(fOut,"\n");
 
             edited=1;

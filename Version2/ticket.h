@@ -16,17 +16,15 @@ int dayToNum(int d, int m, int y);
 struct Ticket {
     char rentuserid[MAX];
     char rentbookid[MAX];
+    char rentid[MAX];
     char rentday[MAX];
     char payday[MAX];
-    char rentid[MAX];
-    char pricerent[MAX];
-    char countrent;
 };
 
-void rentTicket(User &user, Book &book, Ticket &ticket);
+void rentTicket(Ticket &ticket, int &countrent);
 
-void returnTicket(User &user, Book &book, Ticket &ticket, Today today);
+void returnTicket(Ticket &ticket, int &countrent);
 
-void rentedbooks(Ticket &ticket);
+void rentedbooks(int &countrent);
 
 void checkduedayticket(User &user, Ticket &ticket, Today today);

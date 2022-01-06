@@ -1,4 +1,5 @@
-#include <iostream>
+#include <cstdio>
+#include <cstring>
 #include "ticket.h"
 #define MAX 100
 
@@ -51,6 +52,35 @@ int dayToNum(int d, int m, int y) {
         m += 12;
     }
     return 365 * y + y / 4 - y / 100 + y / 400 + (153 * m - 457)/5 + d - 306;
+}
+
+void rentTicket(Ticket &ticket, int &countrent) {
+    char newline[100];
+    fgets(newline, 100, stdin);
+    printf("Lập phiếu mượn sách cho độc giả\n");
+    printf("_ Mã độc giả             : "); fgets(ticket.rentuserid, MAX, stdin);
+    strtok(ticket.rentuserid, "\n");
+    printf("_ Mã sách                : "); fgets(ticket.rentbookid, MAX, stdin);
+    strtok(ticket.rentbookid, "\n");
+    printf("_ Mã phiếu mượn          : "); fgets(ticket.rentid, MAX, stdin);
+    strtok(ticket.rentid, "\n");
+    printf("_ Ngày mượn (yyyy/mm/dd) : "); fgets(ticket.rentday, MAX, stdin);
+    strtok(ticket.rentday, "\n");
+    printf("_ Ngày trả dự kiến       : " ); fgets(ticket.payday, MAX, stdin);
+    strtok(ticket.payday, "\n");
+    printf("\nĐộc giả mượn sách thành công!\n");
+    printf("Phiếu mượn của độc giả có mã là: %s\n", ticket.rentid);
+    countrent++;
+    FILE *fOut;
+    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket.txt", "a+");
+    if(fOut != NULL) {
+        fprintf(fOut, "\n%s", ticket.rentuserid);
+        fprintf(fOut, " - %s", ticket.rentbookid);
+        fprintf(fOut, " - %s", ticket.rentid);
+        fprintf(fOut, " - %s", ticket.rentday);
+        fprintf(fOut, " - %s", ticket.payday);
+    }
+    fclose(fOut);
 }
 
 //void rentTicket(User &user, Book &book, Ticket &ticket) {
@@ -144,6 +174,42 @@ int dayToNum(int d, int m, int y) {
 //        }
 //}
 
+void returnTicket(Ticket &ticket, int &countrent) {
+    int position;
+    int count = 0;
+    int ch;
+    int edited = 0;
+    printf("Lập phiếu trả sách cho độc giả\n");
+    printf("Mời nhập mã phiếu mượn: ");
+    scanf("%d", &position);
+    FILE *fIn, *fOut;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket.txt", "r");
+    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket-edited.txt", "w");
+    while((ch = fgetc(fIn)) != EOF) {
+        if(ch == '\n')
+            count++;
+        if(count == position-1 && edited == 0) {
+            if(count != 0)
+                fprintf(fOut,"\n");
+
+            edited=1;
+
+            while((ch = fgetc(fIn)) != EOF ) {
+                if(ch == '\n')
+                    break;
+            }
+        } else
+            fprintf(fOut,"%c",ch);
+    }
+    countrent--;
+    fclose(fIn);
+    fclose(fOut);
+    if(edited == 1)
+        printf("\nCongrates...Error Edited Successfully.");
+    else
+        printf("\nLine Not Found");
+}
+
 //void returnTicket(User &user, Book &book, Ticket &ticket, Today today) {
 //        string lostcheck;
 //        string rentidcheck;
@@ -202,9 +268,22 @@ int dayToNum(int d, int m, int y) {
 //        }
 //}
 
-//void rentedbooks(Ticket &ticket) {
-//    cout << "Số lượng sách đang được mượn là: " << ticket.countrent << endl;
-//}
+void rentedbooks(int &countrent) {
+    int ch;
+    countrent = 1;
+    FILE *fIn;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket.txt", "r");
+    while(!feof(fIn))
+    {
+        ch = fgetc(fIn);
+        if(ch == '\n')
+        {
+            countrent++;
+        }
+    }
+    fclose(fIn);
+    printf("Số lượng sách đang được mượn là: %d\n", countrent);
+}
 
 //void checkduedayticket(User &user, Ticket &ticket, Today today) {
 //    int count = 0;

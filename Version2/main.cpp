@@ -22,7 +22,7 @@ int main() {
     Book book;
     Ticket ticket;
     Today today;
-    int countusers, countbooks, countquantity;
+    int countusers, countbooks, countquantity, countrent;
 
     importLibraryLogo();
     importMainMenu(today);
@@ -90,9 +90,6 @@ int main() {
                     case 'f':
 //                        findBooksByName(book);
                         break;
-                    case 'g':
-//                        checkduedayuser(user, today);
-                        break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";
                         break;
@@ -101,12 +98,12 @@ int main() {
                 break;
             case 3:
                 importRentTicketLogo();
-//                rentTicket(user, book, ticket);
+                rentTicket(ticket, countrent);
                 keepChoosing = 1;
                 break;
             case 4:
                 importReturnTicketLogo();
-//                returnTicket(user, book, ticket, today);
+                returnTicket(ticket, countrent);
                 keepChoosing = 1;
                 break;
             case 5:
@@ -123,22 +120,16 @@ int main() {
 //                        categorybooks(book);
                         break;
                     case 'c':
-//                        quantityusers(countusers);
+                        quantityusers(countusers);
                         break;
                     case 'd':
 //                        sexusers(user);
                         break;
                     case 'e':
-//                        rentedbooks(ticket);
+                        rentedbooks(countrent);
                         break;
                     case 'f':
 //                        checkduedayticket(user, ticket, today);
-                        break;
-                    case 'g':
-//                        checkoutofstock(book);
-                        break;
-                    case 'h':
-//                        checkduedayuser(user, today);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";

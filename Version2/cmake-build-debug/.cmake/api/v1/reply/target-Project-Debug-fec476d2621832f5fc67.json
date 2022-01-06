@@ -132,7 +132,8 @@
 				13,
 				14,
 				15,
-				16
+				16,
+				17
 			]
 		}
 	],
@@ -227,6 +228,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "book-edited.txt",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ticket-edited.txt",
 			"sourceGroupIndex" : 2
 		}
 	],
