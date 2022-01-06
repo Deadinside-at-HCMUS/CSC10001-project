@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cstring>
+#include <cmath>
 #include "user.h"
 #define MAX 100
 
@@ -320,6 +321,7 @@ void findUserByCMND(User &user) {
             }
             fscanf(fInNew, "%[^\n]", line);
             if (count == position) {
+                printf("\nThông tin của độc gỉả cần tìm: \n");
                 printf("%s\n", line);
             }
         }
@@ -370,7 +372,7 @@ void findUsersByName(User &user) {
             count++;
             fscanf(fIn, "%[^-] - ", temp);
             if (strcmp(temp, namecheck) == 0) {
-                position = count/9;
+                position = round((count-2)/9) + 1;
                 count = 0;
                 break;
             }
@@ -388,6 +390,7 @@ void findUsersByName(User &user) {
             }
             fscanf(fInNew, "%[^\n]", line);
             if (count == position) {
+                printf("\nThông tin của độc gỉả cần tìm: \n");
                 printf("%s\n", line);
             }
         }

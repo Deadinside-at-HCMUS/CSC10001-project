@@ -85,10 +85,10 @@ int main() {
                         deleteBook(book, countbooks);
                         break;
                     case 'e':
-//                        findBooksByISBN(book);
+                        findBookByISBN(book);
                         break;
                     case 'f':
-//                        findBooksByName(book);
+                        findBooksByName(book);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";
