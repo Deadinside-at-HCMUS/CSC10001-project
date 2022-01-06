@@ -413,6 +413,26 @@ void quantitybooks(int countquantity) {
     printf("Số lượng sách có trong thư viện là: %d\n" ,countquantity);
 }
 
+void categorybooks(Book &book) {
+    FILE *fIn;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
+    printf("\nSố lượng sách thuộc thể loại: \n");
+    if (fIn != NULL) {
+        while(!feof(fIn)) {
+            fscanf(fIn, "%[^-] - ", book.isbn);
+            fscanf(fIn, "%[^-] - ", book.namebook);
+            fscanf(fIn, "%[^-] - ", book.nameauthor);
+            fscanf(fIn, "%[^-] - ", book.publishcompany);
+            fscanf(fIn, "%[^-] - ", book.publishyear);
+            fscanf(fIn, "%[^-] - ", book.category);
+            fscanf(fIn, "%[^-] - ", book.price);
+            fscanf(fIn, "%[^\n]\n", book.quantity);
+            printf("_ %s: %s\n", book.category, book.quantity);
+        }
+    }
+    fclose(fIn);
+}
+
 //void categorybooks(Book &book) {
 //    string listcategory[MAX];
 //    int quantitycategory[MAX];

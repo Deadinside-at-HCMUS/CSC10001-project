@@ -427,6 +427,37 @@ void quantityusers(int countusers) {
     printf("Số lượng độc giả hiện có là: %d\n", countusers);
 }
 
+void sexusers(User &user) {
+    int countmale = 0;
+    int countfemale = 0;
+    int countother = 0;
+    FILE *fIn;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    if (fIn != NULL) {
+        while(!feof(fIn)) {
+            fscanf(fIn, "%[^-] - ", user.id);
+            fscanf(fIn, "%[^-] - ", user.nameuser);
+            fscanf(fIn, "%[^-] - ", user.cmnd);
+            fscanf(fIn, "%[^-] - ", user.birthday);
+            fscanf(fIn, "%[^-] - ", user.sex);
+            fscanf(fIn, "%[^-] - ", user.email);
+            fscanf(fIn, "%[^-] - ", user.address);
+            fscanf(fIn, "%[^-] - ", user.createday);
+            fscanf(fIn, "%[^\n]\n", user.dueday);
+            if (strcmp(user.sex, "Nam ") == 0 || strcmp(user.sex, "nam ") == 0) {
+                countmale++;
+            } else if (strcmp(user.sex, "Nu ") == 0 || strcmp(user.sex, "nu ") == 0) {
+                countfemale++;
+            } else
+                countother++;
+        }
+    }
+    fclose(fIn);
+    printf("Số độc giả giới tính nam  : %d\n", countmale);
+    printf("Số độc giả giới tính nữ  : %d\n", countfemale);
+    printf("Số độc giả giới tính khác  : %d\n", countother);
+}
+
 //void sexusers(User &user) {
 //    int countmale = 0;
 //    int countfemale = 0;

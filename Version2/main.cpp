@@ -117,19 +117,19 @@ int main() {
                         quantitybooks(countquantity);
                         break;
                     case 'b':
-//                        categorybooks(book);
+                        categorybooks(book);
                         break;
                     case 'c':
                         quantityusers(countusers);
                         break;
                     case 'd':
-//                        sexusers(user);
+                        sexusers(user);
                         break;
                     case 'e':
                         rentedbooks(countrent);
                         break;
                     case 'f':
-//                        checkduedayticket(user, ticket, today);
+                        checkduedayticket(ticket, today);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";

@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cstring>
+#include <cstdlib>
 #include "ticket.h"
 #define MAX 100
 
@@ -288,6 +289,37 @@ void rentedbooks(int &countrent) {
     }
     fclose(fIn);
     printf("Số lượng sách đang được mượn là: %d\n", countrent);
+}
+
+void checkduedayticket(Ticket &ticket, Today today) {
+    char yearpay[5], monthpay[3], daypay[3];
+    char *ptr;
+    FILE *fIn;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket.txt", "r");
+    printf("\nDanh sách các độc giả bị trễ hạn:  \n");
+    if (fIn != NULL) {
+        while(!feof(fIn)) {
+            fscanf(fIn, "%[^-] - ", ticket.rentuserid);
+            fscanf(fIn, "%[^-] - ", ticket.rentbookid);
+            fscanf(fIn, "%[^-] - ", ticket.rentid);
+            fscanf(fIn, "%[^-] - ", ticket.rentday);
+            fscanf(fIn, "%[^\n]\n", ticket.payday);
+            memcpy(yearpay, &ticket.payday[0], 4);
+            yearpay[4] = '\0';
+            memcpy(monthpay, &ticket.payday[5], 2);
+            monthpay[2] = '\0';
+            memcpy(daypay, &ticket.payday[8], 2);
+            daypay[2] = '\0';
+            if (strtol(yearpay, &ptr, 10) < today.todayyear) {
+                printf("_ Mã độc giả: %s\n", ticket.rentuserid);
+            } else if (strtol(yearpay, &ptr, 10) == today.todayyear && strtol(monthpay, &ptr, 10) < today.todaymonth) {
+                printf("_ Mã độc giả: %s\n", ticket.rentuserid);
+            } else if (strtol(yearpay, &ptr, 10)  == today.todayyear && strtol(monthpay, &ptr, 10) == today.todaymonth && strtol(daypay, &ptr, 10) < today.todayday) {
+                printf("_ Mã độc giả: %s\n", ticket.rentuserid);
+            }
+        }
+    }
+    fclose(fIn);
 }
 
 //void checkduedayticket(User &user, Ticket &ticket, Today today) {

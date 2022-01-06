@@ -27,4 +27,4 @@ void returnTicket(Ticket &ticket, int &countrent);
 
 void rentedbooks(int &countrent);
 
-void checkduedayticket(User &user, Ticket &ticket, Today today);
+void checkduedayticket(Ticket &ticket, Today today);
