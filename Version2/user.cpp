@@ -10,7 +10,7 @@ using namespace std;
 void showUsers(User user, int &countusers) {
     countusers = 0;
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    fIn = fopen("user.txt", "r");
     if (fIn != NULL) {
         while(!feof(fIn)) {
             printf("Thông tin của độc gỉả thứ %d\n", countusers + 1);
@@ -75,7 +75,7 @@ void addUser(User &user, int &countusers) {
 
     countusers++;
     FILE *fOut;
-    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "a+");
+    fOut = fopen("user.txt", "a+");
     if(fOut != NULL) {
         fprintf(fOut, "\n%s", user.id);
         fprintf(fOut, " - %s", user.nameuser);
@@ -103,8 +103,8 @@ void modifyUser(User &user) {
     printf("Mời nhập stt độc giả cần chỉnh sửa: ");
     scanf("%d", &position);
     FILE *fIn, *fOut;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
-    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "w");
+    fIn = fopen("user.txt", "r");
+    fOut = fopen("user-edited.txt", "w");
     while((ch = fgetc(fIn)) != EOF) {
         if(ch == '\n')
             count++;
@@ -186,8 +186,8 @@ void deleteUser(User &user, int &countusers) {
     printf("Mời nhập stt độc giả cần xóa: ");
     scanf("%d", &position);
     FILE *fIn, *fOut;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
-    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "w");
+    fIn = fopen("user.txt", "r");
+    fOut = fopen("user-edited.txt", "w");
     while((ch = fgetc(fIn)) != EOF) {
         if(ch == '\n')
             count++;
@@ -226,7 +226,7 @@ void findUserByCMND(User &user) {
     printf("Mời nhập CMND độc giả cần tìm: "); fgets(cmndcheck, MAX, stdin);
     strtok(cmndcheck, "\n");
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
+    fIn = fopen("user-edited.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             ch = fgetc(fIn);
@@ -247,7 +247,7 @@ void findUserByCMND(User &user) {
 
     if(isavailable) {
         FILE *fInNew;
-        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
+        fInNew = fopen("user-edited.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -280,7 +280,7 @@ void findUsersByName(User &user) {
     printf("Mời nhập tên độc giả cần tìm: "); fgets(namecheck, MAX, stdin);
     strtok(namecheck, "\n");
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
+    fIn = fopen("user-edited.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             count++;
@@ -297,7 +297,7 @@ void findUsersByName(User &user) {
 
     if (isavailable) {
         FILE *fInNew;
-        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
+        fInNew = fopen("user-edited.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -327,7 +327,7 @@ void sexusers(User &user) {
     int countfemale = 0;
     int countother = 0;
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
+    fIn = fopen("user-edited.txt", "r");
     if (fIn != NULL) {
         while(!feof(fIn)) {
             fscanf(fIn, "%[^-] - ", user.id);
@@ -358,7 +358,7 @@ void checkduedayuser(User &user, Today today) {
     char *ptr;
     bool isavailable = false;
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
+    fIn = fopen("user-edited.txt", "r");
     printf("Danh sách các độc giả hết hạn thẻ: \n");
     if (fIn != NULL) {
         while(!feof(fIn)) {

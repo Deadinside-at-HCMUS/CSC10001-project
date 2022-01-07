@@ -11,7 +11,7 @@ void showBooks(Book &book, int &countbooks, int &countquantity) {
     countbooks = 0;
     countquantity = 0;
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
+    fIn = fopen("book.txt", "r");
     if (fIn != NULL) {
         while(!feof(fIn)) {
             printf("Thông tin của quyển sách thứ %d\n", countbooks + 1);
@@ -42,7 +42,7 @@ void showBooks(Book &book, int &countbooks, int &countquantity) {
 void addBook(Book &book, int &countbooks) {
     char newline[MAX];
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
+    fIn = fopen("book.txt", "r");
     if(fIn != NULL) {
         fgets(newline, 100, stdin);
         printf("Thêm thông tin sách thứ %d\n", countbooks + 1);
@@ -66,7 +66,7 @@ void addBook(Book &book, int &countbooks) {
     fclose(fIn);
     countbooks++;
     FILE *fOut;
-    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "a+");
+    fOut = fopen("book.txt", "a+");
     if(fOut != NULL) {
         fprintf(fOut, "\n%s", book.isbn);
         fprintf(fOut, " - %s", book.namebook);
@@ -89,8 +89,8 @@ void modifyBook(Book &book) {
     printf("Mời nhập stt sách cần chỉnh sửa: ");
     scanf("%d", &position);
     FILE *fIn, *fOut;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
-    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "w");
+    fIn = fopen("book.txt", "r");
+    fOut = fopen("book-edited.txt", "w");
     while((ch = fgetc(fIn)) != EOF) {
         if(ch == '\n')
             count++;
@@ -161,8 +161,8 @@ void deleteBook(Book &book, int &countbooks) {
     printf("Mời nhập stt sách cần xóa: ");
     scanf("%d", &position);
     FILE *fIn, *fOut;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
-    fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "w");
+    fIn = fopen("book.txt", "r");
+    fOut = fopen("book-edited.txt", "w");
     while((ch = fgetc(fIn)) != EOF) {
         if(ch == '\n')
             count++;
@@ -201,7 +201,7 @@ void findBookByISBN(Book &book) {
     printf("Mời nhập ISBN sách cần tìm: "); fgets(isbncheck, MAX, stdin);
     strtok(isbncheck, "\n");
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "r");
+    fIn = fopen("book-edited.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             ch = fgetc(fIn);
@@ -222,7 +222,7 @@ void findBookByISBN(Book &book) {
 
     if(isavailable) {
         FILE *fInNew;
-        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "r");
+        fInNew = fopen("book-edited.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -255,7 +255,7 @@ void findBooksByName(Book &book) {
     printf("Mời nhập tên quyển sách cần tìm: "); fgets(namecheck, MAX, stdin);
     strtok(namecheck, "\n");
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "r");
+    fIn = fopen("book-edited.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             count++;
@@ -272,7 +272,7 @@ void findBooksByName(Book &book) {
 
     if(isavailable) {
         FILE *fInNew;
-        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "r");
+        fInNew = fopen("book-edited.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -298,7 +298,7 @@ void quantitybooks(int countquantity) {
 
 void categorybooks(Book &book) {
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book-edited.txt", "r");
+    fIn = fopen("book-edited.txt", "r");
     printf("Số lượng sách thuộc thể loại: \n");
     if (fIn != NULL) {
         while(!feof(fIn)) {
