@@ -41,7 +41,7 @@ void showBooks(Book &book, int &countbooks, int &countquantity) {
 }
 
 void addBook(Book &book, int &countbooks) {
-    char newline[100];
+    char newline[MAX];
     FILE *fIn;
     fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
     if(fIn != NULL) {
@@ -81,35 +81,8 @@ void addBook(Book &book, int &countbooks) {
     fclose(fOut);
 }
 
-//void addBook(Book &book) {
-//        int i = book.countbooks;
-//        bool checkisbn = false;
-//        cout << "Thêm quyển sách thứ " << i + 1 << endl;
-//        cin.ignore();
-//        cout << "_ Mã sách (ISBN)     : "; getline(cin, book.isbn[i]);
-//        for (int j = 0; j < i; j++) {
-//            if (book.isbn[j] == book.isbn[i]) {
-//                checkisbn = true;
-//            }
-//        }
-//        if (checkisbn) {
-//            cout << endl;
-//            cout << "Mã sách (ISBN) đã tồn tại!" << endl;
-//        } else {
-//            cout << "_ Tên sách           : "; getline(cin, book.namebook[i]);
-//            cout << "_ Tác giả            : "; getline(cin, book.nameauthor[i]);
-//            cout << "_ Nhà xuất bản       : "; getline(cin, book.publishcompany[i]);
-//            cout << "_ Năm xuất bản       : "; cin >> book.publishyear[i];
-//            cin.ignore();
-//            cout << "_ Thể loại           : "; getline(cin, book.category[i]);
-//            cout << "_ Giá sách           : "; cin >> book.price[i];
-//            cout << "_ Số quyển sách      : "; cin >> book.quantity[i];
-//            book.countbooks++;
-//        }
-//}
-
 void modifyBook(Book &book) {
-    char newline[100];
+    char newline[MAX];
     int position;
     int count = 0;
     int ch;
@@ -177,46 +150,10 @@ void modifyBook(Book &book) {
     fclose(fIn);
     fclose(fOut);
     if(edited==1)
-        printf("\nCongrates...Error Edited Successfully.");
+        printf("\nChỉnh sửa thông tin sách thành công!\n");
     else
-        printf("\nLine Not Found");
+        printf("\nSTT sách không tồn tại!\n");
 }
-
-//void modifyBook(Book &book) {
-//        int i;
-//        bool checkisbn = false;
-//        if (book.countbooks== 0) {
-//            cout << "Thư viện sách trống!" << endl;
-//        } else {
-//            cout << "Mời nhập stt sách cần chỉnh sửa: "; cin >> i;
-//            cout << endl;
-//            if (book.countbooks < i) {
-//                cout << "Stt sách lớn hơn thư viện sách hiện có!" << endl;
-//            } else {
-//                cout << "Chỉnh sửa quyển sách thứ " << i << endl;
-//                cin.ignore();
-//                cout << "_ Mã sách (ISBN)     : "; getline(cin, book.isbn[i-1]);
-//                for (int j = 0; j < i - 1; j++) {
-//                    if (book.isbn[j] == book.isbn[i-1]) {
-//                        checkisbn = true;
-//                    }
-//                }
-//                if (checkisbn) {
-//                    cout << endl;
-//                    cout << "Mã sách (ISBN) đã tồn tại!" << endl;
-//                } else {
-//                    cout << "_ Tên sách           : "; getline(cin, book.namebook[i-1]);
-//                    cout << "_ Tác giả            : "; getline(cin, book.nameauthor[i-1]);
-//                    cout << "_ Nhà xuất bản       : "; getline(cin, book.publishcompany[i-1]);
-//                    cout << "_ Năm xuất bản       : "; cin >> book.publishyear[i-1];
-//                    cin.ignore();
-//                    cout << "_ Thể loại           : "; getline(cin, book.category[i-1]);
-//                    cout << "_ Giá sách           : "; cin >> book.price[i-1];
-//                    cout << "_ Số quyển sách      : "; cin >> book.quantity[i-1];
-//                }
-//            }
-//        }
-//}
 
 void deleteBook(Book &book, int &countbooks) {
     int position;
@@ -248,36 +185,20 @@ void deleteBook(Book &book, int &countbooks) {
     fclose(fIn);
     fclose(fOut);
     if(edited==1)
-        printf("\nCongrates...Error Edited Successfully.");
+        printf("\nXóa sách thành công!\n");
     else
-        printf("\nLine Not Found");
+        printf("\nSTT sách không tồn tại!\n");
 }
 
-
-//void deleteBook(Book &book) {
-//        int i;
-//        cout << "Mời nhập stt sách cần xóa: "; cin >> i;
-//        cout << endl;
-//        book.isbn[i-1] = book.isbn[i];
-//        book.namebook[i-1] = book.namebook[i];
-//        book.nameauthor[i-1] = book.nameauthor[i];
-//        book.publishcompany[i-1] = book.publishcompany[i];
-//        book.publishyear[i-1] = book.publishyear[i];
-//        book.category[i-1] = book.category[i];
-//        book.price[i-1] = book.price[i];
-//        book.quantity[i-1] = book.quantity[i];
-//        book.countbooks--;
-//        cout << "Quyển sách thứ " << i << " đã được xóa!" << endl;
-//}
-
 void findBookByISBN(Book &book) {
-    char isbncheck[100];
-    char temp[100];
-    char line[100];
-    char newline[100];
+    char isbncheck[MAX];
+    char temp[MAX];
+    char line[MAX];
+    char newline[MAX];
     int position;
     int ch;
     int count = 0;
+    bool isavailable = false;
     fgets(newline, 100, stdin);
     printf("Mời nhập ISBN sách cần tìm: "); fgets(isbncheck, MAX, stdin);
     strtok(isbncheck, "\n");
@@ -294,62 +215,44 @@ void findBookByISBN(Book &book) {
             if (strcmp(temp, isbncheck) == 0) {
                 position = count;
                 count = 0;
+                isavailable = true;
                 break;
             }
         }
     }
     fclose(fIn);
-    FILE *fInNew;
-    fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
-    if (fInNew != NULL) {
-        while (!feof(fInNew)) {
-            ch = fgetc(fInNew);
-            if(ch == '\n')
-            {
-                count++;
-            }
-            fscanf(fInNew, "%[^\n]", line);
-            if (count == position) {
-                printf("\nThông tin của quyển sách cần tìm: \n");
-                printf("%s\n", line);
+
+    if(isavailable) {
+        FILE *fInNew;
+        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
+        if (fInNew != NULL) {
+            while (!feof(fInNew)) {
+                ch = fgetc(fInNew);
+                if(ch == '\n')
+                {
+                    count++;
+                }
+                fscanf(fInNew, "%[^\n]", line);
+                if (count == position) {
+                    printf("\nThông tin của quyển sách cần tìm: \n");
+                    printf("%s\n", line);
+                }
             }
         }
-    }
-    fclose(fInNew);
+        fclose(fInNew);
+    } else
+        printf("Quyển sách có ISBN %s không tồn tại!\n", isbncheck);
 }
 
-//void findBooksByISBN(Book &book) {
-//        string isbncheck;
-//        bool isavailable = false;
-//        cin.ignore();
-//        cout << "Mời nhập ISBN sách cần tìm: "; getline(cin, isbncheck);
-//        cout << endl;
-//        for (int i = 0; i < book.countbooks; i++) {
-//            if (isbncheck == book.isbn[i]) {
-//                cout << "Thông tin của quyển sách thứ " << i + 1 << endl;
-//                cout << "_ Mã sách (ISBN)     : " << book.isbn[i] << endl;
-//                cout << "_ Tên sách           : " << book.namebook[i] << endl;
-//                cout << "_ Tác giả            : " << book.nameauthor[i] << endl;
-//                cout << "_ Nhà xuất bản       : " << book.publishcompany[i] << endl;
-//                cout << "_ Năm xuất bản       : " << book.publishyear[i] << endl;
-//                cout << "_ Thể loại           : " << book.category[i] << endl;
-//                cout << "_ Giá sách           : " << book.price[i] << " VNĐ" << endl;
-//                cout << "_ Số quyển sách      : " << book.quantity[i] << endl;
-//                isavailable = true;
-//            }
-//        }
-//        if (!isavailable)
-//            cout << "Quyển sách có ISBN " << isbncheck << " không tồn tại!" << endl;
-//}
-
 void findBooksByName(Book &book) {
-    char namecheck[100];
-    char temp[100];
-    char line[100];
-    char newline[100];
+    char namecheck[MAX];
+    char temp[MAX];
+    char line[MAX];
+    char newline[MAX];
     int position;
     int ch;
     int count = 0;
+    bool isavailable = false;
     fgets(newline, 100, stdin);
     printf("Mời nhập tên quyển sách cần tìm: "); fgets(namecheck, MAX, stdin);
     strtok(namecheck, "\n");
@@ -362,52 +265,34 @@ void findBooksByName(Book &book) {
             if (strcmp(temp, namecheck) == 0) {
                 position = round((count-2)/8) + 1;
                 count = 0;
+                isavailable = true;
                 break;
             }
         }
     }
     fclose(fIn);
-    FILE *fInNew;
-    fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
-    if (fInNew != NULL) {
-        while (!feof(fInNew)) {
-            ch = fgetc(fInNew);
-            if(ch == '\n')
-            {
-                count++;
-            }
-            fscanf(fInNew, "%[^\n]", line);
-            if (count == position) {
-                printf("\nThông tin của quyển sách cần tìm: \n");
-                printf("%s\n", line);
+
+    if(isavailable) {
+        FILE *fInNew;
+        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/book.txt", "r");
+        if (fInNew != NULL) {
+            while (!feof(fInNew)) {
+                ch = fgetc(fInNew);
+                if(ch == '\n')
+                {
+                    count++;
+                }
+                fscanf(fInNew, "%[^\n]", line);
+                if (count == position) {
+                    printf("\nThông tin của quyển sách cần tìm: \n");
+                    printf("%s\n", line);
+                }
             }
         }
-    }
+        fclose(fInNew);
+    } else
+        printf("Quyển sách có tên %s không tồn tại!\n", namecheck);
 }
-
-//void findBooksByName(Book &book) {
-//        string namebookcheck;
-//        bool isavailable = false;
-//        cin.ignore();
-//        cout << "Mời nhập tên quyển sách cần tìm: "; getline(cin, namebookcheck);
-//        cout << endl;
-//        for (int i = 0; i < book.countbooks; i++) {
-//            if (namebookcheck == book.namebook[i]) {
-//                cout << "Thông tin của quyển sách thứ " << i + 1 << endl;
-//                cout << "_ Mã sách (ISBN)     : " << book.isbn[i] << endl;
-//                cout << "_ Tên sách           : " << book.namebook[i] << endl;
-//                cout << "_ Tác giả            : " << book.nameauthor[i] << endl;
-//                cout << "_ Nhà xuất bản       : " << book.publishcompany[i] << endl;
-//                cout << "_ Năm xuất bản       : " << book.publishyear[i] << endl;
-//                cout << "_ Thể loại           : " << book.category[i] << endl;
-//                cout << "_ Giá sách           : " << book.price[i] << " VNĐ" << endl;
-//                cout << "_ Số quyển sách      : " << book.quantity[i] << endl;
-//                isavailable = true;
-//            }
-//        }
-//        if (!isavailable)
-//            cout << "Quyển sách có tên " << namebookcheck << " không tồn tại!" << endl;
-//}
 
 void quantitybooks(int countquantity) {
     printf("Số lượng sách có trong thư viện là: %d\n" ,countquantity);
@@ -432,52 +317,3 @@ void categorybooks(Book &book) {
     }
     fclose(fIn);
 }
-
-//void categorybooks(Book &book) {
-//    string listcategory[MAX];
-//    int quantitycategory[MAX];
-//    int countcategory = 0;
-//    int flag;
-//    if (book.countbooks == 0)
-//        cout << "Thư viện trống!" << endl;
-//    else {
-//        cout << "Số lượng sách thuộc thể loại: " << endl;
-//        for (int i = 0; i < book.countbooks; i++) {
-//            int count = 0;
-//            for (int j = i + 1; j < book.countbooks; j++) {
-//                if (book.category[i] != book.category[j])
-//                    count++;
-//                else
-//                    flag = j;
-//            }
-//            if (count == book.countbooks - i - 1) {
-//                listcategory[countcategory] = book.category[i];
-//                quantitycategory[countcategory] += book.quantity[i];
-//                countcategory++;
-//            } else
-//                book.quantity[flag] += book.quantity[i];
-//        }
-//
-//        for (int i = 0; i < countcategory; i++)
-//            cout << "_ " << listcategory[i] << ": " << quantitycategory[i] << endl;
-//    }
-//}
-
-//void checkoutofstock(Book &book) {
-//    int count = 0;
-//    if (book.countbooks == 0) {
-//        cout << "Thư viện trống!" << endl;
-//    } else {
-//        cout << "Danh sách sách đã được mượn hết: " << endl;
-//        for (int i = 0; i < book.countbooks; i++) {
-//            if (book.quantity[i] == 0) {
-//                cout << "_ Tên sách: " << book.namebook[i] << " - ISBN: " << book.isbn[i] << endl;
-//                count++;
-//            }
-//        }
-//    }
-//    if (count == 0) {
-//        cout << endl;
-//        cout << "Trống!" << endl;
-//    }
-//}

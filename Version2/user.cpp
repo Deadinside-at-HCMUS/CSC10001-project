@@ -41,7 +41,7 @@ void showUsers(User user, int &countusers) {
 }
 
 void addUser(User &user, int &countusers) {
-    char newline[100];
+    char newline[MAX];
     char yearcreate[5], monthdaycreate[7];
     int valueyearcreate, yeardue;
     char stringyeardue[5];
@@ -91,42 +91,8 @@ void addUser(User &user, int &countusers) {
     fclose(fOut);
 }
 
-//void addUser(User &user) {
-//        int i = user.countusers;
-//        bool checkid = false;
-//        cout << "Thêm thông tin độc giả thứ " << i + 1 << endl;
-//        cin.ignore();
-//        cout << "_ Mã độc giả                : "; getline(cin, user.id[i]);
-//        for (int j = 0; j < i; j++) {
-//            if (user.id[j] == user.id[i]) {
-//                checkid = true;
-//            }
-//        }
-//        if (checkid) {
-//            cout << endl;
-//            cout << "Mã độc giả đã tồn tại!" << endl;
-//        } else {
-//            cout << "_ Họ tên                    : "; getline(cin, user.nameuser[i]);
-//            cout << "_ CMND                      : "; getline(cin, user.cmnd[i]);
-//            do {
-//                cout << "_ Ngày tháng năm sinh       : "; getline(cin, user.birthday[i]);
-//            } while (user.birthday[i].length() != 10);
-//            cout << "_ Giới tính                 : "; getline(cin, user.sex[i]);
-//            cout << "_ Email                     : "; getline(cin, user.email[i]);
-//            cout << "_ Địa chỉ                   : "; getline(cin, user.address[i]);
-//            do {
-//                cout << "_ Ngày lập thẻ (yyyy/mm/dd) : "; getline(cin, user.createday[i]);
-//            } while (user.createday[i].length() != 10);
-//            string yearcreate = user.createday[i].substr(0,4);
-//            string monthdaycreate = user.createday[i].substr(4,6);
-//            int numdueyear = stoi(yearcreate) + 4;
-//            user.dueday[i] = to_string(numdueyear) + monthdaycreate;
-//            user.countusers++;
-//        }
-//}
-
 void modifyUser(User &user) {
-    char newline[100];
+    char newline[MAX];
     int position;
     int count = 0;
     int ch;
@@ -209,49 +175,10 @@ void modifyUser(User &user) {
     fclose(fIn);
     fclose(fOut);
     if(edited==1)
-        printf("\nCongrates...Error Edited Successfully.");
+        printf("\nChỉnh sửa thông tin độc giả thành công!\n");
     else
-        printf("\nLine Not Found");
+        printf("\nSTT độc giả không tồn tại!\n");
 }
-
-//void modifyUser(User &user){
-//        int i;
-//        bool checkid = false;
-//        if (user.countusers == 0) {
-//            cout << "Danh sách độc giả trống!" << endl;
-//        } else {
-//            cout << "Mời nhập stt độc giả cần chỉnh sửa: "; cin >> i;
-//            cout << endl;
-//            if (user.countusers< i) {
-//                cout << "Stt độc giả lớn hơn danh sách độc giả hiện có!" << endl;
-//            } else {
-//                cout << "Chỉnh sửa thông tin độc giả thứ " << i << endl;
-//                cin.ignore();
-//                cout << "_ Mã độc giả                : "; getline(cin, user.id[i-1]);
-//                for (int j = 0; j < i - 1; j++) {
-//                    if (user.id[j] == user.id[i-1]) {
-//                        checkid = true;
-//                    }
-//                }
-//                if (checkid) {
-//                    cout << endl;
-//                    cout << "Mã độc giả đã tồn tại!" << endl;
-//                } else {
-//                    cout << "_ Họ tên                    : "; getline(cin, user.nameuser[i-1]);
-//                    cout << "_ CMND                      : "; getline(cin, user.cmnd[i-1]);
-//                    do {
-//                        cout << "_ Ngày tháng năm sinh       : "; getline(cin, user.birthday[i-1]);
-//                    } while (user.birthday[i-1].length() != 10);
-//                    cout << "_ Giới tính                 : "; getline(cin, user.sex[i-1]);
-//                    cout << "_ Email                     : "; getline(cin, user.email[i-1]);
-//                    cout << "_ Địa chỉ                   : "; getline(cin, user.address[i-1]);
-//                    do {
-//                        cout << "_ Ngày lập thẻ (yyyy/mm/dd) : "; getline(cin, user.createday[i-1]);
-//                    } while (user.createday[i-1].length() != 10);
-//                }
-//            }
-//        }
-//}
 
 void deleteUser(User &user, int &countusers) {
     int position;
@@ -283,36 +210,20 @@ void deleteUser(User &user, int &countusers) {
     fclose(fIn);
     fclose(fOut);
     if(edited == 1)
-        printf("\nCongrates...Error Edited Successfully.");
+        printf("\nXóa độc giả thành công!\n");
     else
-        printf("\nLine Not Found");
+        printf("\nSTT độc giả không tồn tại!\n");
 }
 
-//void deleteUser(User &user) {
-//        int i;
-//        cout << "Mời nhập stt độc giả cần xóa: "; cin >> i;
-//        cout << endl;
-//        user.id[i-1] = user.id[i];
-//        user.nameuser[i-1] = user.nameuser[i];
-//        user.cmnd[i-1] = user.cmnd[i];
-//        user.birthday[i-1] = user.birthday[i];
-//        user.sex[i-1] = user.sex[i];
-//        user.email[i-1] = user.email[i];
-//        user.address[i-1] = user.address[i];
-//        user.createday[i-1] = user.createday[i];
-//        user.dueday[i-1] = user.dueday[i];
-//        user.countusers--;
-//        cout << "Độc giả thứ " << i << " đã được xóa!" << endl;
-//}
-
 void findUserByCMND(User &user) {
-    char cmndcheck[100];
-    char temp[100];
-    char line[100];
-    char newline[100];
+    char cmndcheck[MAX];
+    char temp[MAX];
+    char line[MAX];
+    char newline[MAX];
     int position;
     int ch;
     int count = 0;
+    bool isavailable = false;
     fgets(newline, 100, stdin);
     printf("Mời nhập CMND độc giả cần tìm: "); fgets(cmndcheck, MAX, stdin);
     strtok(cmndcheck, "\n");
@@ -329,63 +240,44 @@ void findUserByCMND(User &user) {
             if (strcmp(temp, cmndcheck) == 0) {
                 position = count;
                 count = 0;
+                isavailable = true;
                 break;
             }
         }
     }
     fclose(fIn);
-    FILE *fInNew;
-    fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
-    if (fInNew != NULL) {
-        while (!feof(fInNew)) {
-            ch = fgetc(fInNew);
-            if(ch == '\n')
-            {
-                count++;
-            }
-            fscanf(fInNew, "%[^\n]", line);
-            if (count == position) {
-                printf("\nThông tin của độc gỉả cần tìm: \n");
-                printf("%s\n", line);
+
+    if(isavailable) {
+        FILE *fInNew;
+        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+        if (fInNew != NULL) {
+            while (!feof(fInNew)) {
+                ch = fgetc(fInNew);
+                if(ch == '\n')
+                {
+                    count++;
+                }
+                fscanf(fInNew, "%[^\n]", line);
+                if (count == position) {
+                    printf("\nThông tin của độc gỉả cần tìm: \n");
+                    printf("%s\n", line);
+                }
             }
         }
-    }
-    fclose(fInNew);
+        fclose(fInNew);
+    } else
+        printf("Độc giả có CMND %s không tồn tại!\n", cmndcheck);
 }
 
-//void findUserByCMND(User &user) {
-//        string cmndcheck;
-//        bool isavailable = false;
-//        cin.ignore();
-//        cout << "Mời nhập CMND độc giả cần tìm: "; getline(cin, cmndcheck);
-//        cout << endl;
-//        for (int i = 0; i < user.countusers; i++) {
-//            if (cmndcheck == user.cmnd[i]) {
-//                cout << "Thông tin của độc gỉả thứ " << i + 1 << endl;
-//                cout << "_ Mã độc giả          : " << user.id[i] << endl;
-//                cout << "_ Họ tên              : " << user.nameuser[i] << endl;
-//                cout << "_ CMND                : " << user.cmnd[i] << endl;
-//                cout << "_ Ngày tháng năm sinh : " << user.birthday[i] << endl;
-//                cout << "_ Giới tính           : " << user.sex[i] << endl;
-//                cout << "_ Email               : " << user.email[i] << endl;
-//                cout << "_ Địa chỉ             : " << user.address[i] << endl;
-//                cout << "_ Ngày lập thẻ        : " << user.createday[i] << endl;
-//                cout << "_ Ngày hết hạn thẻ    : " << user.dueday[i] << endl;
-//                isavailable = true;
-//            }
-//        }
-//        if (!isavailable)
-//            cout << "Độc giả có CMND " << cmndcheck << " không tồn tại!" << endl;
-//}
-
 void findUsersByName(User &user) {
-    char namecheck[100];
-    char temp[100];
-    char line[100];
-    char newline[100];
+    char namecheck[MAX];
+    char temp[MAX];
+    char line[MAX];
+    char newline[MAX];
     int position;
     int ch;
     int count = 0;
+    bool isavailable = false;
     fgets(newline, 100, stdin);
     printf("Mời nhập tên độc giả cần tìm: "); fgets(namecheck, MAX, stdin);
     strtok(namecheck, "\n");
@@ -398,54 +290,35 @@ void findUsersByName(User &user) {
             if (strcmp(temp, namecheck) == 0) {
                 position = round((count-2)/9) + 1;
                 count = 0;
+                isavailable = true;
                 break;
             }
         }
     }
     fclose(fIn);
-    FILE *fInNew;
-    fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
-    if (fInNew != NULL) {
-        while (!feof(fInNew)) {
-            ch = fgetc(fInNew);
-            if(ch == '\n')
-            {
-                count++;
-            }
-            fscanf(fInNew, "%[^\n]", line);
-            if (count == position) {
-                printf("\nThông tin của độc gỉả cần tìm: \n");
-                printf("%s\n", line);
+
+    if (isavailable) {
+        FILE *fInNew;
+        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+        if (fInNew != NULL) {
+            while (!feof(fInNew)) {
+                ch = fgetc(fInNew);
+                if(ch == '\n')
+                {
+                    count++;
+                }
+                fscanf(fInNew, "%[^\n]", line);
+                if (count == position) {
+                    printf("\nThông tin của độc gỉả cần tìm: \n");
+                    printf("%s\n", line);
+                }
             }
         }
+        fclose(fInNew);
+    } else {
+        printf("Độc giả có tên %s không tồn tại!\n", namecheck);
     }
-    fclose(fInNew);
 }
-
-//void findUsersByName(User &user) {
-//        string nameusercheck;
-//        bool isavailable = false;
-//        cin.ignore();
-//        cout << "Mời nhập tên độc giả cần tìm: "; getline(cin,nameusercheck);
-//        cout << endl;
-//        for (int i = 0; i < user.countusers; i++) {
-//            if (nameusercheck == user.nameuser[i]) {
-//                cout << "Thông tin của độc gỉả thứ " << i + 1 << endl;
-//                cout << "_ Mã độc giả          : " << user.id[i] << endl;
-//                cout << "_ Họ tên              : " << user.nameuser[i] << endl;
-//                cout << "_ CMND                : " << user.cmnd[i] << endl;
-//                cout << "_ Ngày tháng năm sinh : " << user.birthday[i] << endl;
-//                cout << "_ Giới tính           : " << user.sex[i] << endl;
-//                cout << "_ Email               : " << user.email[i] << endl;
-//                cout << "_ Địa chỉ             : " << user.address[i] << endl;
-//                cout << "_ Ngày lập thẻ        : " << user.createday[i] << endl;
-//                cout << "_ Ngày hết hạn thẻ    : " << user.dueday[i] << endl;
-//                isavailable = true;
-//            }
-//        }
-//        if (!isavailable)
-//            cout << "Độc giả có tên " << nameusercheck << " không tồn tại!" << endl;
-//}
 
 void quantityusers(int countusers) {
     printf("Số lượng độc giả hiện có là: %d\n", countusers);
@@ -482,42 +355,43 @@ void sexusers(User &user) {
     printf("Số độc giả giới tính khác  : %d\n", countother);
 }
 
-//void sexusers(User &user) {
-//    int countmale = 0;
-//    int countfemale = 0;
-//    int countother = 0;
-//    cin.ignore();
-//    for (int i = 0; i < user.countusers; i++) {
-//        if (user.sex[i] == "Nam" || user.sex[i] == "nam") {
-//            countmale++;
-//        } else if (user.sex[i] == "Nu" || user.sex[i] == "nu") {
-//            countfemale++;
-//        } else
-//            countother++;
-//    }
-//    cout << "Số độc giả giới tính nam  : " << countmale << endl;
-//    cout << "Số độc giả giới tính nữ   : " << countfemale << endl;
-//    cout << "Số độc giả giới tính khác : " << countother << endl;
-//}
-
-//void checkduedayuser(User &user, Today today) {
-//    int count = 0;
-//    cout << "Danh sách các độc giả hết hạn thẻ: " << endl;
-//    for (int i = 0; i < user.countusers; i++) {
-//        int yearpay = stoi(user.dueday[i].substr(0,4));
-//        int monthpay = stoi(user.dueday[i].substr(5,2));
-//        int daypay = stoi(user.dueday[i].substr(8,2));
-//        if (yearpay < today.todayyear) {
-//            cout << "_ Họ và tên: " << user.nameuser[i] << " - ID: " << user.id[i] << endl;
-//            count++;
-//        } else if (yearpay == today.todayyear && monthpay < today.todaymonth) {
-//            cout << "_ Họ và tên: " << user.nameuser[i] << " - ID: " << user.id[i] << endl;
-//            count++;
-//        } else if (yearpay == today.todayyear && monthpay == today.todaymonth && daypay < today.todayday) {
-//            cout << "_ Họ và tên: " << user.nameuser[i] << " - ID: " << user.id[i] << endl;
-//            count++;
-//        }
-//    }
-//    if (count == 0)
-//        cout << "Trống!" << endl;
-//
+void checkduedayuser(User &user, Today today) {
+    char yearpay[5], monthpay[3], daypay[3];
+    char *ptr;
+    bool isavailable = false;
+    FILE *fIn;
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    printf("Danh sách các độc giả hết hạn thẻ: \n");
+    if (fIn != NULL) {
+        while(!feof(fIn)) {
+            fscanf(fIn, "%[^-] - ", user.id);
+            fscanf(fIn, "%[^-] - ", user.nameuser);
+            fscanf(fIn, "%[^-] - ", user.cmnd);
+            fscanf(fIn, "%[^-] - ", user.birthday);
+            fscanf(fIn, "%[^-] - ", user.sex);
+            fscanf(fIn, "%[^-] - ", user.email);
+            fscanf(fIn, "%[^-] - ", user.address);
+            fscanf(fIn, "%[^-] - ", user.createday);
+            fscanf(fIn, "%[^\n]\n", user.dueday);
+            memcpy(yearpay, &user.dueday[0], 4);
+            yearpay[4] = '\0';
+            memcpy(monthpay, &user.dueday[5], 2);
+            monthpay[2] = '\0';
+            memcpy(daypay, &user.dueday[8], 2);
+            daypay[2] = '\0';
+            if (strtol(yearpay, &ptr, 10) < today.todayyear) {
+                printf("_ %s- %s\n", user.id, user.nameuser);
+                isavailable = true;
+            } else if (strtol(yearpay, &ptr, 10) == today.todayyear && strtol(monthpay, &ptr, 10) < today.todaymonth) {
+                printf("_ %s- %s\n", user.id, user.nameuser);
+                isavailable = true;
+            } else if (strtol(yearpay, &ptr, 10)  == today.todayyear && strtol(monthpay, &ptr, 10) == today.todaymonth && strtol(daypay, &ptr, 10) < today.todayday) {
+                printf("_ %s- %s\n", user.id, user.nameuser);
+                isavailable = true;
+            }
+        }
+    }
+    fclose(fIn);
+    if(!isavailable)
+        printf("Trống!\n");
+}

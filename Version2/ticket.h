@@ -11,8 +11,6 @@ int leapYear(int year);
 
 int dayInMonth(int month, int year);
 
-int dayToNum(int d, int m, int y);
-
 struct Ticket {
     char rentuserid[MAX];
     char rentbookid[MAX];

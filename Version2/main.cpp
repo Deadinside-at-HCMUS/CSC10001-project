@@ -9,7 +9,6 @@
 #include "book.h"
 #include "ticket.h"
 #include "day.h"
-#define MAX 100
 
 using namespace std;
 
@@ -130,6 +129,9 @@ int main() {
                         break;
                     case 'f':
                         checkduedayticket(ticket, today);
+                        break;
+                    case 'g':
+                        checkduedayuser(user, today);
                         break;
                     default:
                         cout << "Bạn đã nhập sai cú pháp!\n";
