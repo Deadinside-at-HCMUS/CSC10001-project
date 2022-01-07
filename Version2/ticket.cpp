@@ -159,7 +159,7 @@ void rentedbooks(int &countrent) {
     int ch;
     countrent = 1;
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket.txt", "r");
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket-edited.txt", "r");
     while(!feof(fIn))
     {
         ch = fgetc(fIn);
@@ -177,7 +177,7 @@ void checkduedayticket(Ticket &ticket, Today today) {
     char *ptr;
     bool isavailable = false;
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket.txt", "r");
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/ticket-edited.txt", "r");
     printf("Danh sách các độc giả bị trễ hạn:  \n");
     if (fIn != NULL) {
         while(!feof(fIn)) {

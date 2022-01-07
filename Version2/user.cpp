@@ -36,7 +36,6 @@ void showUsers(User user, int &countusers) {
             countusers++;
         }
     }
-    printf("%d", countusers);
     fclose(fIn);
 }
 
@@ -103,7 +102,6 @@ void modifyUser(User &user) {
     char *ptr;
     printf("Mời nhập stt độc giả cần chỉnh sửa: ");
     scanf("%d", &position);
-    printf("%d\n", position);
     FILE *fIn, *fOut;
     fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
     fOut = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "w");
@@ -228,7 +226,7 @@ void findUserByCMND(User &user) {
     printf("Mời nhập CMND độc giả cần tìm: "); fgets(cmndcheck, MAX, stdin);
     strtok(cmndcheck, "\n");
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             ch = fgetc(fIn);
@@ -249,7 +247,7 @@ void findUserByCMND(User &user) {
 
     if(isavailable) {
         FILE *fInNew;
-        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -282,7 +280,7 @@ void findUsersByName(User &user) {
     printf("Mời nhập tên độc giả cần tìm: "); fgets(namecheck, MAX, stdin);
     strtok(namecheck, "\n");
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             count++;
@@ -299,7 +297,7 @@ void findUsersByName(User &user) {
 
     if (isavailable) {
         FILE *fInNew;
-        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+        fInNew = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -329,7 +327,7 @@ void sexusers(User &user) {
     int countfemale = 0;
     int countother = 0;
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
     if (fIn != NULL) {
         while(!feof(fIn)) {
             fscanf(fIn, "%[^-] - ", user.id);
@@ -360,7 +358,7 @@ void checkduedayuser(User &user, Today today) {
     char *ptr;
     bool isavailable = false;
     FILE *fIn;
-    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user.txt", "r");
+    fIn = fopen("/home/jasminele/Workspace/University/Final Project/NMLT-Library/Version2/user-edited.txt", "r");
     printf("Danh sách các độc giả hết hạn thẻ: \n");
     if (fIn != NULL) {
         while(!feof(fIn)) {

@@ -3,3 +3,4 @@ SCI102 - Why we sleep? - M. Walker - Nha Nam - 2017 - Science - 210000 - 10
 PSY103 - Outliers - M. Gladwell - Nha Nam - 2008 - Psychology - 150000 - 15
 BIO104 - Becoming - M. Obama - Kim Dong - 2018 - Biography - 130000 - 25
 COD105 - Clean Code - R. Martin - Kim Dong - 2008 - Coding - 230000 - 5
+NOV106 - The Great Gatsby - F. S. Fitzgerald - Nha Nam - 1925 - Novel - 80000 - 7
