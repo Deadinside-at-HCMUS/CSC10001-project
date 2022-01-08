@@ -201,7 +201,7 @@ void findBookByISBN(Book &book) {
     printf("Mời nhập ISBN sách cần tìm: "); fgets(isbncheck, MAX, stdin);
     strtok(isbncheck, "\n");
     FILE *fIn;
-    fIn = fopen("book-edited.txt", "r");
+    fIn = fopen("book.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             ch = fgetc(fIn);
@@ -222,7 +222,7 @@ void findBookByISBN(Book &book) {
 
     if(isavailable) {
         FILE *fInNew;
-        fInNew = fopen("book-edited.txt", "r");
+        fInNew = fopen("book.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -255,7 +255,7 @@ void findBooksByName(Book &book) {
     printf("Mời nhập tên quyển sách cần tìm: "); fgets(namecheck, MAX, stdin);
     strtok(namecheck, "\n");
     FILE *fIn;
-    fIn = fopen("book-edited.txt", "r");
+    fIn = fopen("book.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             count++;
@@ -272,7 +272,7 @@ void findBooksByName(Book &book) {
 
     if(isavailable) {
         FILE *fInNew;
-        fInNew = fopen("book-edited.txt", "r");
+        fInNew = fopen("book.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -298,7 +298,7 @@ void quantitybooks(int countquantity) {
 
 void categorybooks(Book &book) {
     FILE *fIn;
-    fIn = fopen("book-edited.txt", "r");
+    fIn = fopen("book.txt", "r");
     printf("Số lượng sách thuộc thể loại: \n");
     if (fIn != NULL) {
         while(!feof(fIn)) {

@@ -226,7 +226,7 @@ void findUserByCMND(User &user) {
     printf("Mời nhập CMND độc giả cần tìm: "); fgets(cmndcheck, MAX, stdin);
     strtok(cmndcheck, "\n");
     FILE *fIn;
-    fIn = fopen("user-edited.txt", "r");
+    fIn = fopen("user.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             ch = fgetc(fIn);
@@ -247,7 +247,7 @@ void findUserByCMND(User &user) {
 
     if(isavailable) {
         FILE *fInNew;
-        fInNew = fopen("user-edited.txt", "r");
+        fInNew = fopen("user.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -280,7 +280,7 @@ void findUsersByName(User &user) {
     printf("Mời nhập tên độc giả cần tìm: "); fgets(namecheck, MAX, stdin);
     strtok(namecheck, "\n");
     FILE *fIn;
-    fIn = fopen("user-edited.txt", "r");
+    fIn = fopen("user.txt", "r");
     if (fIn != NULL) {
         while (!feof(fIn)) {
             count++;
@@ -297,7 +297,7 @@ void findUsersByName(User &user) {
 
     if (isavailable) {
         FILE *fInNew;
-        fInNew = fopen("user-edited.txt", "r");
+        fInNew = fopen("user.txt", "r");
         if (fInNew != NULL) {
             while (!feof(fInNew)) {
                 ch = fgetc(fInNew);
@@ -327,7 +327,7 @@ void sexusers(User &user) {
     int countfemale = 0;
     int countother = 0;
     FILE *fIn;
-    fIn = fopen("user-edited.txt", "r");
+    fIn = fopen("user.txt", "r");
     if (fIn != NULL) {
         while(!feof(fIn)) {
             fscanf(fIn, "%[^-] - ", user.id);
@@ -358,7 +358,7 @@ void checkduedayuser(User &user, Today today) {
     char *ptr;
     bool isavailable = false;
     FILE *fIn;
-    fIn = fopen("user-edited.txt", "r");
+    fIn = fopen("user.txt", "r");
     printf("Danh sách các độc giả hết hạn thẻ: \n");
     if (fIn != NULL) {
         while(!feof(fIn)) {
